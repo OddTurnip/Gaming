@@ -669,6 +669,94 @@ html.cthulhu-theme .die-highlight-low {
     box-shadow: 0 0 12px #b388eb, 0 2px 4px var(--shadow-primary) !important;
 }
 
+/* Beach Theme */
+html.beach-theme,
+html.beach-theme:root,
+body.beach-theme {
+    --bg-gradient-start: #87CEEB !important;
+    --bg-gradient-end: #f0e68c !important;
+    --container-bg: rgba(255, 248, 240, 0.88) !important;
+    --result-gradient-start: #ff7f50 !important;
+    --result-gradient-end: #ff6347 !important;
+
+    --heading-primary: #1e90ff !important;
+    --heading-secondary: #4682b4 !important;
+    --heading-tertiary: #cd853f !important;
+    --text-primary: #4a4a4a !important;
+    --text-secondary: #5a5a5a !important;
+    --text-light: #7a7a7a !important;
+    --text-white: #fffaf0 !important;
+
+    --accent-primary: #20b2aa !important;
+    --accent-primary-dark: #008b8b !important;
+    --accent-secondary: #48d1cc !important;
+    --accent-tertiary: #deb887 !important;
+
+    --button-gradient-start: #20b2aa !important;
+    --button-gradient-end: #008b8b !important;
+    --button-shadow: rgba(32, 178, 170, 0.5) !important;
+
+    --border-light: #e8dcc8 !important;
+    --border-medium: #d4c4a8 !important;
+    --border-accent: #48d1cc !important;
+
+    --bg-light: #fff8f0 !important;
+    --bg-white: #fffaf5 !important;
+    --bg-hover: #fff0e0 !important;
+
+    --error-bg: #ffe4e1 !important;
+    --error-border: #ff6b6b !important;
+    --error-text: #dc143c !important;
+
+    --fate-die-bg: #1e90ff !important;
+
+    --scrollbar-track: #f5deb3 !important;
+    --scrollbar-thumb: #20b2aa !important;
+    --scrollbar-thumb-hover: #008b8b !important;
+
+    --close-btn-bg: rgba(30, 144, 255, 0.12) !important;
+    --close-btn-bg-hover: rgba(30, 144, 255, 0.22) !important;
+    --close-btn-color: #1e90ff !important;
+
+    --link-hover-gradient-start: rgba(32, 178, 170, 0.06) !important;
+    --link-hover-gradient-end: rgba(0, 139, 139, 0.06) !important;
+
+    --history-border-shadow: rgba(32, 178, 170, 0.2) !important;
+
+    --result-text-shadow: rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Beach theme: use background image */
+html.beach-theme body {
+    background: url('img/Background/Beach.png') center center / cover no-repeat fixed !important;
+}
+
+/* Beach theme: dice styling with ocean blue and sandy accents */
+html.beach-theme .fate-die {
+    background-color: #1e90ff !important;
+    color: #fffaf0 !important;
+    border: 2px solid #20b2aa !important;
+    box-shadow: 0 0 8px rgba(32, 178, 170, 0.4) !important;
+}
+
+html.beach-theme .die {
+    background-color: #1e90ff !important;
+    color: #fffaf0 !important;
+    border: 2px solid #20b2aa !important;
+    box-shadow: 0 0 8px rgba(32, 178, 170, 0.4) !important;
+}
+
+/* Beach theme: dice highlights with coral and teal */
+html.beach-theme .die-highlight-high {
+    border: 3px solid #20b2aa !important;
+    box-shadow: 0 0 12px #20b2aa, 0 2px 4px var(--shadow-primary) !important;
+}
+
+html.beach-theme .die-highlight-low {
+    border: 3px solid #ff7f50 !important;
+    box-shadow: 0 0 12px #ff7f50, 0 2px 4px var(--shadow-primary) !important;
+}
+
 /* ========================================
    GLOBAL STYLES
    ======================================== */

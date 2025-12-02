@@ -13,7 +13,8 @@ const THEMES = {
     SUMMER: 'summer',
     STARS: 'stars',
     GOTHIC: 'gothic',
-    CTHULHU: 'cthulhu'
+    CTHULHU: 'cthulhu',
+    BEACH: 'beach'
 };
 
 // Default theme
@@ -110,7 +111,7 @@ function createThemeSelector() {
     select.id = 'theme-selector';
     select.className = 'theme-selector';
 
-    // Add options in seasonal order: Autumn, Winter, Spring, Summer, then Stars, Gothic, Cthulhu, Light/Dark
+    // Add options in seasonal order: Autumn, Winter, Spring, Summer, then themed options, Light/Dark
     const options = [
         { value: THEMES.AUTUMN, label: 'Autumn' },
         { value: THEMES.WINTER, label: 'Winter' },
@@ -119,6 +120,7 @@ function createThemeSelector() {
         { value: THEMES.STARS, label: 'Stars' },
         { value: THEMES.GOTHIC, label: 'Gothic' },
         { value: THEMES.CTHULHU, label: 'Cthulhu' },
+        { value: THEMES.BEACH, label: 'Beach' },
         { value: THEMES.LIGHT, label: 'Light' },
         { value: THEMES.DARK, label: 'Dark' }
     ];
