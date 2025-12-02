@@ -555,7 +555,7 @@ body.gothic-theme {
 
 /* Gothic theme: use background image */
 html.gothic-theme body {
-    background: url('img/Background/gotham.png') center center / cover no-repeat fixed !important;
+    background: url('img/background/gotham.png') center center / cover no-repeat fixed !important;
 }
 
 /* Gothic theme: dice styling with black background and yellow text */
@@ -640,7 +640,7 @@ body.cthulhu-theme {
 
 /* Cthulhu theme: use background image */
 html.cthulhu-theme body {
-    background: url('img/Background/cthulhu.png') center center / cover no-repeat fixed !important;
+    background: url('img/background/cthulhu.png') center center / cover no-repeat fixed !important;
 }
 
 /* Cthulhu theme: dice styling with dark background and eldritch green text */
@@ -728,7 +728,7 @@ body.beach-theme {
 
 /* Beach theme: use background image */
 html.beach-theme body {
-    background: url('img/Background/Beach.png') center center / cover no-repeat fixed !important;
+    background: url('img/background/beach.png') center center / cover no-repeat fixed !important;
 }
 
 /* Beach theme: dice styling with ocean blue and sandy accents */
