@@ -1,5 +1,7 @@
 # Guide for AI Assistants (Claude, GPT, etc.)
 
+> **Style Note:** Always use lowercase filenames for all files except `*.md` files. This ensures compatibility with case-sensitive Linux servers (e.g., `basic.html`, `dice-library.js`, `img/tarot/`).
+
 Welcome! This guide helps AI assistants understand and work with the Dice Roller project.
 
 ## Quick Start

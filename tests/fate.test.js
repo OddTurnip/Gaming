@@ -13,7 +13,7 @@ import {
     getFateSymbol,
     interpretFateRoll,
     getFateProbabilities
-} from '../Fate.js';
+} from '../fate.js';
 
 describe('rollFateDie', () => {
     it('returns an object with value and symbol', () => {

@@ -7,7 +7,7 @@
  * Includes full 78-card deck: 22 Major Arcana + 56 Minor Arcana
  */
 
-import { createDeck, shuffleDeck, drawCard } from './CardLibrary.js';
+import { createDeck, shuffleDeck, drawCard } from './card-library.js';
 
 // Major Arcana cards (0-21) with meanings
 export const majorArcana = [
@@ -250,12 +250,12 @@ export function formatTarotCard(card) {
  */
 export function getCardImagePath(card) {
     if (card.type === 'major') {
-        // Major Arcana: e.g., "00-TheFool.png"
+        // Major Arcana: e.g., "00-thefool.png"
         const number = String(card.number).padStart(2, '0');
-        const name = card.name.replace(/\s+/g, ''); // Remove spaces
-        return `img/Tarot/${number}-${name}.png`;
+        const name = card.name.replace(/\s+/g, '').toLowerCase(); // Remove spaces and lowercase
+        return `img/tarot/${number}-${name}.png`;
     } else {
-        // Minor Arcana: e.g., "Wands01.png", "Cups11.png"
+        // Minor Arcana: e.g., "wands01.png", "cups11.png"
         const rankNumbers = {
             "Ace": "01", "Two": "02", "Three": "03", "Four": "04",
             "Five": "05", "Six": "06", "Seven": "07", "Eight": "08",
@@ -263,7 +263,7 @@ export function getCardImagePath(card) {
             "Queen": "13", "King": "14"
         };
         const number = rankNumbers[card.rank];
-        return `img/Tarot/${card.suit}${number}.png`;
+        return `img/tarot/${card.suit.toLowerCase()}${number}.png`;
     }
 }
 

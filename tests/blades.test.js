@@ -13,7 +13,7 @@ import {
     getBladesProbabilities,
     getEffect,
     interpretBladesRoll
-} from '../Blades.js';
+} from '../blades.js';
 
 describe('rollBladesDice', () => {
     it('rolls specified number of dice', () => {

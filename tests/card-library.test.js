@@ -19,7 +19,7 @@ import {
     returnCards,
     cutDeck,
     dealHands
-} from '../CardLibrary.js';
+} from '../card-library.js';
 
 describe('createDeck', () => {
     it('creates a copy of the card array', () => {

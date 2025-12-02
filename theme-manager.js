@@ -71,7 +71,7 @@ function applyTheme(theme) {
     // Trigger seasonal effects update
     // Delay to ensure DOM is ready
     setTimeout(() => {
-        import('./Snowflakes.js').then(module => {
+        import('./snowflakes.js').then(module => {
             module.createSeasonalEffects();
         });
     }, 100);

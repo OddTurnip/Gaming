@@ -5,7 +5,7 @@
  */
 
 import { describe, it, expect, vi } from 'vitest';
-import { rollSingleDie, rollSingleExplodingDie, rollDice, formatDiceRoll, parseDiceNotation, dropDice, countSuccesses, rollDiceWithModifiers, rollWithAdvantage } from '../DiceLibrary.js';
+import { rollSingleDie, rollSingleExplodingDie, rollDice, formatDiceRoll, parseDiceNotation, dropDice, countSuccesses, rollDiceWithModifiers, rollWithAdvantage } from '../dice-library.js';
 
 describe('rollSingleDie', () => {
     it('returns a value between 1 and sides', () => {

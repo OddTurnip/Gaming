@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="Style.css">
 	<link rel="icon" href="favicon.ico" type="image/x-icon">
     <!-- Apply theme immediately to prevent flash of unstyled content -->
-    <script src="ThemeInit.js"></script>
+    <script src="theme-init.js"></script>
 </head>
 <body>
     <div class="container">
@@ -16,25 +16,25 @@
         </div>
 
         <!-- Basic Dice Roller Link -->
-        <a href="Basic.html" class="link-container">
+        <a href="basic.html" class="link-container">
             <h2>Basic Dice Roller</h2>
             <p>Roll basic polyhedrals (d4, d6, d8, d10, d12, d20, and d100).</p>
         </a>
 
         <!-- Custom Dice Roller Link -->
-        <a href="Custom.html" class="link-container">
+        <a href="custom.html" class="link-container">
             <h2>Custom Dice Roller</h2>
             <p>Roll custom-sized polyhedrals, up to 1,000 dice at a time.</p>
         </a>
 
         <!-- Fate Dice Roller Link -->
-        <a href="Fate.html" class="link-container">
+        <a href="fate.html" class="link-container">
             <h2>Fate Dice Roller</h2>
             <p>Roll Fate/Fudge dice (4dF). Each die shows plus (+), minus (-), or blank, with results ranging from -4 to +4.</p>
         </a>
 
         <!-- Blades in the Dark Dice Roller Link -->
-        <a href="Blades.html" class="link-container">
+        <a href="blades.html" class="link-container">
             <h2>Blades in the Dark Dice Roller</h2>
             <p>Rolls d6s for Blades In The Dark. Your high result determines your result: 1-3 is a failure, 4-5 is a mixed result, and a 6 is a success. For 0 dot actions, the lowest result of 2d6 is used instead.</p>
         </a>
@@ -42,7 +42,7 @@
         <h1>Other Tools</h1>
 
         <!-- Tarot Reading Link -->
-        <a href="Tarot.html" class="link-container">
+        <a href="tarot.html" class="link-container">
             <h2>Tarot Reading</h2>
             <p>Perform a 3-card tarot spread (Past, Present, Future) using the Major Arcana. Each reading draws from a fresh deck.</p>
         </a>
@@ -79,8 +79,8 @@
     </div>
 
     <script type="module">
-        import { addThemeSelector } from './ThemeManager.js';
-        import { createSeasonalEffects } from './Snowflakes.js';
+        import { addThemeSelector } from './theme-manager.js';
+        import { createSeasonalEffects } from './snowflakes.js';
 
         // Make createSeasonalEffects available globally for the animated checkbox
         window.createSeasonalEffects = createSeasonalEffects;
