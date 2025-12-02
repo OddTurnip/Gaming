@@ -12,7 +12,7 @@ import { describe, it, expect, beforeEach } from 'vitest';
 
 // Load DataAccess.js as a script (simulating browser behavior)
 // It will set globalThis.NameGeneratorDB
-await import('./dataaccess.js');
+await import('./data-access.js');
 const DB = globalThis.NameGeneratorDB;
 
 describe('DataAccess Constants', () => {

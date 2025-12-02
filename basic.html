@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="Style.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <!-- Apply theme immediately to prevent flash of unstyled content -->
-    <script src="themeinit.js"></script>
+    <script src="theme-init.js"></script>
 </head>
 <body>
     <div class="container">
@@ -69,9 +69,9 @@
 
     <script type="module">
         // Import dice rolling logic and history utilities
-        import { rollDice, formatDiceRoll } from './dicelibrary.js';
-        import { createHistoryEntry, addToHistory } from './historylog.js';
-        import { addThemeSelector } from './thememanager.js';
+        import { rollDice, formatDiceRoll } from './dice-library.js';
+        import { createHistoryEntry, addToHistory } from './history-log.js';
+        import { addThemeSelector } from './theme-manager.js';
         import { createSeasonalEffects } from './snowflakes.js';
 
         // Make createSeasonalEffects available globally for the animated checkbox

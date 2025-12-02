@@ -8,7 +8,7 @@
  * Results: 1-3 = Failure, 4-5 = Mixed Success, 6 = Success, Multiple 6s = Critical Success
  */
 
-import { rollSingleDie } from './dicelibrary.js';
+import { rollSingleDie } from './dice-library.js';
 
 /**
  * Roll a Blades in the Dark dice pool
