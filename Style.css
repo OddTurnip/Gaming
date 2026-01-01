@@ -757,6 +757,113 @@ html.beach-theme .die-highlight-low {
     box-shadow: 0 0 12px #ff7f50, 0 2px 4px var(--shadow-primary) !important;
 }
 
+/* Cyberpunk Theme */
+html.cyberpunk-theme,
+html.cyberpunk-theme:root,
+body.cyberpunk-theme {
+    --bg-gradient-start: #0a0a0f !important;
+    --bg-gradient-end: #1a0a2e !important;
+    --container-bg: rgba(10, 10, 20, 0.92) !important;
+    --result-gradient-start: #8b5cf6 !important;
+    --result-gradient-end: #6d28d9 !important;
+
+    --heading-primary: #00ffff !important;
+    --heading-secondary: #ff00ff !important;
+    --heading-tertiary: #ec4899 !important;
+    --text-primary: #e0e0ff !important;
+    --text-secondary: #b0b0d0 !important;
+    --text-light: #8080a0 !important;
+    --text-white: #ffffff !important;
+
+    --accent-primary: #00ffff !important;
+    --accent-primary-dark: #00cccc !important;
+    --accent-secondary: #ff00ff !important;
+    --accent-tertiary: #ec4899 !important;
+
+    --button-gradient-start: #8b5cf6 !important;
+    --button-gradient-end: #6d28d9 !important;
+    --button-shadow: rgba(139, 92, 246, 0.6) !important;
+
+    --border-light: #2a2a4a !important;
+    --border-medium: #3a3a5a !important;
+    --border-accent: #ff00ff !important;
+
+    --bg-light: #0f0f1a !important;
+    --bg-white: #1a1a2e !important;
+    --bg-hover: #2a2a4a !important;
+
+    --error-bg: #2a0a1a !important;
+    --error-border: #ff0066 !important;
+    --error-text: #ff4488 !important;
+
+    --fate-die-bg: #1a0a2e !important;
+
+    --scrollbar-track: #0f0f1a !important;
+    --scrollbar-thumb: #8b5cf6 !important;
+    --scrollbar-thumb-hover: #6d28d9 !important;
+
+    --close-btn-bg: rgba(0, 255, 255, 0.1) !important;
+    --close-btn-bg-hover: rgba(0, 255, 255, 0.2) !important;
+    --close-btn-color: #00ffff !important;
+
+    --link-hover-gradient-start: rgba(139, 92, 246, 0.08) !important;
+    --link-hover-gradient-end: rgba(109, 40, 217, 0.08) !important;
+
+    --history-border-shadow: rgba(255, 0, 255, 0.25) !important;
+
+    --result-text-shadow: rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Cyberpunk theme: use background image (placeholder for user upload) */
+html.cyberpunk-theme body {
+    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%) !important;
+}
+
+/* Cyberpunk theme: dice styling with neon glow */
+html.cyberpunk-theme .fate-die {
+    background-color: #0a0a0f !important;
+    color: #00ffff !important;
+    border: 2px solid #ff00ff !important;
+    box-shadow: 0 0 10px rgba(255, 0, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.3) !important;
+}
+
+html.cyberpunk-theme .die {
+    background-color: #0a0a0f !important;
+    color: #00ffff !important;
+    border: 2px solid #ff00ff !important;
+    box-shadow: 0 0 10px rgba(255, 0, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.3) !important;
+}
+
+/* Cyberpunk theme: dice highlights with cyan and pink neon */
+html.cyberpunk-theme .die-highlight-high {
+    border: 3px solid #00ffff !important;
+    box-shadow: 0 0 15px #00ffff, 0 0 30px rgba(0, 255, 255, 0.5), 0 2px 4px var(--shadow-primary) !important;
+}
+
+html.cyberpunk-theme .die-highlight-low {
+    border: 3px solid #ec4899 !important;
+    box-shadow: 0 0 15px #ec4899, 0 0 30px rgba(236, 72, 153, 0.5), 0 2px 4px var(--shadow-primary) !important;
+}
+
+/* Cyberpunk theme: neon glow on buttons */
+html.cyberpunk-theme .roll-button {
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.5), 0 0 30px rgba(139, 92, 246, 0.3) !important;
+}
+
+html.cyberpunk-theme .roll-button:hover {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.7), 0 0 40px rgba(139, 92, 246, 0.5), 0 5px 15px var(--button-shadow) !important;
+}
+
+/* Cyberpunk theme: neon glow on result display */
+html.cyberpunk-theme .result-display {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.4), 0 0 40px rgba(255, 0, 255, 0.2) !important;
+}
+
+/* Cyberpunk theme: container glow */
+html.cyberpunk-theme .container {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 30px rgba(139, 92, 246, 0.2), 0 0 60px rgba(0, 255, 255, 0.1) !important;
+}
+
 /* ========================================
    GLOBAL STYLES
    ======================================== */
