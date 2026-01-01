@@ -814,9 +814,9 @@ body.cyberpunk-theme {
     --result-text-shadow: rgba(0, 0, 0, 0.5) !important;
 }
 
-/* Cyberpunk theme: use background image (placeholder for user upload) */
+/* Cyberpunk theme: use background image */
 html.cyberpunk-theme body {
-    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%) !important;
+    background: url('img/background/cyberpunk.png') center center / cover no-repeat fixed !important;
 }
 
 /* Cyberpunk theme: dice styling with neon glow */
