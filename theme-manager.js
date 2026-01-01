@@ -14,7 +14,8 @@ const THEMES = {
     STARS: 'stars',
     GOTHIC: 'gothic',
     CTHULHU: 'cthulhu',
-    BEACH: 'beach'
+    BEACH: 'beach',
+    CYBERPUNK: 'cyberpunk'
 };
 
 // Default theme
@@ -121,6 +122,7 @@ function createThemeSelector() {
         { value: THEMES.GOTHIC, label: 'Gothic' },
         { value: THEMES.CTHULHU, label: 'Cthulhu' },
         { value: THEMES.BEACH, label: 'Beach' },
+        { value: THEMES.CYBERPUNK, label: 'Cyberpunk' },
         { value: THEMES.LIGHT, label: 'Light' },
         { value: THEMES.DARK, label: 'Dark' }
     ];
