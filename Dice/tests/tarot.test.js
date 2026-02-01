@@ -14,7 +14,7 @@ import {
     formatTarotCard,
     getCardImagePath,
     getCardMeaning
-} from '../tarot.js';
+} from '../../Tarot/tarot.js';
 
 describe('majorArcana', () => {
     it('has 22 cards', () => {
