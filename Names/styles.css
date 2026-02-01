@@ -45,29 +45,6 @@ header p, .header p {
     color: var(--text-white, white);
 }
 
-/* Home Button - now uses flex layout via .header-top-row */
-.home-button {
-    background: rgba(255, 255, 255, 0.2);
-    color: var(--text-white, white);
-    padding: 10px 20px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.95em;
-    transition: all 0.3s ease;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-}
-
-.home-button:hover {
-    background: rgba(255, 255, 255, 0.3);
-    border-color: rgba(255, 255, 255, 0.5);
-    transform: translateX(-2px);
-}
-
-.home-button::before {
-    content: "← ";
-}
-
 /* Content Area */
 .content {
     padding: 30px;
