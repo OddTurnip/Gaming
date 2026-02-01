@@ -14,16 +14,16 @@
             max-width: 900px;
         }
 
-        header {
+        .header {
             padding: 50px 30px;
         }
 
-        header h1 {
+        .header h1 {
             font-size: 3em;
             margin-bottom: 15px;
         }
 
-        header p {
+        .header p {
             font-size: 1.2em;
         }
 
@@ -37,13 +37,13 @@
         }
 
         .intro h2 {
-            color: #333;
+            color: var(--heading-primary, #333);
             margin-bottom: 15px;
             font-size: 1.8em;
         }
 
         .intro p {
-            color: #666;
+            color: var(--text-secondary, #666);
             font-size: 1.1em;
             line-height: 1.6;
             max-width: 700px;
@@ -58,19 +58,19 @@
         }
 
         .feature-card {
-            background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
+            background: var(--bg-white, linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%));
             padding: 30px;
             border-radius: 12px;
             text-align: center;
             transition: transform 0.3s, box-shadow 0.3s;
-            border: 2px solid transparent;
+            border: 2px solid var(--border-light, transparent);
             cursor: pointer;
         }
 
         .feature-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
-            border-color: #667eea;
+            box-shadow: 0 8px 20px var(--button-shadow, rgba(102, 126, 234, 0.3));
+            border-color: var(--accent-primary, #667eea);
         }
 
         .feature-card .icon {
@@ -79,13 +79,13 @@
         }
 
         .feature-card h3 {
-            color: #667eea;
+            color: var(--accent-primary, #667eea);
             margin-bottom: 10px;
             font-size: 1.4em;
         }
 
         .feature-card p {
-            color: #666;
+            color: var(--text-secondary, #666);
             line-height: 1.5;
         }
 
@@ -93,8 +93,8 @@
             display: inline-block;
             margin-top: 15px;
             padding: 12px 25px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(135deg, var(--button-gradient-start, #667eea) 0%, var(--button-gradient-end, #764ba2) 100%);
+            color: var(--text-white, white);
             text-decoration: none;
             border-radius: 6px;
             font-weight: 600;
@@ -103,18 +103,18 @@
 
         .feature-card .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 5px 15px var(--button-shadow, rgba(102, 126, 234, 0.4));
         }
 
         .database-info {
-            background: #f8f9fa;
+            background: var(--bg-light, #f8f9fa);
             padding: 25px;
             border-radius: 8px;
             margin: 30px 0;
         }
 
         .database-info h3 {
-            color: #333;
+            color: var(--heading-primary, #333);
             margin-bottom: 15px;
             font-size: 1.3em;
         }
@@ -126,20 +126,20 @@
 
         .database-info li {
             padding: 8px 0;
-            color: #555;
+            color: var(--text-primary, #555);
             font-size: 1.05em;
         }
 
         .database-info li::before {
             content: "✓ ";
-            color: #667eea;
+            color: var(--accent-primary, #667eea);
             font-weight: bold;
             margin-right: 8px;
         }
 
         /* Responsive overrides */
         @media (max-width: 768px) {
-            header h1 {
+            .header h1 {
                 font-size: 2em;
             }
 
