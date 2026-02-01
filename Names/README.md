@@ -7,7 +7,7 @@ A random name generation utility with web interface and CSV-based data managemen
 - **SQLite Backend**: Names stored in a SQLite database for easy management and expansion
 - **Web Interface**: Three HTML pages for different use cases
   - **Random Generator** (`random.html`): Generate random names with customizable frequencies
-  - **Database Viewer** (`names.html`): Browse and filter all names with sorting
+  - **Database Viewer** (`viewer.html`): Browse and filter all names with sorting
   - **Source Dashboard** (`dashboard.html`): View statistics and identify undersupplied sources
 - **CSV Import/Export**: Easy bulk editing of names using spreadsheet software
 - **Hierarchical Tagging**: Organize names by source with parent-child relationships
@@ -167,8 +167,8 @@ Errors:
 - Filter by source and gender
 - Multi-select sources with hierarchical display
 
-### Database Viewer (`names.html`)
-- Browse all 1000+ names in a sortable table
+### Database Viewer (`viewer.html`)
+- Browse all names in a sortable table
 - Filter by position, gender, and source
 - See all tags for each name
 - Results counter shows filtered count
@@ -191,15 +191,15 @@ Errors:
 ## Files Structure
 
 ```
-NameGenerator/
+Names/
 ├── index.html              # Landing page with navigation
 ├── random.html             # Random name generator
-├── names.html              # Database viewer/browser
+├── viewer.html             # Database viewer/browser
 ├── dashboard.html          # Source statistics
 ├── create_database.py      # Database schema creation
 ├── export_names_to_csv.py  # Export names to CSV
 ├── import_names_from_csv.py # Import names from CSV
-├── names.csv               # Current names (1296 entries)
+├── names.csv               # Current names (~1580 entries)
 └── names.db                # SQLite database
 ```
 
@@ -221,4 +221,4 @@ To add new names:
 
 ## License
 
-This project is a learning/utility tool. Feel free to use and modify as needed.
+See [LICENSE.md](../LICENSE.md) in the project root.
