@@ -144,67 +144,8 @@
     </div>
 
     <script type="module">
-        import {
-            createThemeSelector,
-            getAnimationsEnabled,
-            setAnimationsEnabled
-        } from './Themes/theme-manager.js';
-        import { createSeasonalEffects } from './Themes/snowflakes.js';
-
-        window.createSeasonalEffects = createSeasonalEffects;
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const slot = document.getElementById('theme-slot');
-            if (!slot) return;
-
-            const wrapper = document.createElement('div');
-            wrapper.className = 'theme-selector-wrapper';
-            wrapper.style.flexDirection = 'column';
-            wrapper.style.alignItems = 'flex-end';
-
-            const topRow = document.createElement('div');
-            topRow.style.display = 'flex';
-            topRow.style.alignItems = 'center';
-            topRow.style.gap = '8px';
-
-            const label = document.createElement('label');
-            label.textContent = 'Theme:';
-            label.htmlFor = 'theme-selector';
-
-            topRow.appendChild(label);
-            topRow.appendChild(createThemeSelector());
-            wrapper.appendChild(topRow);
-
-            const bottomRow = document.createElement('div');
-            bottomRow.style.display = 'flex';
-            bottomRow.style.alignItems = 'center';
-            bottomRow.style.justifyContent = 'flex-end';
-            bottomRow.style.marginTop = '6px';
-            bottomRow.style.gap = '5px';
-
-            const checkbox = document.createElement('input');
-            checkbox.type = 'checkbox';
-            checkbox.id = 'animated-checkbox';
-            checkbox.checked = getAnimationsEnabled();
-
-            const checkboxLabel = document.createElement('label');
-            checkboxLabel.htmlFor = 'animated-checkbox';
-            checkboxLabel.textContent = 'Animated';
-            checkboxLabel.style.cursor = 'pointer';
-
-            checkbox.addEventListener('change', (e) => {
-                setAnimationsEnabled(e.target.checked);
-                if (window.createSeasonalEffects) {
-                    window.createSeasonalEffects();
-                }
-            });
-
-            bottomRow.appendChild(checkbox);
-            bottomRow.appendChild(checkboxLabel);
-            wrapper.appendChild(bottomRow);
-
-            slot.appendChild(wrapper);
-        });
+        import { autoInitThemeSelector } from './Themes/theme-setup.js';
+        autoInitThemeSelector();
     </script>
 </body>
 </html>
