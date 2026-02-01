@@ -81,9 +81,47 @@
         .card.blades { border-left: 4px solid #c9a227; }
         .card.fate { border-left: 4px solid #2563eb; }
         .card.gotham { border-left: 4px solid #8b1a1a; }
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            color: #888;
+            font-size: 0.9rem;
+        }
+        .footer a {
+            color: #4a6cf7;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .oddturnip-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 15px;
+            padding: 8px 15px;
+            background: #252540;
+            border: 2px solid #3a3a55;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #ccc;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .oddturnip-link:hover {
+            border-color: #4a6cf7;
+            background: #2a2a45;
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+        .oddturnip-link img {
+            height: 24px;
+            width: auto;
+        }
     </style>
 </head>
 <body>
+    <a href="../index.html" style="color: #4a6cf7; text-decoration: none; font-size: 1.1em; margin-bottom: 10px;">← Gaming</a>
     <h1>Character Sheets</h1>
     <div class="sheets">
         <div class="card blades">
@@ -110,6 +148,13 @@
                 <a href="GothamReunion.html" class="btn-primary">Open Sheet</a>
             </div>
         </div>
+    </div>
+    <div class="footer">
+        <p>Made with <a href="https://claude.ai/code" target="_blank" rel="noopener noreferrer">Claude Code</a></p>
+        <a href="https://www.oddturnip.com" target="_blank" rel="noopener noreferrer" class="oddturnip-link">
+            <img src="../Names/odd_turnip.png" alt="OddTurnip Logo">
+            <span>OddTurnip.com</span>
+        </a>
     </div>
 </body>
 </html>
