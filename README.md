@@ -26,21 +26,11 @@ A collection of web-based dice rolling applications for tabletop RPGs and gaming
 
 ## Quick Start
 
-### Option 1: Open Directly
-Simply open `Index.html` in a modern web browser. No installation needed!
-
-### Option 2: Local Server (Recommended)
 ```bash
-# Using Python
-python server.py
-# Then open http://localhost:8114
+python server.py   # Starts server and opens browser
 ```
 
-### Option 3: For Developers
-```bash
-npm install   # Install dependencies
-npm test      # Run tests
-```
+For development: `npm install && npm test`
 
 ## Project Structure
 
