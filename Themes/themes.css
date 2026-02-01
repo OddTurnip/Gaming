@@ -84,8 +84,8 @@ body.light-theme {
     --bg-gradient-end: #e0e0e0 !important;
     --bg-gradient: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
     --container-bg: rgba(255, 255, 255, 0.98) !important;
-    --result-gradient-start: #FF9800 !important;
-    --result-gradient-end: #F57C00 !important;
+    --result-gradient-start: #90CAF9 !important;
+    --result-gradient-end: #64B5F6 !important;
 
     --heading-primary: #333 !important;
     --heading-secondary: #444 !important;
@@ -129,8 +129,8 @@ body.dark-theme {
     --bg-gradient-end: #2d2d2d !important;
     --bg-gradient: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
     --container-bg: rgba(40, 40, 40, 0.95) !important;
-    --result-gradient-start: #FFC107 !important;
-    --result-gradient-end: #FFA000 !important;
+    --result-gradient-start: #5D4037 !important;
+    --result-gradient-end: #3E2723 !important;
 
     --heading-primary: #fff !important;
     --heading-secondary: #eee !important;
@@ -775,8 +775,8 @@ body.cyberpunk-theme {
     --bg-gradient-end: #1a0a2e !important;
     --bg-gradient: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
     --container-bg: rgba(10, 10, 20, 0.92) !important;
-    --result-gradient-start: #8b5cf6 !important;
-    --result-gradient-end: #6d28d9 !important;
+    --result-gradient-start: #00b4d8 !important;
+    --result-gradient-end: #0077b6 !important;
 
     --heading-primary: #00ffff !important;
     --heading-secondary: #ff00ff !important;
