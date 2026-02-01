@@ -1,54 +1,13 @@
-/* Reset and Base Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* ========================================
+   NAME GENERATOR STYLES
+   Import theme variables and add name-generator specific layout
+   ======================================== */
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: var(--bg-gradient, linear-gradient(135deg, #667eea 0%, #764ba2 100%));
-    min-height: 100vh;
-    padding: 20px;
-}
+@import url('../Themes/themes.css');
 
-/* Container */
+/* Override container width for name generator (needs more space for tables) */
 .container {
     max-width: 1200px;
-    margin: 0 auto;
-    background: var(--container-bg, white);
-    border-radius: 12px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-    position: relative;
-    z-index: 1;
-}
-
-/* Header - supports both <header> element and .header class */
-header, .header {
-    background: linear-gradient(135deg, var(--button-gradient-start, #667eea) 0%, var(--button-gradient-end, #764ba2) 100%);
-    color: var(--text-white, white);
-    padding: 30px;
-    text-align: center;
-    position: relative;
-}
-
-header h1, .header h1 {
-    font-size: 2.5em;
-    margin-bottom: 10px;
-    color: var(--text-white, white);
-}
-
-header p, .header p {
-    font-size: 1.1em;
-    opacity: 0.9;
-    color: var(--text-white, white);
-}
-
-/* Content Area */
-.content {
-    padding: 30px;
-    color: var(--text-primary, #333);
 }
 
 /* Form Controls */
@@ -132,63 +91,9 @@ button:disabled {
     color: var(--error-text, #c62828);
 }
 
-/* Footer */
-.footer {
-    padding: 20px 30px;
-    background: var(--bg-light, #f8f9fa);
-    border-top: 1px solid var(--border-light, #e0e0e0);
-    text-align: center;
-    color: var(--text-secondary, #666);
-    font-size: 0.9em;
-}
-
-.footer .made-with {
-    margin-top: 10px;
-    font-size: 0.85em;
-    color: var(--text-light, #999);
-}
-
-.footer .made-with a {
-    color: var(--accent-primary, #667eea);
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.footer .made-with a:hover {
-    text-decoration: underline;
-}
-
-.footer .oddturnip-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 15px;
-    padding: 8px 15px;
-    background: var(--bg-white, white);
-    border: 2px solid var(--border-medium, #e0e0e0);
-    border-radius: 8px;
-    text-decoration: none;
-    color: var(--text-primary, #333);
-    font-weight: 600;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-.footer .oddturnip-link:hover {
-    border-color: var(--accent-primary, #667eea);
-    background: var(--bg-hover, #f8f9ff);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px var(--button-shadow, rgba(102, 126, 234, 0.2));
-}
-
-.footer .oddturnip-link img {
-    height: 24px;
-    width: auto;
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
-    header h1, .header h1 {
+    .header h1 {
         font-size: 1.8em;
     }
 

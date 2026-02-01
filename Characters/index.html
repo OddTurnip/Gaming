@@ -7,50 +7,15 @@
     <link rel="stylesheet" href="../Themes/themes.css">
     <script src="../Themes/theme-init.js"></script>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: var(--bg-gradient);
-            color: var(--text-primary);
-            min-height: 100vh;
-            padding: 20px;
-        }
+        /* Base styles from themes.css - override container max-width */
         .container {
             max-width: 960px;
-            margin: 0 auto;
-            background: var(--container-bg, white);
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
-            position: relative;
-            z-index: 1;
-        }
-        .header {
-            background: linear-gradient(135deg, var(--button-gradient-start, #667eea) 0%, var(--button-gradient-end, #764ba2) 100%);
-            color: var(--text-white, white);
-            padding: 20px 30px;
         }
         .header h1 {
             font-size: 1.8rem;
             margin-bottom: 0;
-            color: var(--text-white, white);
         }
-        .nav-button {
-            background: rgba(255, 255, 255, 0.2);
-            color: var(--text-white, white);
-            padding: 10px 20px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95em;
-            transition: all 0.3s ease;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            display: inline-block;
-        }
-        .nav-button:hover {
-            background: rgba(255, 255, 255, 0.3);
-            border-color: rgba(255, 255, 255, 0.5);
-        }
+        /* Character sheets specific styles */
         .sheets {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -113,44 +78,7 @@
         .card.blades { border-left: 4px solid #c9a227; }
         .card.fate { border-left: 4px solid #2563eb; }
         .card.gotham { border-left: 4px solid #8b1a1a; }
-        .footer {
-            padding: 20px 30px;
-            background: var(--bg-light, #f8f9fa);
-            border-top: 1px solid var(--border-light, #e0e0e0);
-            text-align: center;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-        .footer a {
-            color: var(--accent-primary);
-            text-decoration: none;
-        }
-        .footer a:hover {
-            text-decoration: underline;
-        }
-        .oddturnip-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 15px;
-            padding: 8px 15px;
-            background: var(--bg-white);
-            border: 2px solid var(--border-medium);
-            border-radius: 8px;
-            text-decoration: none;
-            color: var(--text-secondary);
-            font-weight: 600;
-            transition: all 0.2s;
-        }
-        .oddturnip-link:hover {
-            border-color: var(--accent-primary);
-            transform: translateY(-2px);
-            text-decoration: none;
-        }
-        .oddturnip-link img {
-            height: 24px;
-            width: auto;
-        }
+        /* Footer and oddturnip-link styles are in themes.css */
     </style>
 </head>
 <body>

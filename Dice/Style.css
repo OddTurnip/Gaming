@@ -50,8 +50,8 @@ h1 {
     font-size: 2em;
 }
 
-.close-button,
-.nav-button {
+/* .nav-button styling is in themes.css */
+.close-button {
     background: rgba(255, 255, 255, 0.2);
     color: var(--text-white, white);
     padding: 10px 20px;
@@ -64,8 +64,7 @@ h1 {
     display: inline-block;
 }
 
-.close-button:hover,
-.nav-button:hover {
+.close-button:hover {
     background: rgba(255, 255, 255, 0.3);
     border-color: rgba(255, 255, 255, 0.5);
 }
@@ -356,25 +355,10 @@ input[type="text"] {
     background: var(--scrollbar-thumb-hover);
 }
 
-/* Link containers for index page */
+/* Link containers and section styling are now in themes.css */
+/* Dice-specific overrides */
 .link-container {
-    display: block;
-    border: 3px solid var(--accent-tertiary);
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 20px;
-    background: var(--bg-white);
-    text-decoration: none;
-    transition: all 0.3s ease;
-    cursor: pointer;
     user-select: text;
-}
-
-.link-container:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 20px var(--shadow-primary);
-    border-color: var(--accent-primary);
-    background: linear-gradient(135deg, var(--link-hover-gradient-start) 0%, var(--link-hover-gradient-end) 100%);
 }
 
 .link-container:active {
@@ -382,38 +366,8 @@ input[type="text"] {
     box-shadow: 0 3px 10px var(--shadow-secondary);
 }
 
-.link-container h2 {
-    color: var(--accent-primary);
-    margin-bottom: 10px;
-    font-size: 1.3em;
-}
-
-.link-container:hover h2 {
-    color: var(--accent-primary-dark);
-}
-
-.link-container p {
-    color: var(--text-secondary);
-    margin-top: 10px;
-    line-height: 1.6;
-}
-
-/* Section styling */
 .section {
     margin-top: 40px;
-    padding-top: 20px;
-    border-top: 2px solid var(--border-light);
-}
-
-.section h2 {
-    color: var(--heading-tertiary);
-    margin-bottom: 15px;
-}
-
-.section p, .section ul {
-    color: var(--text-secondary);
-    line-height: 1.8;
-    margin-bottom: 10px;
 }
 
 .section ul {
@@ -431,6 +385,17 @@ input[type="text"] {
     text-decoration: underline;
 }
 
+/* Footer and oddturnip-link are now in themes.css */
+/* Dice-specific footer overrides */
+.footer {
+    margin-top: 30px;
+    border-top: 2px solid var(--border-light);
+}
+
+.footer .oddturnip-link:hover {
+    box-shadow: 0 4px 12px var(--button-shadow);
+}
+
 .footer-text {
     margin-top: 30px;
     padding-top: 20px;
@@ -438,45 +403,7 @@ input[type="text"] {
     text-align: center;
     color: var(--text-light);
     font-size: 0.9em;
-    line-style: italic;
-}
-
-/* Footer */
-.footer {
-    margin-top: 30px;
-    padding-top: 20px;
-    border-top: 2px solid var(--border-light);
-    text-align: center;
-    color: var(--text-secondary);
-    font-size: 0.9em;
-}
-
-.footer .oddturnip-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 15px;
-    padding: 8px 15px;
-    background: var(--bg-white);
-    border: 2px solid var(--border-medium);
-    border-radius: 8px;
-    text-decoration: none;
-    color: var(--text-primary);
-    font-weight: 600;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-.footer .oddturnip-link:hover {
-    border-color: var(--accent-primary);
-    background: var(--bg-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px var(--button-shadow);
-}
-
-.footer .oddturnip-link img {
-    height: 24px;
-    width: auto;
+    font-style: italic;
 }
 
 /* Responsive design */

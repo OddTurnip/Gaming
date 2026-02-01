@@ -876,6 +876,157 @@ html.cyberpunk-theme .container {
 }
 
 /* ========================================
+   SHARED BASE STYLES
+   These provide consistent styling across all pages
+   ======================================== */
+
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--bg-gradient, linear-gradient(135deg, #667eea 0%, #764ba2 100%));
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Container - stays above seasonal effects */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--container-bg, white);
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+/* Header */
+.header {
+    background: linear-gradient(135deg, var(--button-gradient-start, #667eea) 0%, var(--button-gradient-end, #764ba2) 100%);
+    color: var(--text-white, white);
+    padding: 20px 30px;
+}
+
+.header h1 {
+    color: var(--text-white, white);
+}
+
+/* Content Area */
+.content {
+    padding: 30px;
+    color: var(--text-primary, #333);
+}
+
+/* Footer */
+.footer {
+    padding: 20px 30px;
+    background: var(--bg-light, #f8f9fa);
+    border-top: 1px solid var(--border-light, #e0e0e0);
+    text-align: center;
+    color: var(--text-secondary, #666);
+    font-size: 0.9em;
+}
+
+.footer p {
+    margin-bottom: 10px;
+}
+
+.footer a {
+    color: var(--accent-primary, #667eea);
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.oddturnip-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+    padding: 8px 15px;
+    background: var(--bg-white, white);
+    border: 2px solid var(--border-medium, #e0e0e0);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-primary, #333);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.oddturnip-link:hover {
+    border-color: var(--accent-primary, #667eea);
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+.oddturnip-link img {
+    height: 24px;
+    width: auto;
+}
+
+/* Link containers for index pages */
+.link-container {
+    display: block;
+    border: 3px solid var(--accent-tertiary, #7a6952);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background: var(--bg-white, white);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.link-container:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px var(--shadow-primary, rgba(0, 0, 0, 0.3));
+    border-color: var(--accent-primary, #667eea);
+    background: linear-gradient(135deg, var(--link-hover-gradient-start, rgba(102, 126, 234, 0.03)) 0%, var(--link-hover-gradient-end, rgba(118, 75, 162, 0.03)) 100%);
+}
+
+.link-container h2 {
+    color: var(--accent-primary, #667eea);
+    margin-bottom: 10px;
+    font-size: 1.3em;
+}
+
+.link-container:hover h2 {
+    color: var(--accent-primary-dark, #5a6fd6);
+}
+
+.link-container p {
+    color: var(--text-secondary, #666);
+    margin-top: 10px;
+    line-height: 1.6;
+}
+
+/* Section styling */
+.section {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border-light, #eee);
+}
+
+.section h2 {
+    color: var(--heading-tertiary, #555);
+    margin-bottom: 15px;
+}
+
+.section p {
+    color: var(--text-secondary, #666);
+    line-height: 1.8;
+    margin-bottom: 10px;
+}
+
+/* ========================================
    THEME SELECTOR STYLES
    ======================================== */
 
