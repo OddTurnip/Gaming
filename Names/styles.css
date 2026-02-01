@@ -45,11 +45,8 @@ header p, .header p {
     color: var(--text-white, white);
 }
 
-/* Home Button */
+/* Home Button - now uses flex layout via .header-top-row */
 .home-button {
-    position: absolute;
-    top: 20px;
-    left: 20px;
     background: rgba(255, 255, 255, 0.2);
     color: var(--text-white, white);
     padding: 10px 20px;
@@ -59,7 +56,6 @@ header p, .header p {
     font-size: 0.95em;
     transition: all 0.3s ease;
     border: 2px solid rgba(255, 255, 255, 0.3);
-    z-index: 10;
 }
 
 .home-button:hover {

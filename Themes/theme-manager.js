@@ -182,15 +182,19 @@ function addThemeSelector() {
             topRow = document.createElement('div');
             topRow.className = 'header-top-row';
 
-            // Find the close button if it exists and move it to top row
-            const closeButton = header.querySelector('.close-button');
-
             // Insert top row at the beginning of header
             header.insertBefore(topRow, header.firstChild);
 
-            // Move close button to top row if it exists
+            // Find navigation buttons and move them to top row (left side)
+            // Check for close-button (Dice pages) or home-button (Names pages)
+            const closeButton = header.querySelector('.close-button');
+            const homeButton = header.querySelector('.home-button');
+
             if (closeButton) {
                 topRow.appendChild(closeButton);
+            }
+            if (homeButton) {
+                topRow.appendChild(homeButton);
             }
         }
 
@@ -233,8 +237,8 @@ function addThemeSelector() {
         wrapper.appendChild(animatedCheckbox);
         wrapper.appendChild(animatedLabel);
 
-        // Insert at the beginning of the top row
-        topRow.insertBefore(wrapper, topRow.firstChild);
+        // Append theme selector to the end (right side with space-between)
+        topRow.appendChild(wrapper);
     } else {
         console.warn('Could not find .header element to add theme selector');
     }
