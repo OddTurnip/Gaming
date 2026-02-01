@@ -994,6 +994,17 @@ html.abyssal-theme .stats-toggle {
     color: #ef4444 !important;
 }
 
+/* Abyssal theme: Back button in orange */
+html.abyssal-theme .nav-button {
+    background: linear-gradient(135deg, #b45309 0%, #92400e 100%) !important;
+    border-color: rgba(251, 191, 36, 0.3) !important;
+}
+
+html.abyssal-theme .nav-button:hover {
+    background: linear-gradient(135deg, #c2410c 0%, #a3520d 100%) !important;
+    border-color: rgba(251, 191, 36, 0.5) !important;
+}
+
 /* ========================================
    SHARED BASE STYLES
    These provide consistent styling across all pages
