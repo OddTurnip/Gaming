@@ -986,7 +986,7 @@ html.halloween-theme .result-display {
 
 /* Halloween theme: container with yellow edge glow */
 html.halloween-theme .container {
-    box-shadow: 0 0 2px 1px rgba(251, 191, 36, 0.4), 0 0 20px rgba(251, 191, 36, 0.15), 0 25px 70px rgba(0, 0, 0, 0.8) !important;
+    box-shadow: 0 0 2px 1px rgba(251, 191, 36, 0.08), 0 0 40px rgba(251, 191, 36, 0.25), 0 25px 70px rgba(0, 0, 0, 0.8) !important;
 }
 
 /* Halloween theme: Statistics label in red */
