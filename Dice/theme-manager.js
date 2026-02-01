@@ -112,29 +112,51 @@ function createThemeSelector() {
     select.id = 'theme-selector';
     select.className = 'theme-selector';
 
-    // Add options in seasonal order: Autumn, Winter, Spring, Summer, then themed options, Light/Dark
-    const options = [
-        { value: THEMES.AUTUMN, label: 'Autumn' },
-        { value: THEMES.WINTER, label: 'Winter' },
-        { value: THEMES.SPRING, label: 'Spring' },
-        { value: THEMES.SUMMER, label: 'Summer' },
-        { value: THEMES.STARS, label: 'Stars' },
-        { value: THEMES.GOTHIC, label: 'Gothic' },
-        { value: THEMES.CTHULHU, label: 'Cthulhu' },
-        { value: THEMES.BEACH, label: 'Beach' },
-        { value: THEMES.CYBERPUNK, label: 'Cyberpunk' },
-        { value: THEMES.LIGHT, label: 'Light' },
-        { value: THEMES.DARK, label: 'Dark' }
+    // Group themes by category
+    const groups = [
+        {
+            label: 'Seasons',
+            options: [
+                { value: THEMES.AUTUMN, label: 'Autumn' },
+                { value: THEMES.WINTER, label: 'Winter' },
+                { value: THEMES.SPRING, label: 'Spring' },
+                { value: THEMES.SUMMER, label: 'Summer' }
+            ]
+        },
+        {
+            label: 'Themed',
+            options: [
+                { value: THEMES.STARS, label: 'Stars' },
+                { value: THEMES.GOTHIC, label: 'Gothic' },
+                { value: THEMES.CTHULHU, label: 'Cthulhu' },
+                { value: THEMES.BEACH, label: 'Beach' },
+                { value: THEMES.CYBERPUNK, label: 'Cyberpunk' }
+            ]
+        },
+        {
+            label: 'Basic',
+            options: [
+                { value: THEMES.LIGHT, label: 'Light' },
+                { value: THEMES.DARK, label: 'Dark' }
+            ]
+        }
     ];
 
-    options.forEach(option => {
-        const optionElement = document.createElement('option');
-        optionElement.value = option.value;
-        optionElement.textContent = option.label;
-        if (option.value === currentTheme) {
-            optionElement.selected = true;
-        }
-        select.appendChild(optionElement);
+    groups.forEach(group => {
+        const optgroup = document.createElement('optgroup');
+        optgroup.label = group.label;
+
+        group.options.forEach(option => {
+            const optionElement = document.createElement('option');
+            optionElement.value = option.value;
+            optionElement.textContent = option.label;
+            if (option.value === currentTheme) {
+                optionElement.selected = true;
+            }
+            optgroup.appendChild(optionElement);
+        });
+
+        select.appendChild(optgroup);
     });
 
     // Add event listener
