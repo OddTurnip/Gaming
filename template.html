@@ -10,136 +10,9 @@
     <script src="Themes/theme-init.js"></script>
     <style>
         /* ========================================
-           BASE STYLES
-           Copy these to your page or import from a shared stylesheet
+           PAGE-SPECIFIC STYLES
+           Most styles come from themes.css - only add page-specific overrides here
            ======================================== */
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: var(--bg-gradient, linear-gradient(135deg, #667eea 0%, #764ba2 100%));
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        /* Container - stays above seasonal effects */
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: var(--container-bg, white);
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* ========================================
-           THREE-COLUMN HEADER LAYOUT
-           [Navigation] | [Title] | [Theme Selector]
-           ======================================== */
-
-        .header {
-            background: linear-gradient(135deg, var(--button-gradient-start, #667eea) 0%, var(--button-gradient-end, #764ba2) 100%);
-            color: var(--text-white, white);
-            padding: 20px 30px;
-        }
-
-        /* Three-column grid layout for header */
-        .header-row {
-            display: grid;
-            grid-template-columns: 1fr auto 1fr;
-            align-items: center;
-            gap: 20px;
-        }
-
-        /* Left column: Navigation */
-        .header-nav {
-            justify-self: start;
-        }
-
-        /* Center column: Title */
-        .header-title {
-            text-align: center;
-        }
-
-        .header-title h1 {
-            font-size: 1.8em;
-            margin: 0;
-            color: var(--text-white, white);
-        }
-
-        .header-title p {
-            font-size: 0.95em;
-            opacity: 0.9;
-            margin-top: 5px;
-            color: var(--text-white, white);
-        }
-
-        /* Right column: Theme selector wrapper */
-        .header-theme {
-            justify-self: end;
-        }
-
-        /* Navigation button styling */
-        .nav-button {
-            background: rgba(255, 255, 255, 0.2);
-            color: var(--text-white, white);
-            padding: 10px 20px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95em;
-            transition: all 0.3s ease;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            display: inline-block;
-        }
-
-        .nav-button:hover {
-            background: rgba(255, 255, 255, 0.3);
-            border-color: rgba(255, 255, 255, 0.5);
-        }
-
-        /* Responsive: stack on small screens */
-        @media (max-width: 600px) {
-            .header-row {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-
-            .header-nav,
-            .header-theme {
-                justify-self: center;
-            }
-
-            .header-title h1 {
-                font-size: 1.5em;
-            }
-        }
-
-        /* ========================================
-           CONTENT AREA
-           ======================================== */
-
-        .content {
-            padding: 30px;
-            color: var(--text-primary, #333);
-        }
-
-        .content h2 {
-            color: var(--heading-primary, #333);
-            margin-bottom: 15px;
-        }
-
-        .content p {
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
 
         .example-box {
             background: var(--bg-light, #f8f9ff);
@@ -155,62 +28,28 @@
         }
 
         .example-box code {
-            background: var(--bg-muted, #f0f0f0);
+            background: var(--bg-hover, #f0f0f0);
             padding: 2px 6px;
             border-radius: 4px;
             font-family: 'Consolas', 'Monaco', monospace;
         }
 
-        /* ========================================
-           FOOTER
-           ======================================== */
-
-        .footer {
-            padding: 20px 30px;
-            background: var(--bg-light, #f8f9fa);
-            border-top: 1px solid var(--border-light, #e0e0e0);
-            text-align: center;
-            color: var(--text-secondary, #666);
-            font-size: 0.9em;
+        .example-box pre {
+            background: var(--bg-hover, #f0f0f0);
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 10px;
+            overflow-x: auto;
         }
 
-        .footer p {
-            margin-bottom: 10px;
+        .content h2 {
+            color: var(--heading-primary, #333);
+            margin-bottom: 15px;
         }
 
-        .footer a {
-            color: var(--accent-primary, #667eea);
-            text-decoration: none;
-        }
-
-        .footer a:hover {
-            text-decoration: underline;
-        }
-
-        .oddturnip-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 15px;
-            padding: 8px 15px;
-            background: var(--bg-white, white);
-            border: 2px solid var(--border-medium, #e0e0e0);
-            border-radius: 8px;
-            text-decoration: none;
-            color: var(--text-primary, #333);
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .oddturnip-link:hover {
-            border-color: var(--accent-primary, #667eea);
-            transform: translateY(-2px);
-            text-decoration: none;
-        }
-
-        .oddturnip-link img {
-            height: 24px;
-            width: auto;
+        .content p {
+            line-height: 1.6;
+            margin-bottom: 15px;
         }
     </style>
 </head>
@@ -248,7 +87,7 @@
 
             <div class="example-box">
                 <h3>Header Structure</h3>
-                <p>The header uses a three-column grid layout:</p>
+                <p>The header uses a three-column CSS grid layout:</p>
                 <ul style="margin-left: 20px; margin-top: 10px;">
                     <li><strong>Left:</strong> Navigation button (← Back) - leave empty for root pages</li>
                     <li><strong>Center:</strong> Page title and optional subtitle</li>
@@ -259,34 +98,47 @@
             <div class="example-box">
                 <h3>Required Imports</h3>
                 <p>Add these to your <code>&lt;head&gt;</code>:</p>
-                <pre style="background: var(--bg-muted, #f0f0f0); padding: 15px; border-radius: 6px; margin-top: 10px; overflow-x: auto;"><code>&lt;link rel="stylesheet" href="Themes/themes.css"&gt;
+                <pre><code>&lt;link rel="stylesheet" href="Themes/themes.css"&gt;
 &lt;script src="Themes/theme-init.js"&gt;&lt;/script&gt;</code></pre>
                 <p style="margin-top: 15px;">Add this before <code>&lt;/body&gt;</code>:</p>
-                <pre style="background: var(--bg-muted, #f0f0f0); padding: 15px; border-radius: 6px; margin-top: 10px; overflow-x: auto;"><code>&lt;script type="module"&gt;
-    import { addThemeSelector } from './Themes/theme-manager.js';
-    import { createSeasonalEffects } from './Themes/snowflakes.js';
-
-    window.createSeasonalEffects = createSeasonalEffects;
-    document.addEventListener('DOMContentLoaded', addThemeSelector);
+                <pre><code>&lt;script type="module"&gt;
+    import { autoInitThemeSelector } from './Themes/theme-setup.js';
+    autoInitThemeSelector();
 &lt;/script&gt;</code></pre>
-                <p style="margin-top: 15px;"><code>addThemeSelector()</code> auto-detects the layout:</p>
-                <ul style="margin-left: 20px; margin-top: 10px;">
-                    <li>Three-column: looks for <code>.header-theme</code> or <code>#theme-slot</code></li>
-                    <li>Legacy: creates <code>.header-top-row</code> inside <code>.header</code></li>
+                <p style="margin-top: 15px;">For subdirectories, adjust the path:</p>
+                <pre><code>&lt;script type="module"&gt;
+    import { autoInitThemeSelector } from '../Themes/theme-setup.js';
+    autoInitThemeSelector();
+&lt;/script&gt;</code></pre>
+            </div>
+
+            <div class="example-box">
+                <h3>Theme Setup Functions</h3>
+                <p>The <code>theme-setup.js</code> module provides two functions:</p>
+                <ul style="margin-left: 20px; margin-top: 10px; line-height: 1.8;">
+                    <li><code>autoInitThemeSelector()</code> - Waits for DOMContentLoaded, then initializes</li>
+                    <li><code>initThemeSelector()</code> - Initializes immediately (use when DOM is ready)</li>
                 </ul>
+                <p style="margin-top: 15px;">Both functions look for <code>#theme-slot</code> to inject the theme selector.</p>
             </div>
 
             <div class="example-box">
                 <h3>CSS Variables</h3>
                 <p>Use these CSS variables for theme-aware styling:</p>
                 <ul style="margin-left: 20px; margin-top: 10px; line-height: 1.8;">
-                    <li><code>--bg-gradient</code> - Page background gradient</li>
+                    <li><code>--bg-gradient-start/end</code> - Page background gradient</li>
                     <li><code>--container-bg</code> - Container background color</li>
                     <li><code>--text-primary</code> - Main text color</li>
                     <li><code>--text-secondary</code> - Muted text color</li>
                     <li><code>--accent-primary</code> - Primary accent color</li>
                     <li><code>--button-gradient-start/end</code> - Button/header gradients</li>
+                    <li><code>--bg-white</code>, <code>--bg-light</code>, <code>--bg-hover</code> - Background variations</li>
                 </ul>
+            </div>
+
+            <div class="example-box">
+                <h3>Available Themes</h3>
+                <p>11 themes available: Autumn (default), Winter, Spring, Summer, Stars, Light, Dark, Gothic, Cthulhu, Beach, Cyberpunk</p>
             </div>
         </div>
 

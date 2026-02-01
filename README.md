@@ -11,11 +11,12 @@ A collection of web-based dice rolling applications for tabletop RPGs and gaming
 - **Tarot** - Full 78-card deck with three-card spreads
 - **Custom** - Advanced roller with exploding dice, success counting, advantage/disadvantage, and drop mechanics
 
-🎨 **7 Beautiful Themes:**
+🎨 **11 Beautiful Themes:**
 - Seasonal themes: Autumn, Winter, Spring, Summer
 - Stars theme with animated background
 - Light and Dark modes
-- Seasonal animated effects (snowflakes, etc.)
+- Specialty themes: Gothic, Cthulhu, Beach, Cyberpunk
+- Seasonal animated effects (snowflakes, leaves, etc.)
 
 ✨ **Modern Architecture:**
 - ES6 modules with clean separation of concerns

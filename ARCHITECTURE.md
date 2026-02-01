@@ -108,43 +108,52 @@ To add a new dice system or card game:
 ## File Structure
 
 ```
-Dice/
-├── Core Libraries (Pure Logic)
+Gaming/
+├── Dice/                       # Dice roller pages
+│   ├── index.html              # Dice rollers landing page
+│   ├── basic.html              # Basic dice roller
+│   ├── fate.html               # Fate/Fudge roller
+│   ├── blades.html             # Blades in the Dark roller
+│   ├── custom.html             # Custom dice roller with modifiers
+│   ├── Style.css               # Dice-specific styles (imports themes.css)
 │   ├── DiceLibrary.js          # Core dice mechanics (pure functions)
-│   ├── CardLibrary.js          # Card deck mechanics (pure functions)
-│   └── HistoryLog.js           # History display utilities
-├── Domain-Specific Modules
 │   ├── Fate.js                 # Fate/Fudge dice (uses DiceLibrary)
 │   ├── Blades.js               # Blades in the Dark (uses DiceLibrary)
-│   └── Tarot.js                # Tarot cards (uses CardLibrary)
-├── UI & Theme Management
-│   ├── ThemeManager.js         # Theme switching & persistence
-│   ├── ThemeInit.js            # Theme initialization (prevents FOUC)
-│   ├── Snowflakes.js           # Seasonal animations
-│   └── Style.css               # All styling & themes (no inline CSS)
-├── HTML Pages (UI Layer)
-│   ├── Index.html              # Main landing page
-│   ├── Basic.html              # Basic dice roller
-│   ├── Fate.html               # Fate/Fudge roller
-│   ├── Blades.html             # Blades in the Dark roller
-│   ├── Tarot.html              # Tarot card reader
-│   └── Custom.html             # Custom dice roller with modifiers
+│   ├── CardLibrary.js          # Card deck mechanics (pure functions)
+│   └── history-log.js          # History display utilities
+├── Tarot/                      # Tarot card reader
+│   ├── index.html              # Tarot reading page
+│   ├── styles.css              # Tarot-specific styles (imports themes.css)
+│   └── tarot.js                # Tarot card data and logic
+├── Names/                      # Name database tools
+│   ├── index.html              # Names landing page
+│   ├── random.html             # Name generator
+│   ├── viewer.html             # Database viewer
+│   ├── dashboard.html          # Source dashboard
+│   └── styles.css              # Names-specific styles
+├── Characters/                 # Character sheet tools
+│   └── index.html              # Character sheets landing page
+├── Themes/                     # Shared theme system
+│   ├── themes.css              # ALL shared CSS (variables, components, layouts)
+│   ├── theme-manager.js        # Theme switching & persistence
+│   ├── theme-init.js           # Theme initialization (prevents FOUC)
+│   ├── theme-setup.js          # Theme selector injection (autoInitThemeSelector)
+│   ├── snowflakes.js           # Seasonal animations
+│   └── backgrounds/            # Theme background images
+├── Root Pages
+│   ├── index.html              # Main landing page
+│   ├── About.html              # About page with tech stack
+│   └── template.html           # Template for new pages
 ├── Configuration & Build
 │   ├── package.json            # NPM config with Vitest
 │   ├── vitest.config.js        # Vitest configuration
-│   ├── .gitignore              # Git ignore patterns
 │   └── server.py               # Local development server
 ├── Tests
-│   ├── DiceLibrary.test.js     # Core dice mechanics tests
-│   ├── CardLibrary.test.js     # Card deck tests
-│   ├── Fate.test.js            # Fate dice tests
-│   ├── Blades.test.js          # Blades dice tests
-│   ├── HistoryLog.test.js      # History utilities tests
-│   └── Tarot.test.js           # Tarot card tests
-├── Documentation
-│   ├── README.md               # Project overview & quick start
-│   ├── ARCHITECTURE.md         # This file - architecture & development
-│   └── CLAUDE.md               # Guide for AI assistants
+│   └── tests/                  # All test files
+└── Documentation
+    ├── README.md               # Project overview & quick start
+    ├── ARCHITECTURE.md         # This file - architecture & development
+    └── CLAUDE.md               # Guide for AI assistants
 ```
 
 ## Recent Architectural Improvements
@@ -166,9 +175,11 @@ Dice/
 - Perfect example of "DiceLibrary has everything to do with rolling dice, nothing to do with DOM"
 
 ### Code Organization Improvements
-- **ThemeInit.js** - Extracted theme initialization to eliminate duplication across 6 HTML files
-- **Style.css** - All inline CSS moved to external stylesheet (350+ lines consolidated)
-- **ThemeManager.js** - Removed debug console.log statements from production code
+- **theme-setup.js** - Centralized theme selector code, eliminating ~730 lines of duplication across 14 HTML files
+- **themes.css** - All shared CSS consolidated (controls, history, modal, card display, etc.)
+- **Page-specific CSS** - Dice/Style.css and Tarot/styles.css now only contain page-specific overrides
+- **Responsive breakpoints** - Standardized to 768px across all CSS files
+- **Container utilities** - Added `.container-tight` (600px) and `.container-wide` (1200px) classes
 
 ### Test Coverage
 - **224 tests** passing (up from 173)
