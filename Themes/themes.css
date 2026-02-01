@@ -8,6 +8,7 @@ html,
     /* Background colors */
     --bg-gradient-start: #105610 !important;
     --bg-gradient-end: #a94610 !important;
+    --bg-gradient: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
     --container-bg: rgba(255, 255, 255, 0.95) !important;
     --result-gradient-start: #e8762e !important;
     --result-gradient-end: #d96619 !important;
@@ -81,9 +82,10 @@ html.light-theme:root,
 body.light-theme {
     --bg-gradient-start: #f5f5f5 !important;
     --bg-gradient-end: #e0e0e0 !important;
+    --bg-gradient: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
     --container-bg: rgba(255, 255, 255, 0.98) !important;
-    --result-gradient-start: #FF9800 !important;
-    --result-gradient-end: #F57C00 !important;
+    --result-gradient-start: #90CAF9 !important;
+    --result-gradient-end: #64B5F6 !important;
 
     --heading-primary: #333 !important;
     --heading-secondary: #444 !important;
@@ -125,9 +127,10 @@ html.dark-theme:root,
 body.dark-theme {
     --bg-gradient-start: #1a1a1a !important;
     --bg-gradient-end: #2d2d2d !important;
+    --bg-gradient: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
     --container-bg: rgba(40, 40, 40, 0.95) !important;
-    --result-gradient-start: #FFC107 !important;
-    --result-gradient-end: #FFA000 !important;
+    --result-gradient-start: #5D4037 !important;
+    --result-gradient-end: #3E2723 !important;
 
     --heading-primary: #fff !important;
     --heading-secondary: #eee !important;
@@ -179,6 +182,7 @@ html.winter-theme:root,
 body.winter-theme {
     --bg-gradient-start: #e1f5fe !important;
     --bg-gradient-end: #42a5f5 !important;
+    --bg-gradient: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
     --container-bg: rgba(255, 255, 255, 0.97) !important;
     --result-gradient-start: #00bcd4 !important;
     --result-gradient-end: #0097a7 !important;
@@ -353,6 +357,7 @@ html.spring-theme:root,
 body.spring-theme {
     --bg-gradient-start: #e8f5e9 !important;
     --bg-gradient-end: #4caf50 !important;
+    --bg-gradient: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
     --container-bg: rgba(255, 255, 255, 0.97) !important;
     --result-gradient-start: #ec407a !important;
     --result-gradient-end: #d81b60 !important;
@@ -397,6 +402,7 @@ html.summer-theme:root,
 body.summer-theme {
     --bg-gradient-start: #fff3e0 !important;
     --bg-gradient-end: #ff9800 !important;
+    --bg-gradient: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
     --container-bg: rgba(255, 255, 255, 0.97) !important;
     --result-gradient-start: #42a5f5 !important;
     --result-gradient-end: #1e88e5 !important;
@@ -441,6 +447,7 @@ html.stars-theme:root,
 body.stars-theme {
     --bg-gradient-start: #0a0e27 !important;
     --bg-gradient-end: #4a148c !important;
+    --bg-gradient: linear-gradient(180deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
     --container-bg: rgba(30, 20, 50, 0.92) !important;
     --result-gradient-start: #5b21b6 !important;
     --result-gradient-end: #4c1d95 !important;
@@ -502,6 +509,7 @@ html.gothic-theme:root,
 body.gothic-theme {
     --bg-gradient-start: #1a0a1a !important;
     --bg-gradient-end: #2d1a2d !important;
+    --bg-gradient: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
     --container-bg: rgba(20, 10, 20, 0.85) !important;
     --result-gradient-start: #6a0dad !important;
     --result-gradient-end: #4a0a7a !important;
@@ -555,7 +563,7 @@ body.gothic-theme {
 
 /* Gothic theme: use background image */
 html.gothic-theme body {
-    background: url('img/background/gotham.png') center center / cover no-repeat fixed !important;
+    background: url('backgrounds/gotham.png') center center / cover no-repeat fixed !important;
 }
 
 /* Gothic theme: dice styling with black background and yellow text */
@@ -587,6 +595,7 @@ html.cthulhu-theme:root,
 body.cthulhu-theme {
     --bg-gradient-start: #0a0a0a !important;
     --bg-gradient-end: #1a1a2e !important;
+    --bg-gradient: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
     --container-bg: rgba(15, 15, 20, 0.88) !important;
     --result-gradient-start: #4a0e4e !important;
     --result-gradient-end: #2a0a3a !important;
@@ -640,7 +649,7 @@ body.cthulhu-theme {
 
 /* Cthulhu theme: use background image */
 html.cthulhu-theme body {
-    background: url('img/background/cthulhu.png') center center / cover no-repeat fixed !important;
+    background: url('backgrounds/cthulhu.png') center center / cover no-repeat fixed !important;
 }
 
 /* Cthulhu theme: dice styling with dark background and eldritch green text */
@@ -675,6 +684,7 @@ html.beach-theme:root,
 body.beach-theme {
     --bg-gradient-start: #87CEEB !important;
     --bg-gradient-end: #f0e68c !important;
+    --bg-gradient: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
     --container-bg: rgba(255, 248, 240, 0.88) !important;
     --result-gradient-start: #ff7f50 !important;
     --result-gradient-end: #ff6347 !important;
@@ -728,7 +738,7 @@ body.beach-theme {
 
 /* Beach theme: use background image */
 html.beach-theme body {
-    background: url('img/background/beach.png') center center / cover no-repeat fixed !important;
+    background: url('backgrounds/beach.png') center center / cover no-repeat fixed !important;
 }
 
 /* Beach theme: dice styling with ocean blue and sandy accents */
@@ -763,9 +773,10 @@ html.cyberpunk-theme:root,
 body.cyberpunk-theme {
     --bg-gradient-start: #0a0a0f !important;
     --bg-gradient-end: #1a0a2e !important;
+    --bg-gradient: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
     --container-bg: rgba(10, 10, 20, 0.92) !important;
-    --result-gradient-start: #8b5cf6 !important;
-    --result-gradient-end: #6d28d9 !important;
+    --result-gradient-start: #00b4d8 !important;
+    --result-gradient-end: #0077b6 !important;
 
     --heading-primary: #00ffff !important;
     --heading-secondary: #ff00ff !important;
@@ -816,7 +827,7 @@ body.cyberpunk-theme {
 
 /* Cyberpunk theme: use background image */
 html.cyberpunk-theme body {
-    background: url('img/background/cyberpunk.png') center center / cover no-repeat fixed !important;
+    background: url('backgrounds/cyberpunk.png') center center / cover no-repeat fixed !important;
 }
 
 /* Cyberpunk theme: dice styling with neon glow */
@@ -864,10 +875,142 @@ html.cyberpunk-theme .container {
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 30px rgba(139, 92, 246, 0.2), 0 0 60px rgba(0, 255, 255, 0.1) !important;
 }
 
+/* Halloween Theme - Red dominant with orange/yellow accents */
+html.halloween-theme,
+html.halloween-theme:root,
+body.halloween-theme {
+    --bg-gradient-start: #050303 !important;
+    --bg-gradient-end: #0d0605 !important;
+    --bg-gradient: linear-gradient(180deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+    --container-bg: rgba(12, 6, 6, 0.96) !important;
+    --result-gradient-start: #b45309 !important;
+    --result-gradient-end: #78350f !important;
+
+    /* Red primary, orange secondary, yellow tertiary for variety */
+    --heading-primary: #f87171 !important;
+    --heading-secondary: #fb923c !important;
+    --heading-tertiary: #fbbf24 !important;
+    --text-primary: #d4c4b8 !important;
+    --text-secondary: #a89888 !important;
+    --text-light: #5c524a !important;
+    --text-white: #fff5f5 !important;
+
+    /* Red primary with orange accents */
+    --accent-primary: #dc2626 !important;
+    --accent-primary-dark: #991b1b !important;
+    --accent-secondary: #f97316 !important;
+    --accent-tertiary: #fbbf24 !important;
+
+    /* Intense red button/header gradient */
+    --button-gradient-start: #dc2626 !important;
+    --button-gradient-end: #5c0a0a !important;
+    --button-shadow: rgba(220, 38, 38, 0.6) !important;
+
+    /* Warm border tones - reds with hint of brown */
+    --border-light: #261816 !important;
+    --border-medium: #3a2220 !important;
+    --border-accent: #f97316 !important;
+
+    /* Background variations with subtle warmth */
+    --bg-light: #0c0706 !important;
+    --bg-white: #180e0c !important;
+    --bg-hover: #241614 !important;
+
+    --error-bg: #2d0a0a !important;
+    --error-border: #f87171 !important;
+    --error-text: #fecaca !important;
+
+    --fate-die-bg: #3d0a0a !important;
+
+    --scrollbar-track: #0c0706 !important;
+    --scrollbar-thumb: #991b1b !important;
+    --scrollbar-thumb-hover: #b91c1c !important;
+
+    /* Close button with yellow/gold accent for contrast */
+    --close-btn-bg: rgba(251, 191, 36, 0.12) !important;
+    --close-btn-bg-hover: rgba(251, 191, 36, 0.25) !important;
+    --close-btn-color: #fbbf24 !important;
+
+    --link-hover-gradient-start: rgba(220, 38, 38, 0.1) !important;
+    --link-hover-gradient-end: rgba(249, 115, 22, 0.1) !important;
+
+    --history-border-shadow: rgba(249, 115, 22, 0.3) !important;
+
+    --result-text-shadow: rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Halloween theme: ultra-dark background */
+html.halloween-theme body {
+    background: linear-gradient(180deg, #050303 0%, #0d0605 100%) !important;
+}
+
+/* Halloween theme: dice with red base and orange glow */
+html.halloween-theme .fate-die {
+    background-color: #0a0505 !important;
+    color: #ff2d2d !important;
+    border: 2px solid #991b1b !important;
+    box-shadow: 0 0 12px rgba(185, 28, 28, 0.5), 0 0 20px rgba(180, 83, 9, 0.3) !important;
+}
+
+html.halloween-theme .die {
+    background-color: #0a0505 !important;
+    color: #ff2d2d !important;
+    border: 2px solid #991b1b !important;
+    box-shadow: 0 0 12px rgba(185, 28, 28, 0.5), 0 0 20px rgba(180, 83, 9, 0.3) !important;
+}
+
+/* Halloween theme: dice highlights - orange for high, deep red for low */
+html.halloween-theme .die-highlight-high {
+    border: 3px solid #fb923c !important;
+    box-shadow: 0 0 16px #fb923c, 0 2px 4px var(--shadow-primary) !important;
+}
+
+html.halloween-theme .die-highlight-low {
+    border: 3px solid #7f1d1d !important;
+    box-shadow: 0 0 16px #991b1b, 0 2px 4px var(--shadow-primary) !important;
+}
+
+/* Halloween theme: red button with orange glow on hover */
+html.halloween-theme .roll-button {
+    box-shadow: 0 0 20px rgba(185, 28, 28, 0.5), 0 0 40px rgba(127, 29, 29, 0.4) !important;
+}
+
+html.halloween-theme .roll-button:hover {
+    box-shadow: 0 0 25px rgba(185, 28, 28, 0.6), 0 0 50px rgba(249, 115, 22, 0.4), 0 5px 15px var(--button-shadow) !important;
+}
+
+/* Halloween theme: result display with orange glow */
+html.halloween-theme .result-display {
+    box-shadow: 0 0 30px rgba(180, 83, 9, 0.5), 0 0 60px rgba(120, 53, 15, 0.4) !important;
+}
+
+/* Halloween theme: container with yellow ambient glow */
+html.halloween-theme .container {
+    box-shadow: 0 0 40px rgba(251, 191, 36, 0.25), 0 25px 70px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Halloween theme: Statistics label in bright red */
+html.halloween-theme .stats-toggle {
+    color: #ff2d2d !important;
+}
+
+/* Halloween theme: Back button in orange */
+html.halloween-theme .nav-button {
+    background: linear-gradient(135deg, #b45309 0%, #92400e 100%) !important;
+    border-color: rgba(251, 191, 36, 0.3) !important;
+}
+
+html.halloween-theme .nav-button:hover {
+    background: linear-gradient(135deg, #c2410c 0%, #a3520d 100%) !important;
+    border-color: rgba(251, 191, 36, 0.5) !important;
+}
+
 /* ========================================
-   GLOBAL STYLES
+   SHARED BASE STYLES
+   These provide consistent styling across all pages
    ======================================== */
 
+/* Global Reset */
 * {
     margin: 0;
     padding: 0;
@@ -876,36 +1019,162 @@ html.cyberpunk-theme .container {
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+    background: var(--bg-gradient, linear-gradient(135deg, #667eea 0%, #764ba2 100%));
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    padding: 40px 20px;
+    padding: 20px;
 }
 
+/* Container - stays above seasonal effects */
 .container {
-    background: var(--container-bg);
-    border-radius: 20px;
-    padding: 40px;
-    max-width: 600px;
-    width: 100%;
-    box-shadow: 0 20px 60px var(--shadow-primary);
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--container-bg, white);
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
     position: relative;
     z-index: 1;
 }
 
+/* Container width utilities */
+.container-tight { max-width: 600px; }
+.container-wide { max-width: 1200px; }
+
+/* Header */
 .header {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-bottom: 30px;
+    background: linear-gradient(135deg, var(--button-gradient-start, #667eea) 0%, var(--button-gradient-end, #764ba2) 100%);
+    color: var(--text-white, white);
+    padding: 20px 30px;
 }
 
-.header-top-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.header h1 {
+    color: var(--text-white, white);
 }
+
+/* Content Area */
+.content {
+    padding: 30px;
+    color: var(--text-primary, #333);
+}
+
+/* Footer */
+.footer {
+    padding: 20px 30px;
+    background: var(--bg-light, #f8f9fa);
+    border-top: 1px solid var(--border-light, #e0e0e0);
+    text-align: center;
+    color: var(--text-secondary, #666);
+    font-size: 0.9em;
+}
+
+.footer p {
+    margin-bottom: 10px;
+}
+
+.footer a {
+    color: var(--accent-primary, #667eea);
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.oddturnip-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+    padding: 8px 15px;
+    background: var(--bg-white, white);
+    border: 2px solid var(--border-medium, #e0e0e0);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-primary, #333);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.oddturnip-link:hover {
+    border-color: var(--accent-primary, #667eea);
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+.oddturnip-link img {
+    height: 24px;
+    width: auto;
+}
+
+/* Link containers for index pages */
+.link-container {
+    display: block;
+    border: 3px solid var(--accent-tertiary, #7a6952);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background: var(--bg-white, white);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.link-container:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px var(--shadow-primary, rgba(0, 0, 0, 0.3));
+    border-color: var(--accent-primary, #667eea);
+    background: linear-gradient(135deg, var(--link-hover-gradient-start, rgba(102, 126, 234, 0.03)) 0%, var(--link-hover-gradient-end, rgba(118, 75, 162, 0.03)) 100%);
+}
+
+.link-container h2 {
+    color: var(--accent-primary, #667eea);
+    margin-bottom: 10px;
+    font-size: 1.3em;
+}
+
+.link-container:hover h2 {
+    color: var(--accent-primary-dark, #5a6fd6);
+}
+
+.link-container p {
+    color: var(--text-secondary, #666);
+    margin-top: 10px;
+    line-height: 1.6;
+}
+
+/* Section styling */
+.section {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border-light, #eee);
+}
+
+.section h2 {
+    color: var(--heading-tertiary, #555);
+    margin-bottom: 15px;
+}
+
+.section p {
+    color: var(--text-secondary, #666);
+    line-height: 1.8;
+    margin-bottom: 10px;
+}
+
+.section ul {
+    list-style: disc;
+    padding-left: 20px;
+    margin: 10px 0;
+}
+
+.section li {
+    color: var(--text-secondary, #666);
+    line-height: 1.8;
+    margin-bottom: 8px;
+}
+
+/* ========================================
+   THEME SELECTOR STYLES
+   ======================================== */
 
 .theme-selector-wrapper {
     display: flex;
@@ -916,6 +1185,20 @@ body {
 .theme-selector-wrapper label {
     font-size: 0.9em;
     white-space: nowrap;
+}
+
+/* Ensure labels in header have proper contrast */
+.header label,
+.header .theme-selector-wrapper label {
+    color: var(--text-white, white);
+}
+
+/* Style checkbox in header for visibility */
+.header input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--accent-primary, #667eea);
+    cursor: pointer;
 }
 
 .theme-selector {
@@ -938,43 +1221,86 @@ body {
     border-color: var(--accent-secondary);
 }
 
-h1 {
-    text-align: center;
-    color: var(--heading-primary);
-    margin: 0;
-    font-size: 2.5em;
-}
+/* ========================================
+   THREE-COLUMN HEADER LAYOUT
+   [Navigation] | [Title] | [Theme Selector]
+   ======================================== */
 
-.close-button {
-    width: 40px;
-    height: 40px;
-    display: flex;
+.header-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    justify-content: center;
-    background: var(--close-btn-bg);
-    color: var(--close-btn-color);
+    gap: 20px;
+}
+
+/* Left column: Navigation */
+.header-nav {
+    justify-self: start;
+}
+
+/* Center column: Title */
+.header-title {
+    text-align: center;
+}
+
+.header-title h1 {
+    font-size: 1.8em;
+    margin: 0;
+    color: var(--text-white, white);
+}
+
+.header-title p {
+    font-size: 0.95em;
+    opacity: 0.9;
+    margin-top: 5px;
+    color: var(--text-white, white);
+}
+
+/* Right column: Theme selector */
+.header-theme {
+    justify-self: end;
+}
+
+/* Navigation button */
+.nav-button {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--text-white, white);
+    padding: 10px 20px;
+    border-radius: 8px;
     text-decoration: none;
-    border-radius: 50%;
-    font-size: 1.5em;
-    font-weight: bold;
+    font-weight: 600;
+    font-size: 0.95em;
     transition: all 0.3s ease;
-    line-height: 1;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    display: inline-block;
 }
 
-.close-button:hover {
-    background: var(--close-btn-bg-hover);
-    transform: scale(1.1);
+.nav-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
 }
 
-.close-button:active {
-    transform: scale(0.95);
+/* Responsive: stack on small screens */
+@media (max-width: 768px) {
+    .header-row {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .header-nav,
+    .header-theme {
+        justify-self: center;
+    }
+
+    .header-title h1 {
+        font-size: 1.5em;
+    }
 }
 
-h2 {
-    color: var(--heading-secondary);
-    margin-bottom: 15px;
-    font-size: 1.2em;
-}
+/* ========================================
+   SHARED FORM CONTROLS
+   Controls, buttons, and inputs used across pages
+   ======================================== */
 
 .controls {
     display: flex;
@@ -995,13 +1321,6 @@ h2 {
     flex-direction: row;
     gap: 10px;
     align-items: center;
-    flex-wrap: wrap;
-}
-
-.drop-control {
-    flex-direction: row !important;
-    align-items: center;
-    gap: 8px;
     flex-wrap: wrap;
 }
 
@@ -1030,46 +1349,11 @@ h2 {
     height: 18px;
 }
 
-.drop-control input[type="checkbox"] {
-    cursor: pointer;
-    width: 18px;
-    height: 18px;
-}
-
-.drop-control input[type="text"] {
-    width: 60px;
-    min-width: 60px;
-}
-
-.drop-control select {
-    width: auto;
-    min-width: 100px;
-}
-
-.drop-control span {
-    color: var(--text-primary);
-    font-weight: 600;
-}
-
 label {
     font-weight: 600;
     color: var(--text-primary);
     font-size: 1em;
     white-space: nowrap;
-}
-
-.dice-label {
-    display: inline-block;
-    width: 140px;
-}
-
-.mode-label {
-    display: inline-flex;
-    width: 160px;
-}
-
-.dropdown-aligned {
-    width: 120px;	
 }
 
 select, input[type="text"] {
@@ -1097,16 +1381,6 @@ input[type="text"] {
     min-width: 120px;
 }
 
-.error-message {
-    background: var(--error-bg);
-    border: 2px solid var(--error-border);
-    border-radius: 8px;
-    padding: 12px 15px;
-    margin-bottom: 20px;
-    color: var(--error-text);
-    font-weight: 500;
-}
-
 .roll-button {
     padding: 15px 30px;
     font-size: 1.2em;
@@ -1127,79 +1401,20 @@ input[type="text"] {
     transform: scale(0.98);
 }
 
-.result-display {
-    background: linear-gradient(135deg, var(--result-gradient-start) 0%, var(--result-gradient-end) 100%);
-    border-radius: 15px;
-    padding: 40px;
-    margin: 0 auto 30px auto;
-    max-width: 500px;
-    text-align: center;
-}
-
-.current-result {
-    font-size: 4em;
-    font-weight: bold;
-    color: var(--text-white);
-    text-shadow: 0 2px 4px var(--result-text-shadow);
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-}
-
-.success-result {
-    font-size: 1.5em;
-    font-weight: 600;
-    color: var(--text-white);
-    text-shadow: 0 2px 4px var(--result-text-shadow);
-    margin-bottom: 8px;
-}
-
-.sum-result {
-    font-size: 2.25em;
-    font-weight: 600;
-    color: var(--text-white);
-    text-shadow: 0 2px 4px var(--result-text-shadow);
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    margin-bottom: 8px;
-}
-
-.rolls-result {
-    font-size: 1.5em;
-    font-weight: 600;
-    color: var(--text-white);
-    text-shadow: 0 1px 2px var(--result-text-shadow);
-}
-
-.discarded-result {
-    font-size: 1.5em;
-    font-weight: 600;
-    color: rgba(255, 255, 255, 0.7);
-    text-shadow: 0 1px 2px var(--result-text-shadow);
-    font-style: italic;
-}
-
-.dice-display {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.fate-die {
-    width: 50px;
-    height: 50px;
-    background-color: var(--fate-die-bg);
+.error-message {
+    background: var(--error-bg);
+    border: 2px solid var(--error-border);
     border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 4em;
-    font-weight: bold;
-    color: var(--text-white);
-    box-shadow: 0 2px 4px var(--shadow-primary);
-    padding-left: 2px;
-    padding-bottom: 14px;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    color: var(--error-text);
+    font-weight: 500;
 }
+
+/* ========================================
+   HISTORY SECTION
+   Shared history display styles
+   ======================================== */
 
 .history-section {
     border-top: 2px solid var(--border-light);
@@ -1237,6 +1452,41 @@ input[type="text"] {
     margin-bottom: 0;
 }
 
+.history-hand {
+    padding: 15px;
+    background: var(--bg-white);
+    border-left: 4px solid var(--border-accent);
+    margin-bottom: 15px;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.history-hand:hover {
+    background: var(--bg-hover);
+    border: 2px solid var(--border-accent);
+    border-left: 4px solid var(--border-accent);
+    box-shadow: 0 2px 8px var(--history-border-shadow);
+}
+
+.history-hand-title {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+    font-size: 1em;
+}
+
+.history-hand ul {
+    list-style-position: inside;
+    color: var(--text-secondary);
+    font-size: 0.95em;
+    padding-left: 10px;
+}
+
+.history-hand li {
+    margin: 5px 0;
+}
+
 /* Scrollbar styling */
 .roll-history::-webkit-scrollbar {
     width: 8px;
@@ -1256,262 +1506,83 @@ input[type="text"] {
     background: var(--scrollbar-thumb-hover);
 }
 
-/* Link containers for index page */
-.link-container {
-    display: block;
-    border: 3px solid var(--accent-tertiary);
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 20px;
-    background: var(--bg-white);
-    text-decoration: none;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    user-select: text;
+/* ========================================
+   MODAL STYLES
+   Shared modal/popup styles
+   ======================================== */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    animation: fadeIn 0.3s ease;
 }
 
-.link-container:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 20px var(--shadow-primary);
-    border-color: var(--accent-primary);
-    background: linear-gradient(135deg, var(--link-hover-gradient-start) 0%, var(--link-hover-gradient-end) 100%);
-}
-
-.link-container:active {
-    transform: translateY(-2px);
-    box-shadow: 0 3px 10px var(--shadow-secondary);
-}
-
-.link-container h2 {
-    color: var(--accent-primary);
-    margin-bottom: 10px;
-    font-size: 1.3em;
-}
-
-.link-container:hover h2 {
-    color: var(--accent-primary-dark);
-}
-
-.link-container p {
-    color: var(--text-secondary);
-    margin-top: 10px;
-    line-height: 1.6;
-}
-
-/* Section styling */
-.section {
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 2px solid var(--border-light);
-}
-
-.section h2 {
-    color: var(--heading-tertiary);
-    margin-bottom: 15px;
-}
-
-.section p, .section ul {
-    color: var(--text-secondary);
-    line-height: 1.8;
-    margin-bottom: 10px;
-}
-
-.section ul {
-    list-style-position: inside;
-    padding-left: 20px;
-}
-
-.section a {
-    color: var(--accent-primary);
-    text-decoration: none;
-}
-
-.section a:hover {
-    color: var(--accent-primary-dark);
-    text-decoration: underline;
-}
-
-.footer-text {
-    margin-top: 30px;
-    padding-top: 20px;
-    border-top: 2px solid var(--border-light);
-    text-align: center;
-    color: var(--text-light);
-    font-size: 0.9em;
-    line-style: italic;
-}
-
-/* Footer */
-.footer {
-    margin-top: 30px;
-    padding-top: 20px;
-    border-top: 2px solid var(--border-light);
-    text-align: center;
-    color: var(--text-secondary);
-    font-size: 0.9em;
-}
-
-.footer .oddturnip-link {
-    display: inline-flex;
+.modal.active {
+    display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 10px;
-    margin-top: 15px;
-    padding: 8px 15px;
+}
+
+.modal-content {
     background: var(--bg-white);
-    border: 2px solid var(--border-medium);
-    border-radius: 8px;
-    text-decoration: none;
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    position: relative;
+    animation: slideIn 0.3s ease;
+}
+
+.modal-close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 28px;
+    font-weight: bold;
     color: var(--text-primary);
-    font-weight: 600;
-    transition: all 0.3s ease;
     cursor: pointer;
+    border: none;
+    background: none;
+    padding: 5px 10px;
+    line-height: 1;
+    transition: all 0.2s ease;
 }
 
-.footer .oddturnip-link:hover {
-    border-color: var(--accent-primary);
-    background: var(--bg-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px var(--button-shadow);
+.modal-close:hover {
+    color: var(--accent-primary);
+    transform: scale(1.2);
 }
 
-.footer .oddturnip-link img {
-    height: 24px;
-    width: auto;
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
-/* Responsive design */
-@media (max-width: 600px) {
-    .container {
-        padding: 25px;
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
     }
-
-    h1 {
-        font-size: 2em;
-    }
-
-    .current-result {
-        font-size: 3em;
-    }
-
-    .close-button {
-        width: 36px;
-        height: 36px;
-        font-size: 1.3em;
+    to {
+        transform: translateY(0);
+        opacity: 1;
     }
 }
 
 /* ========================================
-   PAGE-SPECIFIC STYLES
+   CARD DISPLAY STYLES
+   Shared card display for Tarot and similar
    ======================================== */
 
-/* Statistics section (Fate & Blades pages) */
-.statistics-section {
-    margin: 20px auto;
-    max-width: 800px;
-}
-
-.stats-toggle {
-    cursor: pointer;
-    user-select: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2em;
-    margin-bottom: 10px;
-}
-
-.stats-toggle:hover {
-    opacity: 0.7;
-}
-
-.info-icon {
-    font-size: 1.2em;
-    margin-right: 5px;
-}
-
-.stats-content {
-    overflow: hidden;
-    transition: max-height 0.3s ease-out;
-}
-
-.stats-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 10px auto;
-    background-color: rgba(255, 255, 255, 0.05);
-    color: var(--text-primary);
-}
-
-.stats-table th,
-.stats-table td {
-    padding: 8px 6px;
-    text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: var(--text-primary);
-}
-
-.stats-table th {
-    background-color: rgba(255, 255, 255, 0.1);
-    font-weight: bold;
-}
-
-.stats-table tbody tr:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-.stats-table tbody td:first-child {
-    text-align: left;
-}
-
-/* Blades page styles */
-.outcome-text {
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-top: 10px;
-    text-align: center;
-    text-shadow:
-        -1px -1px 0 #000,
-         1px -1px 0 #000,
-        -1px  1px 0 #000,
-         1px  1px 0 #000,
-        -2px -2px 0 #000,
-         2px -2px 0 #000,
-        -2px  2px 0 #000,
-         2px  2px 0 #000;
-}
-
-.dice-display {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.die {
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5em;
-    font-weight: bold;
-    background-color: var(--fate-die-bg);
-    color: var(--text-white);
-    border: 2px solid var(--border-medium);
-    border-radius: 8px;
-    box-shadow: 0 2px 4px var(--shadow-primary);
-}
-
-.die-highlight-high {
-    border: 3px solid #4CAF50;
-}
-
-.die-highlight-low {
-    border: 3px solid #FFA500;
-}
-
-/* Tarot page styles */
 .cards-container {
     display: flex;
     justify-content: space-around;
@@ -1580,93 +1651,7 @@ input[type="text"] {
     transform: rotate(180deg) scale(1.05);
 }
 
-.history-hand {
-    padding: 15px;
-    background: var(--bg-white);
-    border-left: 4px solid var(--border-accent);
-    margin-bottom: 15px;
-    border-radius: 5px;
-    transition: all 0.2s ease;
-    cursor: pointer;
-}
-
-.history-hand:hover {
-    background: var(--bg-hover);
-    border: 2px solid var(--border-accent);
-    border-left: 4px solid var(--border-accent);
-    box-shadow: 0 2px 8px var(--history-border-shadow);
-}
-
-.history-hand-title {
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 10px;
-    font-size: 1em;
-}
-
-.history-hand ul {
-    list-style-position: inside;
-    color: var(--text-secondary);
-    font-size: 0.95em;
-    padding-left: 10px;
-}
-
-.history-hand li {
-    margin: 5px 0;
-}
-
-/* Modal styles (Tarot) */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    animation: fadeIn 0.3s ease;
-}
-
-.modal.active {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-content {
-    background: var(--bg-white);
-    padding: 30px;
-    border-radius: 15px;
-    max-width: 500px;
-    width: 90%;
-    max-height: 80vh;
-    overflow-y: auto;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-    position: relative;
-    animation: slideIn 0.3s ease;
-}
-
-.modal-close {
-    position: absolute;
-    right: 15px;
-    top: 15px;
-    font-size: 28px;
-    font-weight: bold;
-    color: var(--text-primary);
-    cursor: pointer;
-    border: none;
-    background: none;
-    padding: 5px 10px;
-    line-height: 1;
-    transition: all 0.2s ease;
-}
-
-.modal-close:hover {
-    color: var(--accent-primary);
-    transform: scale(1.2);
-}
-
+/* Modal card styles */
 .modal-card-image {
     max-width: 250px;
     max-height: 400px;
@@ -1703,24 +1688,25 @@ input[type="text"] {
     line-height: 1.8;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
+/* ========================================
+   RESPONSIVE SHARED STYLES
+   ======================================== */
 
-@keyframes slideIn {
-    from {
-        transform: translateY(-50px);
-        opacity: 0;
+@media (max-width: 768px) {
+    .controls {
+        padding: 15px;
     }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
 
-/* Tarot responsive styles */
-@media (max-width: 600px) {
+    .control-group-inline {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .roll-button {
+        width: 100%;
+        padding: 14px 20px;
+    }
+
     .cards-container {
         flex-direction: column;
     }

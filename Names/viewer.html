@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Database Viewer</title>
     <link rel="icon" type="image/x-icon" href="odd_turnip.ico">
+    <link rel="stylesheet" href="../Themes/themes.css">
     <link rel="stylesheet" href="styles.css">
+    <script src="../Themes/theme-init.js"></script>
     <style>
         /* Page-specific styles */
 
@@ -17,8 +19,8 @@
         }
 
         .stat-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(135deg, var(--button-gradient-start, #667eea) 0%, var(--button-gradient-end, #764ba2) 100%);
+            color: var(--text-white, white);
             padding: 20px;
             border-radius: 8px;
             text-align: center;
@@ -47,17 +49,18 @@
         }
 
         thead {
-            background: #667eea;
-            color: white;
+            background: var(--accent-primary, #667eea);
+            color: var(--text-white, white);
         }
 
         td {
             padding: 12px 15px;
-            border-bottom: 1px solid #e0e0e0;
+            border-bottom: 1px solid var(--border-light, #e0e0e0);
+            color: var(--text-primary, #333);
         }
 
         tbody tr:hover {
-            background: #f8f9ff;
+            background: var(--bg-hover, #f8f9ff);
         }
 
         tbody tr:last-child td {
@@ -65,18 +68,18 @@
         }
 
         .null-value {
-            color: #999;
+            color: var(--text-light, #999);
             font-style: italic;
         }
 
         .tag-cell {
             font-size: 0.85em;
-            color: #555;
+            color: var(--text-primary, #555);
         }
 
         .tag-cell:empty::before {
             content: '—';
-            color: #ccc;
+            color: var(--text-light, #ccc);
         }
 
         .filters {
@@ -85,7 +88,7 @@
             align-items: center;
             margin-bottom: 20px;
             padding: 20px;
-            background: #f8f9ff;
+            background: var(--bg-light, #f8f9ff);
             border-radius: 8px;
             flex-wrap: wrap;
         }
@@ -98,26 +101,27 @@
 
         .filter-group label {
             font-weight: 600;
-            color: #333;
+            color: var(--text-primary, #333);
         }
 
         .filter-group select {
             padding: 8px 12px;
             font-size: 0.95em;
-            border: 2px solid #667eea;
+            border: 2px solid var(--accent-primary, #667eea);
             border-radius: 6px;
-            background: white;
+            background: var(--bg-white, white);
+            color: var(--text-primary, #333);
             cursor: pointer;
             transition: all 0.3s;
         }
 
         .filter-group select:hover {
-            border-color: #764ba2;
+            border-color: var(--accent-secondary, #764ba2);
         }
 
         .filter-group select:focus {
             outline: none;
-            border-color: #764ba2;
+            border-color: var(--accent-secondary, #764ba2);
             box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
         }
 
@@ -135,7 +139,7 @@
         }
 
         th:hover {
-            background: #5568d3;
+            background: var(--accent-primary-dark, #5568d3);
         }
 
         th.sortable::after {
@@ -154,6 +158,17 @@
             opacity: 1;
         }
 
+        #resultsCount {
+            margin: 20px 0;
+            padding: 15px;
+            background: var(--bg-light, #f8f9ff);
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.1em;
+            font-weight: 600;
+            color: var(--accent-primary, #667eea);
+        }
+
         /* Responsive overrides */
         @media (max-width: 768px) {
             .stats {
@@ -164,11 +179,23 @@
 </head>
 <body>
     <div class="container">
-        <header>
-            <a href="index.html" class="home-button">Home</a>
-            <h1>📊 Database Viewer</h1>
-            <p>Review all entries in the SQLite Database</p>
-        </header>
+        <div class="header">
+            <div class="header-row">
+                <!-- Left: Navigation -->
+                <div class="header-nav">
+                    <a href="index.html" class="nav-button">← Back</a>
+                </div>
+
+                <!-- Center: Title -->
+                <div class="header-title">
+                    <h1>📊 Database Viewer</h1>
+                    <p>Review all entries in the SQLite Database</p>
+                </div>
+
+                <!-- Right: Theme selector -->
+                <div class="header-theme" id="theme-slot"></div>
+            </div>
+        </div>
 
         <div class="content">
             <div id="status" class="status loading">
@@ -198,7 +225,7 @@
                 </div>
             </div>
 
-            <div id="resultsCount" style="display: none; margin: 20px 0; padding: 15px; background: #f8f9ff; border-radius: 8px; text-align: center; font-size: 1.1em; font-weight: 600; color: #667eea;">
+            <div id="resultsCount" style="display: none;">
             </div>
 
             <div class="table-container">
@@ -466,6 +493,11 @@
 
         // Load database when page loads
         window.addEventListener('DOMContentLoaded', loadDatabase);
+    </script>
+
+    <script type="module">
+        import { autoInitThemeSelector } from '../Themes/theme-setup.js';
+        autoInitThemeSelector();
     </script>
 </body>
 </html>

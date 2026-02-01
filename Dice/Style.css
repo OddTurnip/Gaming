@@ -1,0 +1,374 @@
+/* ========================================
+   DICE ROLLER STYLES
+   Import theme variables and add dice-specific layout
+   ======================================== */
+
+@import url('../Themes/themes.css');
+
+/* ========================================
+   DICE-SPECIFIC OVERRIDES
+   ======================================== */
+
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 600px;
+    box-shadow: 0 20px 60px var(--shadow-primary);
+}
+
+.header {
+    border-radius: 12px 12px 0 0;
+    margin: -40px -40px 30px -40px;
+}
+
+h1 {
+    text-align: center;
+    margin: 0;
+    font-size: 2em;
+}
+
+h2 {
+    color: var(--heading-secondary);
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+/* Close button (used alongside nav-button) */
+.close-button {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--text-white, white);
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95em;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    display: inline-block;
+}
+
+.close-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* ========================================
+   DICE-SPECIFIC FORM CONTROLS
+   ======================================== */
+
+/* Drop control specific styles */
+.drop-control {
+    flex-direction: row !important;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.drop-control input[type="checkbox"] {
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+}
+
+.drop-control input[type="text"] {
+    width: 60px;
+    min-width: 60px;
+}
+
+.drop-control select {
+    width: auto;
+    min-width: 100px;
+}
+
+.drop-control span {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* Dice-specific label widths */
+.dice-label {
+    display: inline-block;
+    width: 140px;
+}
+
+.mode-label {
+    display: inline-flex;
+    width: 160px;
+}
+
+.dropdown-aligned {
+    width: 120px;
+}
+
+/* ========================================
+   RESULT DISPLAY
+   ======================================== */
+
+.result-display {
+    background: linear-gradient(135deg, var(--result-gradient-start) 0%, var(--result-gradient-end) 100%);
+    border-radius: 15px;
+    padding: 40px;
+    margin: 0 auto 30px auto;
+    max-width: 500px;
+    text-align: center;
+}
+
+.current-result {
+    font-size: 4em;
+    font-weight: bold;
+    color: var(--text-white);
+    text-shadow: 0 2px 4px var(--result-text-shadow);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.success-result {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: var(--text-white);
+    text-shadow: 0 2px 4px var(--result-text-shadow);
+    margin-bottom: 8px;
+}
+
+.sum-result {
+    font-size: 2.25em;
+    font-weight: 600;
+    color: var(--text-white);
+    text-shadow: 0 2px 4px var(--result-text-shadow);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    margin-bottom: 8px;
+}
+
+.rolls-result {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: var(--text-white);
+    text-shadow: 0 1px 2px var(--result-text-shadow);
+}
+
+.discarded-result {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    text-shadow: 0 1px 2px var(--result-text-shadow);
+    font-style: italic;
+}
+
+/* ========================================
+   DICE DISPLAY
+   ======================================== */
+
+.dice-display {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.fate-die {
+    width: 50px;
+    height: 50px;
+    background-color: var(--fate-die-bg);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4em;
+    font-weight: bold;
+    color: var(--text-white);
+    box-shadow: 0 2px 4px var(--shadow-primary);
+    padding-left: 2px;
+    padding-bottom: 14px;
+}
+
+.die {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    background-color: var(--fate-die-bg);
+    color: var(--text-white);
+    border: 2px solid var(--border-medium);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px var(--shadow-primary);
+}
+
+/* Blades in the Dark dice highlighting - INTENTIONAL hardcoded colors for game mechanics */
+.die-highlight-high {
+    border: 3px solid #4CAF50;
+}
+
+.die-highlight-low {
+    border: 3px solid #FFA500;
+}
+
+/* ========================================
+   LINK CONTAINERS & SECTION OVERRIDES
+   ======================================== */
+
+.link-container {
+    user-select: text;
+}
+
+.link-container:active {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 10px var(--shadow-secondary);
+}
+
+.section {
+    margin-top: 40px;
+}
+
+.section ul {
+    list-style-position: inside;
+    padding-left: 20px;
+}
+
+.section a {
+    color: var(--accent-primary);
+    text-decoration: none;
+}
+
+.section a:hover {
+    color: var(--accent-primary-dark);
+    text-decoration: underline;
+}
+
+/* ========================================
+   FOOTER OVERRIDES
+   ======================================== */
+
+.footer {
+    margin-top: 30px;
+    border-top: 2px solid var(--border-light);
+}
+
+.footer .oddturnip-link:hover {
+    box-shadow: 0 4px 12px var(--button-shadow);
+}
+
+.footer-text {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border-light);
+    text-align: center;
+    color: var(--text-light);
+    font-size: 0.9em;
+    font-style: italic;
+}
+
+/* ========================================
+   STATISTICS SECTION (Fate & Blades pages)
+   ======================================== */
+
+.statistics-section {
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+.stats-toggle {
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.stats-toggle:hover {
+    opacity: 0.7;
+}
+
+.info-icon {
+    font-size: 1.2em;
+    margin-right: 5px;
+}
+
+.stats-content {
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.stats-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px auto;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+}
+
+.stats-table th,
+.stats-table td {
+    padding: 8px 6px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-primary);
+}
+
+.stats-table th {
+    background-color: rgba(255, 255, 255, 0.1);
+    font-weight: bold;
+}
+
+.stats-table tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.stats-table tbody td:first-child {
+    text-align: left;
+}
+
+/* ========================================
+   BLADES IN THE DARK SPECIFIC
+   ======================================== */
+
+.outcome-text {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
+    text-shadow:
+        -1px -1px 0 #000,
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000,
+        -2px -2px 0 #000,
+         2px -2px 0 #000,
+        -2px  2px 0 #000,
+         2px  2px 0 #000;
+}
+
+/* ========================================
+   RESPONSIVE OVERRIDES
+   ======================================== */
+
+@media (max-width: 768px) {
+    .container {
+        padding: 25px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    .current-result {
+        font-size: 3em;
+    }
+
+    .close-button {
+        width: 36px;
+        height: 36px;
+        font-size: 1.3em;
+    }
+}

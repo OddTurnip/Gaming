@@ -1,0 +1,112 @@
+/* ========================================
+   TAROT READING STYLES
+   Import theme variables and add tarot-specific styles
+   ======================================== */
+
+@import url('../Themes/themes.css');
+
+/* Container width to match Dice pages */
+.container {
+    max-width: 600px;
+}
+
+/* ========================================
+   TAROT-SPECIFIC CONTROLS
+   Enhanced styling for Tarot page controls
+   ======================================== */
+
+.controls {
+    background: var(--bg-light, #f8f9fa);
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.control-group-inline > label:first-child {
+    color: var(--text-primary, #333);
+    font-weight: 600;
+    margin-right: 8px;
+}
+
+/* Radio buttons styled as segmented control */
+.radio-label {
+    display: inline-flex;
+    padding: 8px 16px;
+    background: var(--bg-white, white);
+    border: 2px solid var(--border-medium, #ddd);
+    border-radius: 6px;
+    cursor: pointer;
+    color: var(--text-secondary, #666);
+    transition: all 0.2s ease;
+}
+
+.radio-label:hover {
+    border-color: var(--accent-primary, #667eea);
+    background: var(--bg-hover, #f0f5ff);
+}
+
+.radio-label input[type="radio"] {
+    display: none;
+}
+
+.radio-label:has(input[type="radio"]:checked) {
+    background: linear-gradient(135deg, var(--button-gradient-start, #667eea) 0%, var(--button-gradient-end, #764ba2) 100%);
+    border-color: transparent;
+    color: var(--text-white, white);
+}
+
+/* Checkbox styling */
+.checkbox-label input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--accent-primary, #667eea);
+    cursor: pointer;
+}
+
+/* New Reading button override */
+.roll-button {
+    padding: 12px 30px;
+    font-size: 1.1em;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px var(--button-shadow, rgba(102, 126, 234, 0.4));
+}
+
+.roll-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px var(--button-shadow, rgba(102, 126, 234, 0.5));
+}
+
+.roll-button:active {
+    transform: translateY(0);
+}
+
+/* ========================================
+   HISTORY SECTION OVERRIDE
+   ======================================== */
+
+.history-section {
+    margin-top: 30px;
+}
+
+.history-section h2 {
+    color: var(--heading-secondary, #444);
+    font-size: 1.3em;
+    margin-bottom: 15px;
+}
+
+/* ========================================
+   TAROT RESPONSIVE OVERRIDES
+   ======================================== */
+
+@media (max-width: 768px) {
+    .control-group-inline > label:first-child {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+
+    .radio-label {
+        padding: 10px 14px;
+        font-size: 0.95em;
+    }
+}

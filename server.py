@@ -1,16 +1,60 @@
 #!/usr/bin/env python3
+"""
+Simple HTTP server for the Gaming project.
+Run: python server.py
+Serves all sub-projects (Dice, Names, Characters, Tarot) from one server.
+"""
+
 import http.server
 import socketserver
+import webbrowser
+import os
+import sys
+from threading import Timer
 
-# For some reason, Port 8000 gets messed up
-PORT = 8114
+PORT = 8080
+DIRECTORY = os.path.dirname(os.path.abspath(__file__))
 
-# Fixes local mime type issues
+
+class QuietHandler(http.server.SimpleHTTPRequestHandler):
+    """HTTP handler with proper MIME types and quiet logging."""
+
+    # Fix MIME types for JS modules
+    extensions_map = {
+        **http.server.SimpleHTTPRequestHandler.extensions_map,
+        '.js': 'application/javascript',
+        '.mjs': 'application/javascript',
+        '.css': 'text/css',
+    }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, directory=DIRECTORY, **kwargs)
+
+    def log_message(self, format, *args):
+        # Only log errors, not routine requests
+        if args and len(args) > 1 and str(args[1]).startswith('2'):
+            return
+        super().log_message(format, *args)
+
+
+def open_browser(path='/'):
+    """Open browser after server starts."""
+    webbrowser.open(f'http://localhost:{PORT}{path}')
+
+
 if __name__ == '__main__':
-    http.server.SimpleHTTPRequestHandler.extensions_map['.js'] = 'application/javascript'
-    http.server.SimpleHTTPRequestHandler.extensions_map['.css'] = 'text/css'
-    http.server.test(port=PORT, HandlerClass=http.server.SimpleHTTPRequestHandler, protocol="HTTP/1.1")
-    
-with socketserver.TCPServer(("", PORT), Handler) as httpd:
-    print(f"Server running at http://localhost:{PORT}/")
-    httpd.serve_forever()
+    # Allow specifying a start page: python server.py Characters/index.html
+    start_path = '/' + sys.argv[1] if len(sys.argv) > 1 else '/'
+
+    with socketserver.TCPServer(("", PORT), QuietHandler) as httpd:
+        print(f"Gaming server at http://localhost:{PORT}")
+        print(f"  Dice:       http://localhost:{PORT}/Dice/")
+        print(f"  Names:      http://localhost:{PORT}/Names/")
+        print(f"  Characters: http://localhost:{PORT}/Characters/")
+        print(f"  Tarot:      http://localhost:{PORT}/Tarot/")
+        print("Press Ctrl+C to stop")
+        Timer(0.5, lambda: open_browser(start_path)).start()
+        try:
+            httpd.serve_forever()
+        except KeyboardInterrupt:
+            print("\nServer stopped.")

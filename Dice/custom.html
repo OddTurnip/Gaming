@@ -5,15 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Custom Dice Roller</title>
     <link rel="stylesheet" href="Style.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
     <!-- Apply theme immediately to prevent flash of unstyled content -->
-    <script src="theme-init.js"></script>
+    <script src="../Themes/theme-init.js"></script>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>Custom Dice Roller</h1>
-            <a href="index.html" class="close-button" aria-label="Close">✕</a>
+            <div class="header-row">
+                <!-- Left: Navigation -->
+                <div class="header-nav">
+                    <a href="index.html" class="nav-button">← Back</a>
+                </div>
+
+                <!-- Center: Title -->
+                <div class="header-title">
+                    <h1>Custom Dice</h1>
+                </div>
+
+                <!-- Right: Theme selector -->
+                <div class="header-theme" id="theme-slot"></div>
+            </div>
         </div>
 
         <div class="controls">
@@ -98,7 +110,7 @@
         <!-- Footer -->
         <div class="footer">
             <a href="https://www.oddturnip.com" target="_blank" rel="noopener noreferrer" class="oddturnip-link">
-                <img src="Names/odd_turnip.png" alt="OddTurnip Logo">
+                <img src="../Names/odd_turnip.png" alt="OddTurnip Logo">
                 <span>OddTurnip.com</span>
             </a>
         </div>
@@ -107,17 +119,13 @@
     <script type="module">
         // Import dice rolling logic
         import { rollDiceWithModifiers, rollWithAdvantage } from './dice-library.js';
-        import { addThemeSelector } from './theme-manager.js';
-        import { createSeasonalEffects } from './snowflakes.js';
+        import { initThemeSelector } from '../Themes/theme-setup.js';
 
-        // Make createSeasonalEffects available globally for the animated checkbox
-        window.createSeasonalEffects = createSeasonalEffects;
+        // Initialize theme selector
+        initThemeSelector();
 
         // Wait for DOM to be fully loaded
         document.addEventListener('DOMContentLoaded', function() {
-            // Add theme selector to the page
-            addThemeSelector();
-
             // Get references to DOM elements
             const rollButton = document.getElementById('rollButton');
             const numDiceInput = document.getElementById('numDice');
