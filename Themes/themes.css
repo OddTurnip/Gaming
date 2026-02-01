@@ -947,14 +947,14 @@ html.halloween-theme body {
 /* Halloween theme: dice with red base and orange glow */
 html.halloween-theme .fate-die {
     background-color: #0a0505 !important;
-    color: #ef4444 !important;
+    color: #ff2d2d !important;
     border: 2px solid #991b1b !important;
     box-shadow: 0 0 12px rgba(185, 28, 28, 0.5), 0 0 20px rgba(180, 83, 9, 0.3) !important;
 }
 
 html.halloween-theme .die {
     background-color: #0a0505 !important;
-    color: #ef4444 !important;
+    color: #ff2d2d !important;
     border: 2px solid #991b1b !important;
     box-shadow: 0 0 12px rgba(185, 28, 28, 0.5), 0 0 20px rgba(180, 83, 9, 0.3) !important;
 }
@@ -989,9 +989,9 @@ html.halloween-theme .container {
     box-shadow: 0 0 40px rgba(251, 191, 36, 0.25), 0 25px 70px rgba(0, 0, 0, 0.8) !important;
 }
 
-/* Halloween theme: Statistics label in red */
+/* Halloween theme: Statistics label in bright red */
 html.halloween-theme .stats-toggle {
-    color: #ef4444 !important;
+    color: #ff2d2d !important;
 }
 
 /* Halloween theme: Back button in orange */
