@@ -67,31 +67,7 @@ Dice/
     └── Custom.html
 ```
 
-See [ARCHITECTURE.md](ARCHITECTURE.md) for detailed documentation.
-
-## For Developers
-
-All core modules are tested with Vitest. Run `npm test` to verify.
-
-See [ARCHITECTURE.md](ARCHITECTURE.md) for code organization and development guide.
-
-## Browser Support
-
-Works in all modern browsers that support:
-- ES6 modules (`import`/`export`)
-- Native JavaScript (no transpilation needed)
-
-Tested in Chrome, Firefox, Safari, and Edge.
-
-## Contributing
-
-This is a hobby project. Feel free to fork and modify for your own use.
-
-## Documentation
-
-- **[README.md](README.md)** (this file) - Project overview
-- **[ARCHITECTURE.md](ARCHITECTURE.md)** - Architecture and development guide
-- **[CLAUDE.md](CLAUDE.md)** - Guide for AI assistants
+See [ARCHITECTURE.md](ARCHITECTURE.md) for detailed documentation. Run `npm test` to verify tests pass.
 
 ## License
 
