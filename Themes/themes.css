@@ -915,3 +915,79 @@ html.cyberpunk-theme .container {
     outline: none;
     border-color: var(--accent-secondary);
 }
+
+/* ========================================
+   THREE-COLUMN HEADER LAYOUT
+   [Navigation] | [Title] | [Theme Selector]
+   ======================================== */
+
+.header-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Left column: Navigation */
+.header-nav {
+    justify-self: start;
+}
+
+/* Center column: Title */
+.header-title {
+    text-align: center;
+}
+
+.header-title h1 {
+    font-size: 1.8em;
+    margin: 0;
+    color: var(--text-white, white);
+}
+
+.header-title p {
+    font-size: 0.95em;
+    opacity: 0.9;
+    margin-top: 5px;
+    color: var(--text-white, white);
+}
+
+/* Right column: Theme selector */
+.header-theme {
+    justify-self: end;
+}
+
+/* Navigation button */
+.nav-button {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--text-white, white);
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95em;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    display: inline-block;
+}
+
+.nav-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Responsive: stack on small screens */
+@media (max-width: 600px) {
+    .header-row {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .header-nav,
+    .header-theme {
+        justify-self: center;
+    }
+
+    .header-title h1 {
+        font-size: 1.5em;
+    }
+}

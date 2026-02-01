@@ -168,11 +168,71 @@ function createThemeSelector() {
 }
 
 /**
- * Adds the theme selector to the page
- * Call this after DOM content is loaded
+ * Creates the theme selector wrapper with label, dropdown, and animated checkbox.
+ * @returns {HTMLDivElement} The complete theme selector wrapper element
+ */
+function createThemeSelectorWrapper() {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'theme-selector-wrapper';
+
+    const label = document.createElement('label');
+    label.textContent = 'Theme: ';
+    label.htmlFor = 'theme-selector';
+    label.style.marginRight = '8px';
+
+    const selector = createThemeSelector();
+
+    wrapper.appendChild(label);
+    wrapper.appendChild(selector);
+
+    // Add animated checkbox
+    const animatedCheckbox = document.createElement('input');
+    animatedCheckbox.type = 'checkbox';
+    animatedCheckbox.id = 'animated-checkbox';
+    animatedCheckbox.checked = getAnimationsEnabled();
+    animatedCheckbox.style.marginLeft = '15px';
+
+    const animatedLabel = document.createElement('label');
+    animatedLabel.htmlFor = 'animated-checkbox';
+    animatedLabel.textContent = 'Animated';
+    animatedLabel.style.marginLeft = '5px';
+    animatedLabel.style.cursor = 'pointer';
+
+    // Add event listener for checkbox
+    animatedCheckbox.addEventListener('change', (e) => {
+        setAnimationsEnabled(e.target.checked);
+        // Trigger seasonal effects update
+        if (window.createSeasonalEffects) {
+            window.createSeasonalEffects();
+        }
+    });
+
+    wrapper.appendChild(animatedCheckbox);
+    wrapper.appendChild(animatedLabel);
+
+    return wrapper;
+}
+
+/**
+ * Adds the theme selector to the page.
+ * Supports two layouts:
+ * - Three-column: looks for #theme-slot or .header-theme element
+ * - Legacy two-column: creates .header-top-row within .header
+ * Call this after DOM content is loaded.
  */
 function addThemeSelector() {
-    // Try to find the header element
+    // First, check for three-column layout (new pattern)
+    // Look for #theme-slot or .header-theme
+    const themeSlot = document.getElementById('theme-slot') ||
+                      document.querySelector('.header-theme');
+
+    if (themeSlot) {
+        // New three-column layout: just insert the wrapper
+        themeSlot.appendChild(createThemeSelectorWrapper());
+        return;
+    }
+
+    // Fall back to legacy two-column layout (header-top-row)
     const header = document.querySelector('.header');
 
     if (header) {
@@ -198,47 +258,8 @@ function addThemeSelector() {
             }
         }
 
-        // Create a wrapper for the theme selector
-        const wrapper = document.createElement('div');
-        wrapper.className = 'theme-selector-wrapper';
-
-        const label = document.createElement('label');
-        label.textContent = 'Theme: ';
-        label.htmlFor = 'theme-selector';
-        label.style.marginRight = '8px';
-
-        const selector = createThemeSelector();
-
-        wrapper.appendChild(label);
-        wrapper.appendChild(selector);
-
-        // Add animated checkbox
-        const animatedCheckbox = document.createElement('input');
-        animatedCheckbox.type = 'checkbox';
-        animatedCheckbox.id = 'animated-checkbox';
-        animatedCheckbox.checked = getAnimationsEnabled();
-        animatedCheckbox.style.marginLeft = '15px';
-
-        const animatedLabel = document.createElement('label');
-        animatedLabel.htmlFor = 'animated-checkbox';
-        animatedLabel.textContent = 'Animated';
-        animatedLabel.style.marginLeft = '5px';
-        animatedLabel.style.cursor = 'pointer';
-
-        // Add event listener for checkbox
-        animatedCheckbox.addEventListener('change', (e) => {
-            setAnimationsEnabled(e.target.checked);
-            // Trigger seasonal effects update
-            if (window.createSeasonalEffects) {
-                window.createSeasonalEffects();
-            }
-        });
-
-        wrapper.appendChild(animatedCheckbox);
-        wrapper.appendChild(animatedLabel);
-
         // Append theme selector to the end (right side with space-between)
-        topRow.appendChild(wrapper);
+        topRow.appendChild(createThemeSelectorWrapper());
     } else {
         console.warn('Could not find .header element to add theme selector');
     }
@@ -252,6 +273,7 @@ export {
     setTheme,
     initializeTheme,
     createThemeSelector,
+    createThemeSelectorWrapper,
     addThemeSelector,
     getAnimationsEnabled,
     setAnimationsEnabled
