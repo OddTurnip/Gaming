@@ -239,39 +239,39 @@ describe('formatTarotCard', () => {
 describe('getCardImagePath', () => {
     it('generates correct path for major arcana', () => {
         const fool = { number: 0, name: 'The Fool', type: 'major' };
-        expect(getCardImagePath(fool)).toBe('img/tarot/00-thefool.png');
+        expect(getCardImagePath(fool)).toBe('img/00-thefool.png');
 
         const world = { number: 21, name: 'The World', type: 'major' };
-        expect(getCardImagePath(world)).toBe('img/tarot/21-theworld.png');
+        expect(getCardImagePath(world)).toBe('img/21-theworld.png');
     });
 
     it('pads single digit numbers with zero', () => {
         const magician = { number: 1, name: 'The Magician', type: 'major' };
-        expect(getCardImagePath(magician)).toBe('img/tarot/01-themagician.png');
+        expect(getCardImagePath(magician)).toBe('img/01-themagician.png');
     });
 
     it('removes spaces from card names and lowercases', () => {
         const highPriestess = { number: 2, name: 'The High Priestess', type: 'major' };
-        expect(getCardImagePath(highPriestess)).toBe('img/tarot/02-thehighpriestess.png');
+        expect(getCardImagePath(highPriestess)).toBe('img/02-thehighpriestess.png');
     });
 
     it('generates correct path for minor arcana', () => {
         const aceWands = { rank: 'Ace', suit: 'Wands', type: 'minor' };
-        expect(getCardImagePath(aceWands)).toBe('img/tarot/wands01.png');
+        expect(getCardImagePath(aceWands)).toBe('img/wands01.png');
 
         const kingCups = { rank: 'King', suit: 'Cups', type: 'minor' };
-        expect(getCardImagePath(kingCups)).toBe('img/tarot/cups14.png');
+        expect(getCardImagePath(kingCups)).toBe('img/cups14.png');
     });
 
     it('uses correct rank numbers', () => {
         const page = { rank: 'Page', suit: 'Swords', type: 'minor' };
-        expect(getCardImagePath(page)).toBe('img/tarot/swords11.png');
+        expect(getCardImagePath(page)).toBe('img/swords11.png');
 
         const knight = { rank: 'Knight', suit: 'Pentacles', type: 'minor' };
-        expect(getCardImagePath(knight)).toBe('img/tarot/pentacles12.png');
+        expect(getCardImagePath(knight)).toBe('img/pentacles12.png');
 
         const queen = { rank: 'Queen', suit: 'Wands', type: 'minor' };
-        expect(getCardImagePath(queen)).toBe('img/tarot/wands13.png');
+        expect(getCardImagePath(queen)).toBe('img/wands13.png');
     });
 });
 
