@@ -182,9 +182,9 @@ Gaming/
 - **Container utilities** - Added `.container-tight` (600px) and `.container-wide` (1200px) classes
 
 ### Test Coverage
-- **224 tests** passing (up from 173)
-- All new comprehensive functions have full test coverage
-- Tests cover: basic rolls, exploding, dropping, success counting, advantage/disadvantage
+- **283 tests** passing
+- All core modules have full test coverage
+- Tests cover: dice mechanics, card systems, FATE/Blades utilities
 
 ## Notes
 

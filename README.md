@@ -22,7 +22,7 @@ A collection of web-based dice rolling applications for tabletop RPGs and gaming
 - ES6 modules with clean separation of concerns
 - Pure functions for testable dice mechanics
 - No build step required - runs natively in modern browsers
-- Comprehensive test suite (173 tests, 93%+ coverage)
+- Comprehensive test suite (283 tests)
 
 ## Quick Start
 
@@ -38,17 +38,8 @@ python server.py
 
 ### Option 3: For Developers
 ```bash
-# Install dependencies
-npm install
-
-# Run tests
-npm test
-
-# Run tests with coverage
-npm run test:coverage
-
-# Run tests with UI
-npm run test:ui
+npm install   # Install dependencies
+npm test      # Run tests
 ```
 
 ## Project Structure
@@ -80,27 +71,9 @@ See [ARCHITECTURE.md](ARCHITECTURE.md) for detailed documentation.
 
 ## For Developers
 
-### Testing
-```bash
-npm test              # Run all tests
-npm run test:watch    # Watch mode
-npm run test:coverage # Generate coverage report
-```
+All core modules are tested with Vitest. Run `npm test` to verify.
 
-All core modules are fully tested with Vitest.
-
-### Adding New Features
-1. Add pure logic to appropriate library (e.g., `DiceLibrary.js`)
-2. Write tests first
-3. Update HTML files to use new functions
-4. See [ARCHITECTURE.md](ARCHITECTURE.md) for details
-
-### Code Quality
-- ✅ 173 tests, 100% passing
-- ✅ 93%+ test coverage on core modules
-- ✅ JSDoc comments on all functions
-- ✅ ES6 modules throughout
-- ✅ Zero security vulnerabilities
+See [ARCHITECTURE.md](ARCHITECTURE.md) for code organization and development guide.
 
 ## Browser Support
 
