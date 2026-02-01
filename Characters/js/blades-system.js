@@ -4,7 +4,14 @@
  */
 
 import { createPopup } from './shared.js';
-import { rollSingleDie } from '../../Dice/dice-library.js';
+import {
+    rollD6,
+    getDieClass,
+    evaluateDicePool
+} from '../../Dice/blades.js';
+
+// Re-export shared functions for convenience
+export { rollD6, getDieClass };
 
 // ============================================================================
 // Constants
@@ -20,25 +27,9 @@ export const LOAD_CAPACITY = {
     heavy: 6
 };
 
-/** Result thresholds for d6 pool */
-export const RESULT_THRESHOLDS = {
-    FAILURE: 3,      // 1-3 = failure
-    MIXED: 5,        // 4-5 = mixed success
-    SUCCESS: 6,      // 6 = full success
-    CRITICAL: 2      // 2+ sixes = critical
-};
-
 // ============================================================================
 // Dice Rolling (uses shared Dice library)
 // ============================================================================
-
-/**
- * Roll a single d6 (wrapper around shared dice library)
- * @returns {number} 1-6
- */
-export function rollD6() {
-    return rollSingleDie(6);
-}
 
 /**
  * Roll a pool of d6s
@@ -56,52 +47,30 @@ export function rollDicePool(numDice) {
 }
 
 /**
- * Get CSS class for a die value
- * @param {number} value - Die value 1-6
- * @returns {string} CSS class name
- */
-export function getDieClass(value) {
-    if (value <= RESULT_THRESHOLDS.FAILURE) return 'failure';
-    if (value <= RESULT_THRESHOLDS.MIXED) return 'mixed';
-    return 'success';
-}
-
-/**
- * Evaluate a dice pool result
+ * Evaluate a dice pool result (wrapper with UI-friendly field names)
  * @param {number[]} dice - Array of die values
  * @param {boolean} isZeroDice - True if started with 0 dice (take worst)
  * @returns {Object} { dice, selectedIndex, selectedValue, resultName, resultClass, isZeroDice }
  */
 export function evaluateResult(dice, isZeroDice = false) {
-    const sixes = dice.filter(d => d === 6).length;
+    const poolResult = evaluateDicePool(dice, isZeroDice);
 
-    // For 0d, take the worst (minimum); otherwise take the best (maximum)
-    const selectedValue = isZeroDice ? Math.min(...dice) : Math.max(...dice);
-    const selectedIndex = dice.indexOf(selectedValue);
+    // Map outcome to UI-friendly names
+    const outcomeMap = {
+        'Critical Success': { name: 'Critical!', class: 'critical' },
+        'Success': { name: 'Success', class: 'success' },
+        'Mixed': { name: 'Mixed', class: 'mixed' },
+        'Failure': { name: 'Failure', class: 'failure' }
+    };
 
-    let resultName, resultClass;
-
-    // Check for critical (only possible if not 0d and 2+ sixes)
-    if (!isZeroDice && sixes >= RESULT_THRESHOLDS.CRITICAL) {
-        resultName = 'Critical!';
-        resultClass = 'critical';
-    } else if (selectedValue <= RESULT_THRESHOLDS.FAILURE) {
-        resultName = 'Failure';
-        resultClass = 'failure';
-    } else if (selectedValue <= RESULT_THRESHOLDS.MIXED) {
-        resultName = 'Mixed';
-        resultClass = 'mixed';
-    } else {
-        resultName = 'Success';
-        resultClass = 'success';
-    }
+    const mapped = outcomeMap[poolResult.outcome] || { name: poolResult.outcome, class: 'failure' };
 
     return {
         dice,
-        selectedIndex,
-        selectedValue,
-        resultName,
-        resultClass,
+        selectedIndex: poolResult.selectedIndex,
+        selectedValue: poolResult.result,
+        resultName: mapped.name,
+        resultClass: mapped.class,
         isZeroDice
     };
 }
