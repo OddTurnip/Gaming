@@ -903,7 +903,7 @@ body.halloween-theme {
 
     /* Intense red button/header gradient */
     --button-gradient-start: #dc2626 !important;
-    --button-gradient-end: #991b1b !important;
+    --button-gradient-end: #5c0a0a !important;
     --button-shadow: rgba(220, 38, 38, 0.6) !important;
 
     /* Warm border tones - reds with hint of brown */
@@ -984,9 +984,9 @@ html.halloween-theme .result-display {
     box-shadow: 0 0 30px rgba(180, 83, 9, 0.5), 0 0 60px rgba(120, 53, 15, 0.4) !important;
 }
 
-/* Halloween theme: container with red edge, yellow ambient glow */
+/* Halloween theme: container with yellow ambient glow */
 html.halloween-theme .container {
-    box-shadow: 0 0 2px 1px rgba(220, 38, 38, 0.3), 0 0 40px rgba(251, 191, 36, 0.25), 0 25px 70px rgba(0, 0, 0, 0.8) !important;
+    box-shadow: 0 0 40px rgba(251, 191, 36, 0.25), 0 25px 70px rgba(0, 0, 0, 0.8) !important;
 }
 
 /* Halloween theme: Statistics label in red */
