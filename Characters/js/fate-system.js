@@ -4,6 +4,7 @@
  */
 
 import { createPopup, storeForTransfer, getTransferredData } from './shared.js';
+import { rollFateDie as rollFateDieFromLibrary } from '../../Dice/fate.js';
 
 // ============================================================================
 // Constants
@@ -109,15 +110,15 @@ export function usesIndividualStress(version) {
 }
 
 // ============================================================================
-// Fudge Dice Rolling
+// Fudge Dice Rolling (uses shared Dice library)
 // ============================================================================
 
 /**
- * Roll a single Fudge die
+ * Roll a single Fudge die (wrapper around shared dice library)
  * @returns {number} -1, 0, or +1
  */
 export function rollFudgeDie() {
-    return Math.floor(Math.random() * 3) - 1;
+    return rollFateDieFromLibrary().value;
 }
 
 /**

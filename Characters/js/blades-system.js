@@ -4,6 +4,7 @@
  */
 
 import { createPopup } from './shared.js';
+import { rollSingleDie } from '../../Dice/dice-library.js';
 
 // ============================================================================
 // Constants
@@ -28,15 +29,15 @@ export const RESULT_THRESHOLDS = {
 };
 
 // ============================================================================
-// Dice Rolling
+// Dice Rolling (uses shared Dice library)
 // ============================================================================
 
 /**
- * Roll a single d6
+ * Roll a single d6 (wrapper around shared dice library)
  * @returns {number} 1-6
  */
 export function rollD6() {
-    return Math.floor(Math.random() * 6) + 1;
+    return rollSingleDie(6);
 }
 
 /**
