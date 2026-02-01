@@ -1047,6 +1047,20 @@ body {
     white-space: nowrap;
 }
 
+/* Ensure labels in header have proper contrast */
+.header label,
+.header .theme-selector-wrapper label {
+    color: var(--text-white, white);
+}
+
+/* Style checkbox in header for visibility */
+.header input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--accent-primary, #667eea);
+    cursor: pointer;
+}
+
 .theme-selector {
     padding: 8px 10px;
     font-size: 0.9em;
