@@ -407,7 +407,7 @@ input[type="text"] {
 }
 
 /* Responsive design */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .container {
         padding: 25px;
     }
@@ -747,7 +747,7 @@ input[type="text"] {
 }
 
 /* Tarot responsive styles */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .cards-container {
         flex-direction: column;
     }
