@@ -5,6 +5,107 @@
 
 @import url('../Themes/themes.css');
 
+/* Controls section */
+.controls {
+    background: var(--bg-light, #f8f9fa);
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.control-group-inline {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.control-group-inline > label:first-child {
+    color: var(--text-primary, #333);
+    font-weight: 600;
+    margin-right: 8px;
+}
+
+/* Radio buttons styled as segmented control */
+.radio-label {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    background: var(--bg-white, white);
+    border: 2px solid var(--border-medium, #ddd);
+    border-radius: 6px;
+    cursor: pointer;
+    color: var(--text-secondary, #666);
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.radio-label:hover {
+    border-color: var(--accent-primary, #667eea);
+    background: var(--bg-hover, #f0f5ff);
+}
+
+.radio-label input[type="radio"] {
+    display: none;
+}
+
+.radio-label:has(input[type="radio"]:checked) {
+    background: linear-gradient(135deg, var(--button-gradient-start, #667eea) 0%, var(--button-gradient-end, #764ba2) 100%);
+    border-color: transparent;
+    color: var(--text-white, white);
+}
+
+/* Checkbox styling */
+.checkbox-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-primary, #333);
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--accent-primary, #667eea);
+    cursor: pointer;
+}
+
+/* New Reading button */
+.roll-button {
+    padding: 12px 30px;
+    font-size: 1.1em;
+    font-weight: 600;
+    background: linear-gradient(135deg, var(--button-gradient-start, #667eea) 0%, var(--button-gradient-end, #764ba2) 100%);
+    color: var(--text-white, white);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px var(--button-shadow, rgba(102, 126, 234, 0.4));
+}
+
+.roll-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px var(--button-shadow, rgba(102, 126, 234, 0.5));
+}
+
+.roll-button:active {
+    transform: translateY(0);
+}
+
 /* Tarot page styles */
 .cards-container {
     display: flex;
@@ -72,6 +173,17 @@
 
 .card-display:hover .card-image.reversed {
     transform: rotate(180deg) scale(1.05);
+}
+
+/* History section */
+.history-section {
+    margin-top: 30px;
+}
+
+.history-section h2 {
+    color: var(--heading-secondary, #444);
+    font-size: 1.3em;
+    margin-bottom: 15px;
 }
 
 /* History hand styling */
@@ -216,6 +328,30 @@
 
 /* Tarot responsive styles */
 @media (max-width: 600px) {
+    .controls {
+        padding: 15px;
+    }
+
+    .control-group-inline {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .control-group-inline > label:first-child {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+
+    .radio-label {
+        padding: 10px 14px;
+        font-size: 0.95em;
+    }
+
+    .roll-button {
+        width: 100%;
+        padding: 14px 20px;
+    }
+
     .cards-container {
         flex-direction: column;
     }
