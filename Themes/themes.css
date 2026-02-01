@@ -883,8 +883,8 @@ body.abyssal-theme {
     --bg-gradient-end: #0d0605 !important;
     --bg-gradient: linear-gradient(180deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
     --container-bg: rgba(12, 6, 6, 0.96) !important;
-    --result-gradient-start: #991b1b !important;
-    --result-gradient-end: #450a0a !important;
+    --result-gradient-start: #b45309 !important;
+    --result-gradient-end: #78350f !important;
 
     /* Red primary, orange secondary, yellow tertiary for variety */
     --heading-primary: #f87171 !important;
@@ -979,9 +979,9 @@ html.abyssal-theme .roll-button:hover {
     box-shadow: 0 0 25px rgba(185, 28, 28, 0.6), 0 0 50px rgba(249, 115, 22, 0.4), 0 5px 15px var(--button-shadow) !important;
 }
 
-/* Abyssal theme: result display with red/orange mixed glow */
+/* Abyssal theme: result display with orange glow */
 html.abyssal-theme .result-display {
-    box-shadow: 0 0 30px rgba(153, 27, 27, 0.5), 0 0 60px rgba(180, 83, 9, 0.3) !important;
+    box-shadow: 0 0 30px rgba(180, 83, 9, 0.5), 0 0 60px rgba(120, 53, 15, 0.4) !important;
 }
 
 /* Abyssal theme: container with subtle ember glow */
