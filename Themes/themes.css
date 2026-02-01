@@ -875,117 +875,118 @@ html.cyberpunk-theme .container {
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 30px rgba(139, 92, 246, 0.2), 0 0 60px rgba(0, 255, 255, 0.1) !important;
 }
 
-/* Abyssal Theme */
+/* Abyssal Theme - Fiery depths with oranges, reds, and yellows */
 html.abyssal-theme,
 html.abyssal-theme:root,
 body.abyssal-theme {
-    --bg-gradient-start: #030303 !important;
-    --bg-gradient-end: #0d0608 !important;
+    --bg-gradient-start: #0a0505 !important;
+    --bg-gradient-end: #1a0a00 !important;
     --bg-gradient: linear-gradient(180deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
-    --container-bg: rgba(10, 6, 6, 0.96) !important;
-    --result-gradient-start: #8b1a1a !important;
-    --result-gradient-end: #3d0a0a !important;
+    --container-bg: rgba(18, 8, 4, 0.96) !important;
+    --result-gradient-start: #b45309 !important;
+    --result-gradient-end: #7c2d12 !important;
 
-    /* Bright red headings instead of pink */
-    --heading-primary: #ff4040 !important;
-    --heading-secondary: #e53e3e !important;
-    --heading-tertiary: #c53030 !important;
-    --text-primary: #c9bfbf !important;
-    --text-secondary: #9a8e8e !important;
-    --text-light: #5c5252 !important;
-    --text-white: #fff5f5 !important;
+    /* Fiery headings - gold, orange, red */
+    --heading-primary: #fbbf24 !important;
+    --heading-secondary: #f97316 !important;
+    --heading-tertiary: #ea580c !important;
+    --text-primary: #d4c4b0 !important;
+    --text-secondary: #a89880 !important;
+    --text-light: #6b5c4a !important;
+    --text-white: #fffbeb !important;
 
-    /* Primary crimson with amber tertiary for variety */
-    --accent-primary: #e53e3e !important;
-    --accent-primary-dark: #b91c1c !important;
-    --accent-secondary: #f56565 !important;
-    --accent-tertiary: #92400e !important;
+    /* Orange and amber accents */
+    --accent-primary: #f97316 !important;
+    --accent-primary-dark: #c2410c !important;
+    --accent-secondary: #fb923c !important;
+    --accent-tertiary: #dc2626 !important;
 
-    --button-gradient-start: #a31515 !important;
-    --button-gradient-end: #5c0a0a !important;
-    --button-shadow: rgba(163, 21, 21, 0.6) !important;
+    /* Fiery button gradient - orange to deep red */
+    --button-gradient-start: #c2410c !important;
+    --button-gradient-end: #7c2d12 !important;
+    --button-shadow: rgba(194, 65, 12, 0.6) !important;
 
-    /* Varied border tones */
-    --border-light: #241818 !important;
-    --border-medium: #3a2222 !important;
-    --border-accent: #c53030 !important;
+    /* Warm border tones */
+    --border-light: #2a1a10 !important;
+    --border-medium: #3d2818 !important;
+    --border-accent: #ea580c !important;
 
-    /* Background variations with subtle warmth differences */
-    --bg-light: #0c0707 !important;
-    --bg-white: #160d0d !important;
-    --bg-hover: #221414 !important;
+    /* Background variations with warm ember tones */
+    --bg-light: #120a06 !important;
+    --bg-white: #1c1008 !important;
+    --bg-hover: #2a1810 !important;
 
-    --error-bg: #2d0808 !important;
-    --error-border: #f56565 !important;
-    --error-text: #feb2b2 !important;
+    --error-bg: #2d1008 !important;
+    --error-border: #f87171 !important;
+    --error-text: #fecaca !important;
 
-    --fate-die-bg: #3d0a0a !important;
+    --fate-die-bg: #451a03 !important;
 
-    --scrollbar-track: #0a0606 !important;
-    --scrollbar-thumb: #8b1a1a !important;
-    --scrollbar-thumb-hover: #a31515 !important;
+    --scrollbar-track: #120a06 !important;
+    --scrollbar-thumb: #b45309 !important;
+    --scrollbar-thumb-hover: #c2410c !important;
 
-    /* Close button with amber tint for variety */
-    --close-btn-bg: rgba(146, 64, 14, 0.15) !important;
-    --close-btn-bg-hover: rgba(146, 64, 14, 0.28) !important;
+    /* Close button with yellow accent */
+    --close-btn-bg: rgba(251, 191, 36, 0.12) !important;
+    --close-btn-bg-hover: rgba(251, 191, 36, 0.25) !important;
     --close-btn-color: #fbbf24 !important;
 
-    --link-hover-gradient-start: rgba(229, 62, 62, 0.08) !important;
-    --link-hover-gradient-end: rgba(185, 28, 28, 0.08) !important;
+    --link-hover-gradient-start: rgba(249, 115, 22, 0.1) !important;
+    --link-hover-gradient-end: rgba(194, 65, 12, 0.1) !important;
 
-    --history-border-shadow: rgba(197, 48, 48, 0.3) !important;
+    --history-border-shadow: rgba(249, 115, 22, 0.3) !important;
 
     --result-text-shadow: rgba(0, 0, 0, 0.8) !important;
 }
 
-/* Abyssal theme: solid ultra-dark background */
+/* Abyssal theme: dark background with subtle warm undertone */
 html.abyssal-theme body {
-    background: linear-gradient(180deg, #030303 0%, #0d0608 100%) !important;
+    background: linear-gradient(180deg, #0a0505 0%, #1a0a00 100%) !important;
 }
 
-/* Abyssal theme: dice styling with near-black background and bright red text */
+/* Abyssal theme: dice with orange glow */
 html.abyssal-theme .fate-die {
-    background-color: #080404 !important;
-    color: #ff4040 !important;
-    border: 2px solid #8b1a1a !important;
-    box-shadow: 0 0 10px rgba(139, 26, 26, 0.6) !important;
+    background-color: #0d0604 !important;
+    color: #fbbf24 !important;
+    border: 2px solid #b45309 !important;
+    box-shadow: 0 0 12px rgba(180, 83, 9, 0.6) !important;
 }
 
 html.abyssal-theme .die {
-    background-color: #080404 !important;
-    color: #ff4040 !important;
-    border: 2px solid #8b1a1a !important;
-    box-shadow: 0 0 10px rgba(139, 26, 26, 0.6) !important;
+    background-color: #0d0604 !important;
+    color: #fbbf24 !important;
+    border: 2px solid #b45309 !important;
+    box-shadow: 0 0 12px rgba(180, 83, 9, 0.6) !important;
 }
 
-/* Abyssal theme: dice highlights - bright for high, amber for low */
+/* Abyssal theme: dice highlights - yellow for high, red for low */
 html.abyssal-theme .die-highlight-high {
-    border: 3px solid #f56565 !important;
-    box-shadow: 0 0 14px #f56565, 0 2px 4px var(--shadow-primary) !important;
+    border: 3px solid #fbbf24 !important;
+    box-shadow: 0 0 16px #fbbf24, 0 2px 4px var(--shadow-primary) !important;
 }
 
 html.abyssal-theme .die-highlight-low {
-    border: 3px solid #b45309 !important;
-    box-shadow: 0 0 14px #b45309, 0 2px 4px var(--shadow-primary) !important;
+    border: 3px solid #dc2626 !important;
+    box-shadow: 0 0 16px #dc2626, 0 2px 4px var(--shadow-primary) !important;
 }
 
-/* Abyssal theme: button glow */
+/* Abyssal theme: fiery button glow */
 html.abyssal-theme .roll-button {
-    box-shadow: 0 0 18px rgba(163, 21, 21, 0.5), 0 0 35px rgba(92, 10, 10, 0.4) !important;
+    box-shadow: 0 0 20px rgba(194, 65, 12, 0.5), 0 0 40px rgba(124, 45, 18, 0.4) !important;
 }
 
 html.abyssal-theme .roll-button:hover {
-    box-shadow: 0 0 25px rgba(185, 28, 28, 0.7), 0 0 50px rgba(139, 26, 26, 0.5), 0 5px 15px var(--button-shadow) !important;
+    box-shadow: 0 0 30px rgba(249, 115, 22, 0.7), 0 0 60px rgba(194, 65, 12, 0.5), 0 5px 15px var(--button-shadow) !important;
 }
 
-/* Abyssal theme: result display with deep glow */
+/* Abyssal theme: result display with ember glow */
 html.abyssal-theme .result-display {
-    box-shadow: 0 0 25px rgba(139, 26, 26, 0.5), 0 0 50px rgba(61, 10, 10, 0.4) !important;
+    box-shadow: 0 0 30px rgba(180, 83, 9, 0.5), 0 0 60px rgba(124, 45, 18, 0.4) !important;
 }
 
-/* Abyssal theme: container with dark abyss glow */
+/* Abyssal theme: container with warm dark glow */
 html.abyssal-theme .container {
-    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8), 0 0 40px rgba(139, 26, 26, 0.12) !important;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8), 0 0 50px rgba(180, 83, 9, 0.1) !important;
 }
 
 /* ========================================
