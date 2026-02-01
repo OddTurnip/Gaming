@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Database Viewer</title>
     <link rel="icon" type="image/x-icon" href="odd_turnip.ico">
-    <link rel="stylesheet" href="../Dice/Style.css">
+    <link rel="stylesheet" href="../Themes/themes.css">
     <link rel="stylesheet" href="styles.css">
-    <script src="../Dice/theme-init.js"></script>
+    <script src="../Themes/theme-init.js"></script>
     <style>
         /* Page-specific styles */
 
@@ -471,8 +471,8 @@
     </script>
 
     <script type="module">
-        import { addThemeSelector } from '../Dice/theme-manager.js';
-        import { createSeasonalEffects } from '../Dice/snowflakes.js';
+        import { addThemeSelector } from '../Themes/theme-manager.js';
+        import { createSeasonalEffects } from '../Themes/snowflakes.js';
 
         window.createSeasonalEffects = createSeasonalEffects;
         document.addEventListener('DOMContentLoaded', addThemeSelector);

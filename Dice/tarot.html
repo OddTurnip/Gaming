@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="Style.css">
     <link rel="icon" href="../favicon.ico" type="image/x-icon">
     <!-- Apply theme immediately to prevent flash of unstyled content -->
-    <script src="theme-init.js"></script>
+    <script src="../Themes/theme-init.js"></script>
 </head>
 <body>
     <div class="container">
@@ -89,8 +89,8 @@
         // Import Tarot reading logic and history utilities
         import { performThreeCardSpread, formatTarotCard, getCardImagePath, getCardMeaning } from './tarot.js';
         import { createComplexHistoryEntry, addToHistory } from './history-log.js';
-        import { addThemeSelector } from './theme-manager.js';
-        import { createSeasonalEffects } from './snowflakes.js';
+        import { addThemeSelector } from '../Themes/theme-manager.js';
+        import { createSeasonalEffects } from '../Themes/snowflakes.js';
 
         // Make createSeasonalEffects available globally for the animated checkbox
         window.createSeasonalEffects = createSeasonalEffects;

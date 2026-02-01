@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gaming Tools</title>
-    <link rel="stylesheet" href="Dice/Style.css">
+    <link rel="stylesheet" href="Themes/themes.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <!-- Apply theme immediately to prevent flash of unstyled content -->
-    <script src="Dice/theme-init.js"></script>
+    <script src="Themes/theme-init.js"></script>
 </head>
 <body>
     <div class="container">
@@ -51,8 +51,8 @@
     </div>
 
     <script type="module">
-        import { addThemeSelector } from './Dice/theme-manager.js';
-        import { createSeasonalEffects } from './Dice/snowflakes.js';
+        import { addThemeSelector } from './Themes/theme-manager.js';
+        import { createSeasonalEffects } from './Themes/snowflakes.js';
 
         // Make createSeasonalEffects available globally for the animated checkbox
         window.createSeasonalEffects = createSeasonalEffects;
