@@ -875,6 +875,114 @@ html.cyberpunk-theme .container {
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 30px rgba(139, 92, 246, 0.2), 0 0 60px rgba(0, 255, 255, 0.1) !important;
 }
 
+/* Abyssal Theme */
+html.abyssal-theme,
+html.abyssal-theme:root,
+body.abyssal-theme {
+    --bg-gradient-start: #050505 !important;
+    --bg-gradient-end: #0a0808 !important;
+    --bg-gradient: linear-gradient(180deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+    --container-bg: rgba(12, 8, 8, 0.94) !important;
+    --result-gradient-start: #7f1d1d !important;
+    --result-gradient-end: #450a0a !important;
+
+    --heading-primary: #fca5a5 !important;
+    --heading-secondary: #f87171 !important;
+    --heading-tertiary: #dc2626 !important;
+    --text-primary: #d4c4c4 !important;
+    --text-secondary: #a89898 !important;
+    --text-light: #6b5555 !important;
+    --text-white: #fef2f2 !important;
+
+    --accent-primary: #dc2626 !important;
+    --accent-primary-dark: #991b1b !important;
+    --accent-secondary: #ef4444 !important;
+    --accent-tertiary: #7f1d1d !important;
+
+    --button-gradient-start: #991b1b !important;
+    --button-gradient-end: #450a0a !important;
+    --button-shadow: rgba(153, 27, 27, 0.6) !important;
+
+    --border-light: #2a1a1a !important;
+    --border-medium: #3d2525 !important;
+    --border-accent: #dc2626 !important;
+
+    --bg-light: #0f0a0a !important;
+    --bg-white: #1a1010 !important;
+    --bg-hover: #251515 !important;
+
+    --error-bg: #2a0a0a !important;
+    --error-border: #dc2626 !important;
+    --error-text: #fca5a5 !important;
+
+    --fate-die-bg: #450a0a !important;
+
+    --scrollbar-track: #0f0a0a !important;
+    --scrollbar-thumb: #991b1b !important;
+    --scrollbar-thumb-hover: #7f1d1d !important;
+
+    --close-btn-bg: rgba(220, 38, 38, 0.12) !important;
+    --close-btn-bg-hover: rgba(220, 38, 38, 0.22) !important;
+    --close-btn-color: #fca5a5 !important;
+
+    --link-hover-gradient-start: rgba(220, 38, 38, 0.06) !important;
+    --link-hover-gradient-end: rgba(153, 27, 27, 0.06) !important;
+
+    --history-border-shadow: rgba(220, 38, 38, 0.25) !important;
+
+    --result-text-shadow: rgba(0, 0, 0, 0.7) !important;
+}
+
+/* Abyssal theme: solid dark background */
+html.abyssal-theme body {
+    background: linear-gradient(180deg, #050505 0%, #0a0808 100%) !important;
+}
+
+/* Abyssal theme: dice styling with dark background and blood red text */
+html.abyssal-theme .fate-die {
+    background-color: #0a0505 !important;
+    color: #dc2626 !important;
+    border: 2px solid #7f1d1d !important;
+    box-shadow: 0 0 8px rgba(127, 29, 29, 0.5) !important;
+}
+
+html.abyssal-theme .die {
+    background-color: #0a0505 !important;
+    color: #dc2626 !important;
+    border: 2px solid #7f1d1d !important;
+    box-shadow: 0 0 8px rgba(127, 29, 29, 0.5) !important;
+}
+
+/* Abyssal theme: dice highlights with crimson and dark red */
+html.abyssal-theme .die-highlight-high {
+    border: 3px solid #ef4444 !important;
+    box-shadow: 0 0 12px #ef4444, 0 2px 4px var(--shadow-primary) !important;
+}
+
+html.abyssal-theme .die-highlight-low {
+    border: 3px solid #7f1d1d !important;
+    box-shadow: 0 0 12px #7f1d1d, 0 2px 4px var(--shadow-primary) !important;
+}
+
+/* Abyssal theme: subtle glow on buttons */
+html.abyssal-theme .roll-button {
+    box-shadow: 0 0 15px rgba(153, 27, 27, 0.4), 0 0 30px rgba(69, 10, 10, 0.3) !important;
+}
+
+html.abyssal-theme .roll-button:hover {
+    box-shadow: 0 0 20px rgba(153, 27, 27, 0.6), 0 0 40px rgba(127, 29, 29, 0.4), 0 5px 15px var(--button-shadow) !important;
+}
+
+/* Abyssal theme: result display with dark glow */
+html.abyssal-theme .result-display {
+    box-shadow: 0 0 20px rgba(127, 29, 29, 0.4), 0 0 40px rgba(69, 10, 10, 0.3) !important;
+}
+
+/* Abyssal theme: container with subtle dark border glow */
+html.abyssal-theme .container {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 30px rgba(127, 29, 29, 0.15) !important;
+}
+
 /* ========================================
    SHARED BASE STYLES
    These provide consistent styling across all pages
