@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Sheets</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a1a2e;
+            color: #eee;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: #fff;
+        }
+        .sheets {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            max-width: 900px;
+            width: 100%;
+        }
+        .card {
+            background: #252540;
+            border-radius: 12px;
+            padding: 24px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+        .card h2 {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+        }
+        .card p {
+            color: #aaa;
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+        .card-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .card-links a {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: background 0.15s;
+        }
+        .btn-primary {
+            background: #4a6cf7;
+            color: #fff;
+        }
+        .btn-primary:hover {
+            background: #3a5ce7;
+        }
+        .btn-secondary {
+            background: #3a3a55;
+            color: #ccc;
+        }
+        .btn-secondary:hover {
+            background: #4a4a65;
+            color: #fff;
+        }
+        /* Theme accents */
+        .card.blades { border-left: 4px solid #c9a227; }
+        .card.fate { border-left: 4px solid #2563eb; }
+        .card.gotham { border-left: 4px solid #8b1a1a; }
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            color: #888;
+            font-size: 0.9rem;
+        }
+        .footer a {
+            color: #4a6cf7;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .oddturnip-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 15px;
+            padding: 8px 15px;
+            background: #252540;
+            border: 2px solid #3a3a55;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #ccc;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .oddturnip-link:hover {
+            border-color: #4a6cf7;
+            background: #2a2a45;
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+        .oddturnip-link img {
+            height: 24px;
+            width: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Character Sheets</h1>
+    <div class="sheets">
+        <div class="card blades">
+            <h2>Blades in the Dark</h2>
+            <p>Daring scoundrels in a haunted industrial-fantasy city. Standard playbooks, actions, stress, harm, and the full BitD dice system.</p>
+            <div class="card-links">
+                <a href="Blades.html" class="btn-primary">Open Sheet</a>
+                <a href="https://bladesinthedark.com/greetings-scoundrel" class="btn-secondary" target="_blank">Official Site ↗</a>
+            </div>
+        </div>
+        <div class="card fate">
+            <h2>FATE WebApp</h2>
+            <p>Unified character management for FATE. Create individual sheets with the full character editor, then import them into the Group Tracker for GM use. Export/import characters between both tools.</p>
+            <div class="card-links">
+                <a href="Fate.html" class="btn-primary">Character Sheet</a>
+                <a href="FateGroup.html" class="btn-primary">Group Tracker</a>
+                <a href="https://fate-srd.com/" class="btn-secondary" target="_blank">FATE SRD ↗</a>
+            </div>
+        </div>
+        <div class="card gotham">
+            <h2>Gotham Reunion</h2>
+            <p>A Blades in the Dark hack with superhero powers in a noir Gotham setting. Features the training system and power attributes.</p>
+            <div class="card-links">
+                <a href="GothamReunion.html" class="btn-primary">Open Sheet</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <p>Made with <a href="https://claude.ai/code" target="_blank" rel="noopener noreferrer">Claude Code</a></p>
+        <div style="display: flex; justify-content: center; align-items: center; gap: 15px; flex-wrap: wrap;">
+            <a href="../index.html" class="oddturnip-link">← Gaming</a>
+            <a href="https://www.oddturnip.com" target="_blank" rel="noopener noreferrer" class="oddturnip-link">
+                <img src="../Names/odd_turnip.png" alt="OddTurnip Logo">
+                <span>OddTurnip.com</span>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

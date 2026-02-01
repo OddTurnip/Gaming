@@ -1,0 +1,714 @@
+/* FATE - Clean Modern Blue Theme */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Oswald:wght@400;500;600&display=swap');
+
+:root {
+    --bg: #f0f4f8;
+    --card: #ffffff;
+    --input: #f8fafc;
+    --accent: #2563eb;           /* FATE blue */
+    --accent-light: #60a5fa;
+    --accent-dark: #1d4ed8;
+    --success: #16a34a;
+    --danger: #dc2626;
+    --warning: #d97706;
+    --text: #1e293b;
+    --dim: #64748b;
+    --border: #cbd5e1;
+    --shadow: rgba(0, 0, 0, 0.1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font: 15px/1.5 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+.sheet { max-width: 1000px; margin: 0 auto; padding: 12px; }
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: var(--accent);
+    border-radius: 8px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 8px var(--shadow);
+}
+header h1 {
+    font: 600 1.8rem 'Oswald', sans-serif;
+    color: #fff;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+header #char-name {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    color: #fff;
+    font: 600 1.2rem 'Oswald', sans-serif;
+    padding: 6px 12px;
+    border-radius: 4px;
+    margin: 0 16px;
+}
+header #char-name::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+header #char-name:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.25);
+}
+.controls { display: flex; gap: 6px; align-items: center; }
+.controls button {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: #fff;
+    padding: 6px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: background 0.15s;
+}
+.controls button:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+#autosave-status { font-size: 12px; color: rgba(255, 255, 255, 0.8); font-style: italic; }
+
+/* Back to Group button */
+.back-link {
+    color: #fff;
+    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 4px;
+    font: 600 12px 'Open Sans', sans-serif;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+.back-link:hover {
+    background: rgba(255, 255, 255, 0.35);
+}
+
+/* Add to Group button */
+#add-to-group-btn {
+    background: rgba(22, 163, 74, 0.6);
+}
+#add-to-group-btn:hover {
+    background: rgba(22, 163, 74, 0.8);
+}
+
+/* Section headers */
+.section-header {
+    font: 600 13px 'Oswald', sans-serif;
+    color: #fff;
+    background: var(--accent);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: -12px -16px 12px -16px;
+    padding: 8px 16px;
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.section-controls {
+    display: flex;
+    gap: 4px;
+}
+.section-btn {
+    width: 22px;
+    height: 22px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s;
+}
+.section-btn:hover {
+    background: rgba(255, 255, 255, 0.35);
+}
+
+/* Common inputs */
+input[type="text"], textarea {
+    background: var(--input);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 6px 10px;
+    border-radius: 4px;
+    font: inherit;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+input[type="text"]:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+input[type="text"]::placeholder, textarea::placeholder {
+    color: var(--dim);
+    opacity: 0.7;
+}
+
+/* Checkboxes */
+input[type="checkbox"] {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: var(--input);
+    border: 2px solid var(--border);
+    border-radius: 4px;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all 0.15s;
+}
+input[type="checkbox"]:checked {
+    background: var(--accent);
+    border-color: var(--accent);
+}
+input[type="checkbox"]:checked::after {
+    content: '✓';
+    display: block;
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+    line-height: 14px;
+}
+
+/* Aspects */
+.aspects-section {
+    background: var(--card);
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 4px var(--shadow);
+}
+.aspects-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.aspect-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.aspect-label {
+    width: 100px;
+    font-weight: 600;
+    color: var(--dim);
+    font-size: 13px;
+}
+.aspect-row input {
+    flex: 1;
+    font-size: 14px;
+}
+
+/* Main Two-Column Layout */
+.main-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+.left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.left-column section {
+    margin-bottom: 0;
+}
+
+/* Fate Points */
+.fate-points-section {
+    background: var(--card);
+    padding: 12px 16px;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px var(--shadow);
+}
+.fate-points-row {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+}
+.fate-current, .fate-refresh {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.fate-label {
+    font-weight: 600;
+    color: var(--dim);
+    font-size: 13px;
+    text-transform: uppercase;
+}
+.fate-counter {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.fate-counter span {
+    font: 700 24px 'Oswald', sans-serif;
+    color: var(--accent);
+    min-width: 32px;
+    text-align: center;
+}
+.fate-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--input);
+    border: 2px solid var(--border);
+    color: var(--text);
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.fate-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+.fate-btn:active {
+    background: var(--accent);
+    color: #fff;
+}
+
+/* Stress & Consequences Row */
+.stress-consequences-row {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+/* Stress Section */
+.stress-section {
+    background: var(--card);
+    padding: 12px 16px;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px var(--shadow);
+}
+
+/* Consequences Section */
+.consequences-section {
+    background: var(--card);
+    padding: 12px 16px;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px var(--shadow);
+}
+
+/* Skills */
+.skills-section {
+    background: var(--card);
+    padding: 12px 16px;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px var(--shadow);
+}
+.skills-grid {
+    display: flex;
+    gap: 16px;
+}
+.skills-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.skill {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 0;
+}
+.skill span {
+    font-weight: 600;
+    color: var(--text);
+    font-size: 13px;
+}
+.skill span.rollable {
+    cursor: pointer;
+    transition: color 0.15s;
+}
+.skill span.rollable:hover {
+    color: var(--accent);
+    text-decoration: underline;
+}
+
+/* Skill rating - uses shared .track > b from controls.css */
+.skill-rating {
+    display: flex;
+    gap: 3px;
+    --box-size: 20px;
+    --box-font-size: 10px;
+    --box-hover-color: var(--accent-light);
+}
+
+/* Approaches (Accelerated) */
+.approaches-section {
+    background: var(--card);
+    padding: 12px 16px;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px var(--shadow);
+}
+.approaches-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.approach {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+}
+.approach span {
+    font-weight: 600;
+    color: var(--text);
+    font-size: 18px;
+}
+.approach span.rollable {
+    cursor: pointer;
+    transition: color 0.15s;
+}
+.approach span.rollable:hover {
+    color: var(--accent);
+    text-decoration: underline;
+}
+/* Approach rating - uses shared track styles, just set size */
+.approach-rating {
+    display: flex;
+    gap: 5px;
+    --box-size: 28px;
+    --box-font-size: 12px;
+    --box-hover-color: var(--accent-light);
+}
+
+/* Stunts */
+.stunts-section {
+    background: var(--card);
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 4px var(--shadow);
+}
+.stunts-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.stunt-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+.stunt-row input[type="text"] {
+    flex: 1;
+    font-size: 14px;
+}
+.stunt-row textarea {
+    flex: 2;
+    min-height: 32px;
+    font-size: 13px;
+    resize: vertical;
+}
+
+/* Stress & Consequences */
+.stress-tracks {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.stress-track-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.stress-label {
+    width: 70px;
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--dim);
+}
+/* Stress boxes - uses shared track styles with danger color */
+.stress-boxes {
+    display: flex;
+    gap: 6px;
+    --box-size: 32px;
+    --box-font-size: 14px;
+    --box-hover-color: var(--danger);
+    --box-fill-color: var(--danger);
+}
+
+/* Consequences */
+.consequences-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.consequence-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.consequence-level {
+    width: 90px;
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--dim);
+}
+.consequence-row input[type="text"] {
+    flex: 1;
+    font-size: 14px;
+}
+
+/* Extras */
+.extras-section {
+    background: var(--card);
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 4px var(--shadow);
+}
+.extras-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.extra-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.extra-row input {
+    flex: 1;
+    font-size: 14px;
+}
+
+/* Notes */
+.notes-section {
+    background: var(--card);
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 4px var(--shadow);
+}
+.notes-section textarea {
+    width: 100%;
+    min-height: 80px;
+    resize: vertical;
+    font-size: 14px;
+}
+
+/* Alternate Rules */
+.alt-rules-section {
+    background: var(--card);
+    padding: 12px 16px;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px var(--shadow);
+}
+.alt-rules-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.alt-rule {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+.alt-rule span {
+    color: var(--text);
+}
+
+/* Dice Roll Popup */
+.dice-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.15s ease-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.dice-popup {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 20px 28px;
+    min-width: 300px;
+    max-width: 420px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    animation: popIn 0.2s ease-out;
+    position: relative;
+}
+@keyframes popIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+.dice-popup-title {
+    font: 600 18px 'Oswald', sans-serif;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 16px;
+    padding-right: 24px;
+}
+.dice-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+.fudge-die {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    background: var(--input);
+    border: 2px solid var(--border);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font: 700 28px 'Oswald', sans-serif;
+    transition: transform 0.15s;
+}
+.fudge-die.plus { color: var(--success); border-color: var(--success); }
+.fudge-die.minus { color: var(--danger); border-color: var(--danger); }
+.fudge-die.blank { color: var(--dim); }
+.dice-total {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+.dice-total-dice {
+    font: 700 32px 'Oswald', sans-serif;
+}
+.dice-total-dice.positive { color: var(--success); }
+.dice-total-dice.negative { color: var(--danger); }
+.dice-total-dice.zero { color: var(--dim); }
+.dice-total-plus {
+    font: 700 24px 'Oswald', sans-serif;
+    color: var(--dim);
+}
+.dice-total-modifier {
+    font: 700 32px 'Oswald', sans-serif;
+    color: var(--accent);
+}
+.dice-total-equals {
+    font: 700 24px 'Oswald', sans-serif;
+    color: var(--dim);
+}
+.dice-total-final {
+    font: 700 40px 'Oswald', sans-serif;
+    color: var(--text);
+    background: var(--input);
+    padding: 4px 16px;
+    border-radius: 8px;
+    border: 2px solid var(--border);
+}
+.dice-ladder {
+    font: 600 16px 'Oswald', sans-serif;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 16px;
+    padding: 8px 16px;
+    background: rgba(37, 99, 235, 0.1);
+    border-radius: 6px;
+}
+.dice-invoke-section {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+.dice-invoke-btn {
+    background: var(--card);
+    border: 2px solid var(--accent);
+    color: var(--accent);
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 6px;
+    font: 600 13px 'Open Sans', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    transition: all 0.15s;
+}
+.dice-invoke-btn:hover:not(:disabled) {
+    background: var(--accent);
+    color: #fff;
+}
+.dice-invoke-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+.dice-invoke-counter {
+    font: 600 13px 'Open Sans', sans-serif;
+    color: var(--dim);
+    margin-bottom: 8px;
+}
+.dice-popup-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: transparent;
+    border: none;
+    color: var(--dim);
+    padding: 4px;
+    cursor: pointer;
+    font-size: 18px;
+    opacity: 0.7;
+    transition: opacity 0.15s;
+}
+.dice-popup-close:hover { opacity: 1; }
+
+/* Responsive */
+@media (max-width: 800px) {
+    .main-layout { grid-template-columns: 1fr; }
+    .skills-grid { flex-direction: column; gap: 0; }
+    .stress-consequences-row { grid-template-columns: 1fr; }
+}
+
+/* Touch-friendly targets - sheet-specific overrides only */
+/* Base track sizes handled by controls.css */
+@media (pointer: coarse) {
+    .fate-btn {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+/* Print */
+@media print {
+    body { background: #fff; }
+    .controls { display: none; }
+    .sheet { max-width: 100%; }
+    header { background: #fff; border: 2px solid var(--accent); }
+    header h1 { color: var(--accent); }
+    section {
+        background: #fff;
+        border: 1px solid #ccc;
+        box-shadow: none;
+    }
+}

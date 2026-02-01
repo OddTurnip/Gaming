@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FATE - Character Sheet</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="controls.css">
+    <link rel="stylesheet" href="fate-shared.css">
+    <link rel="stylesheet" href="fate.css">
+</head>
+<body>
+    <div class="sheet">
+        <header>
+            <h1>FATE</h1>
+            <input type="text" id="char-name" data-field="name" placeholder="Character Name">
+            <div class="controls">
+                <button id="back-to-group" class="back-link" style="display: none;">&#x2190; Back to Group</button>
+                <span id="autosave-status"></span>
+                <button id="save-btn" title="Save to file">Export</button>
+                <button id="add-to-group-btn" title="Add to Group Tracker" style="display: none;">Add to Group</button>
+                <button id="load-btn" title="Load from file">Import</button>
+                <input type="file" id="load-file" accept=".json,.char.json" hidden>
+                <button id="clear-btn" title="Clear all">Clear</button>
+            </div>
+        </header>
+
+        <!-- Main Two-Column Layout -->
+        <div class="main-layout">
+            <!-- Left Column: Aspects, Fate Points -->
+            <div class="left-column">
+                <!-- Aspects -->
+                <section class="aspects-section">
+                    <div class="section-header">ASPECTS</div>
+                    <div class="aspects-grid">
+                        <div class="aspect-row">
+                            <span class="aspect-label">High Concept</span>
+                            <input type="text" id="aspect-high-concept" data-field="highConcept" placeholder="Your core identity...">
+                        </div>
+                        <div class="aspect-row">
+                            <span class="aspect-label">Trouble</span>
+                            <input type="text" id="aspect-trouble" data-field="trouble" placeholder="What complicates your life...">
+                        </div>
+                        <div class="aspect-row">
+                            <span class="aspect-label">Aspect 3</span>
+                            <input type="text" id="aspect-3" data-field="aspect3" placeholder="Another aspect...">
+                        </div>
+                        <div class="aspect-row">
+                            <span class="aspect-label">Aspect 4</span>
+                            <input type="text" id="aspect-4" data-field="aspect4" placeholder="Another aspect...">
+                        </div>
+                        <div class="aspect-row">
+                            <span class="aspect-label">Aspect 5</span>
+                            <input type="text" id="aspect-5" data-field="aspect5" placeholder="Another aspect...">
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Fate Points -->
+                <section class="fate-points-section">
+                    <div class="section-header">FATE POINTS</div>
+                    <div class="fate-points-row">
+                        <div class="fate-current">
+                            <span class="fate-label">Current</span>
+                            <div class="fate-counter">
+                                <button class="fate-btn minus">−</button>
+                                <span id="fate-current-value">3</span>
+                                <button class="fate-btn plus">+</button>
+                            </div>
+                        </div>
+                        <div class="fate-refresh">
+                            <span class="fate-label">Refresh</span>
+                            <div class="fate-counter">
+                                <button class="fate-btn minus">−</button>
+                                <span id="fate-refresh-value">3</span>
+                                <button class="fate-btn plus">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Right Column: Skills (Core/Condensed) -->
+            <section class="skills-section" id="skills-section">
+                <div class="section-header">SKILLS</div>
+                <div class="skills-grid">
+                    <div class="skills-column">
+                        <div class="skill"><span class="rollable" data-skill="academics">Academics</span><div class="skill-rating" data-skill-rating="academics"><b></b><b></b><b></b><b></b><b></b></div></div>
+                        <div class="skill"><span class="rollable" data-skill="athletics">Athletics</span><div class="skill-rating" data-skill-rating="athletics"><b></b><b></b><b></b><b></b><b></b></div></div>
+                        <div class="skill"><span class="rollable" data-skill="burglary">Burglary</span><div class="skill-rating" data-skill-rating="burglary"><b></b><b></b><b></b><b></b><b></b></div></div>
+                        <div class="skill"><span class="rollable" data-skill="contacts">Contacts</span><div class="skill-rating" data-skill-rating="contacts"><b></b><b></b><b></b><b></b><b></b></div></div>
+                        <div class="skill"><span class="rollable" data-skill="crafts">Crafts</span><div class="skill-rating" data-skill-rating="crafts"><b></b><b></b><b></b><b></b><b></b></div></div>
+                        <div class="skill"><span class="rollable" data-skill="deceive">Deceive</span><div class="skill-rating" data-skill-rating="deceive"><b></b><b></b><b></b><b></b><b></b></div></div>
+                        <div class="skill"><span class="rollable" data-skill="drive">Drive</span><div class="skill-rating" data-skill-rating="drive"><b></b><b></b><b></b><b></b><b></b></div></div>
+                        <div class="skill"><span class="rollable" data-skill="empathy">Empathy</span><div class="skill-rating" data-skill-rating="empathy"><b></b><b></b><b></b><b></b><b></b></div></div>
+                        <div class="skill"><span class="rollable" data-skill="fight">Fight</span><div class="skill-rating" data-skill-rating="fight"><b></b><b></b><b></b><b></b><b></b></div></div>
+                        <div class="skill"><span class="rollable" data-skill="investigate">Investigate</span><div class="skill-rating" data-skill-rating="investigate"><b></b><b></b><b></b><b></b><b></b></div></div>
+                    </div>
+                    <div class="skills-column">
+                        <div class="skill"><span class="rollable" data-skill="lore">Lore</span><div class="skill-rating" data-skill-rating="lore"><b></b><b></b><b></b><b></b><b></b></div></div>
+                        <div class="skill"><span class="rollable" data-skill="notice">Notice</span><div class="skill-rating" data-skill-rating="notice"><b></b><b></b><b></b><b></b><b></b></div></div>
+                        <div class="skill"><span class="rollable" data-skill="physique">Physique</span><div class="skill-rating" data-skill-rating="physique"><b></b><b></b><b></b><b></b><b></b></div></div>
+                        <div class="skill"><span class="rollable" data-skill="provoke">Provoke</span><div class="skill-rating" data-skill-rating="provoke"><b></b><b></b><b></b><b></b><b></b></div></div>
+                        <div class="skill"><span class="rollable" data-skill="rapport">Rapport</span><div class="skill-rating" data-skill-rating="rapport"><b></b><b></b><b></b><b></b><b></b></div></div>
+                        <div class="skill"><span class="rollable" data-skill="resources">Resources</span><div class="skill-rating" data-skill-rating="resources"><b></b><b></b><b></b><b></b><b></b></div></div>
+                        <div class="skill"><span class="rollable" data-skill="shoot">Shoot</span><div class="skill-rating" data-skill-rating="shoot"><b></b><b></b><b></b><b></b><b></b></div></div>
+                        <div class="skill"><span class="rollable" data-skill="stealth">Stealth</span><div class="skill-rating" data-skill-rating="stealth"><b></b><b></b><b></b><b></b><b></b></div></div>
+                        <div class="skill"><span class="rollable" data-skill="will">Will</span><div class="skill-rating" data-skill-rating="will"><b></b><b></b><b></b><b></b><b></b></div></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Column: Approaches (Accelerated) -->
+            <section class="approaches-section" id="approaches-section" style="display: none;">
+                <div class="section-header">APPROACHES</div>
+                <div class="approaches-grid">
+                    <div class="approach"><span class="rollable" data-approach="careful">Careful</span><div class="approach-rating" data-approach-rating="careful"><b></b><b></b><b></b><b></b><b></b></div></div>
+                    <div class="approach"><span class="rollable" data-approach="clever">Clever</span><div class="approach-rating" data-approach-rating="clever"><b></b><b></b><b></b><b></b><b></b></div></div>
+                    <div class="approach"><span class="rollable" data-approach="flashy">Flashy</span><div class="approach-rating" data-approach-rating="flashy"><b></b><b></b><b></b><b></b><b></b></div></div>
+                    <div class="approach"><span class="rollable" data-approach="forceful">Forceful</span><div class="approach-rating" data-approach-rating="forceful"><b></b><b></b><b></b><b></b><b></b></div></div>
+                    <div class="approach"><span class="rollable" data-approach="quick">Quick</span><div class="approach-rating" data-approach-rating="quick"><b></b><b></b><b></b><b></b><b></b></div></div>
+                    <div class="approach"><span class="rollable" data-approach="sneaky">Sneaky</span><div class="approach-rating" data-approach-rating="sneaky"><b></b><b></b><b></b><b></b><b></b></div></div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Stunts -->
+        <section class="stunts-section">
+            <div class="section-header">STUNTS <span class="section-controls"><button class="section-btn" id="stunt-remove">−</button><button class="section-btn" id="stunt-add">+</button></span></div>
+            <div class="stunts-grid">
+            </div>
+        </section>
+
+        <!-- Stress & Consequences Row -->
+        <div class="stress-consequences-row">
+            <section class="stress-section">
+                <div class="section-header">STRESS</div>
+                <div class="stress-tracks">
+                    <div class="stress-track-row">
+                        <span class="stress-label">Physical</span>
+                        <div class="stress-boxes" id="physical-stress">
+                            <b></b><b></b>
+                        </div>
+                    </div>
+                    <div class="stress-track-row">
+                        <span class="stress-label">Mental</span>
+                        <div class="stress-boxes" id="mental-stress">
+                            <b></b><b></b>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="consequences-section">
+                <div class="section-header">CONSEQUENCES</div>
+                <div class="consequences-grid">
+                    <div class="consequence-row">
+                        <span class="consequence-level">Mild (2)</span>
+                        <input type="text" data-consequence="mild" placeholder="Consequence...">
+                    </div>
+                    <div class="consequence-row extra-consequence" id="mild-physical-row" style="display: none;">
+                        <span class="consequence-level">(Physical) (2)</span>
+                        <input type="text" data-consequence="mild-physical" placeholder="Physical only...">
+                    </div>
+                    <div class="consequence-row extra-consequence" id="mild-mental-row" style="display: none;">
+                        <span class="consequence-level">(Mental) (2)</span>
+                        <input type="text" data-consequence="mild-mental" placeholder="Mental only...">
+                    </div>
+                    <div class="consequence-row">
+                        <span class="consequence-level">Moderate (4)</span>
+                        <input type="text" data-consequence="moderate" placeholder="Consequence...">
+                    </div>
+                    <div class="consequence-row">
+                        <span class="consequence-level">Severe (6)</span>
+                        <input type="text" data-consequence="severe" placeholder="Consequence...">
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Extras -->
+        <section class="extras-section">
+            <div class="section-header">EXTRAS</div>
+            <div class="extras-grid">
+                <!-- Dynamic extra rows managed by JS -->
+            </div>
+        </section>
+
+        <!-- Notes -->
+        <section class="notes-section">
+            <div class="section-header">NOTES</div>
+            <textarea id="notes" data-field="notes" placeholder="Notes..."></textarea>
+        </section>
+
+        <!-- Alternate Rules -->
+        <section class="alt-rules-section">
+            <div class="section-header">ALTERNATE RULES</div>
+            <div class="alt-rules-grid">
+                <label class="alt-rule">
+                    <input type="radio" name="fate-version" id="fate-core" value="core">
+                    <span>Core (Skills + stronger Stress Boxes)</span>
+                </label>
+                <label class="alt-rule">
+                    <input type="radio" name="fate-version" id="fate-condensed" value="condensed" checked>
+                    <span>Condensed (Core Skills + Accelerated Stress Boxes)</span>
+                </label>
+                <label class="alt-rule">
+                    <input type="radio" name="fate-version" id="fate-accelerated" value="accelerated">
+                    <span>Accelerated (Approaches + simplified Stress Boxes)</span>
+                </label>
+            </div>
+        </section>
+    </div>
+
+    <script type="module" src="js/fate.js"></script>
+</body>
+</html>

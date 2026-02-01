@@ -11,6 +11,48 @@
 import { rollSingleDie } from './dice-library.js';
 
 /**
+ * Roll a single d6
+ * @returns {number} 1-6
+ */
+export function rollD6() {
+    return rollSingleDie(6);
+}
+
+/**
+ * Evaluate a dice pool result (for interactive bonus dice scenarios)
+ * @param {number[]} dice - Array of die values
+ * @param {boolean} isZeroDice - True if taking worst instead of best
+ * @returns {Object} { result, outcome, isCritical, selectedIndex }
+ */
+export function evaluateDicePool(dice, isZeroDice = false) {
+    const sixCount = dice.filter(d => d === 6).length;
+    const result = isZeroDice ? Math.min(...dice) : Math.max(...dice);
+    const isCritical = !isZeroDice && sixCount >= 2;
+    const outcome = getOutcome(result, isCritical);
+
+    // Find the index of the selected die (first occurrence)
+    const selectedIndex = dice.indexOf(result);
+
+    return {
+        result,
+        outcome,
+        isCritical,
+        selectedIndex
+    };
+}
+
+/**
+ * Get CSS class for a die value
+ * @param {number} value - Die value 1-6
+ * @returns {string} CSS class name
+ */
+export function getDieClass(value) {
+    if (value <= 3) return 'failure';
+    if (value <= 5) return 'mixed';
+    return 'success';
+}
+
+/**
  * Roll a Blades in the Dark dice pool
  * @param {number} numDice - Number of dice to roll (0-6 typically)
  * @returns {Object} - { rolls: number[], result: number, outcome: string, isZeroDice: boolean, isCritical: boolean }

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blades in the Dark - Character Sheet</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="controls.css">
+    <link rel="stylesheet" href="blades.css">
+</head>
+<body>
+    <div class="sheet">
+        <header>
+            <h1>Blades in the Dark</h1>
+            <div class="controls">
+                <span id="autosave-status"></span>
+                <button id="save-btn" title="Save to file">💾</button>
+                <button id="load-btn" title="Load from file">📂</button>
+                <input type="file" id="load-file" accept=".json" hidden>
+                <button id="clear-btn" title="Clear all">🗑️</button>
+            </div>
+        </header>
+
+        <!-- Character Info -->
+        <section class="info-section">
+            <input type="text" id="char-name" data-field="name" placeholder="Name">
+            <input type="text" id="char-alias" data-field="alias" placeholder="Alias">
+            <select id="char-playbook" data-field="playbook">
+                <option value="">Playbook...</option>
+                <option value="cutter">Cutter</option>
+                <option value="hound">Hound</option>
+                <option value="leech">Leech</option>
+                <option value="lurk">Lurk</option>
+                <option value="slide">Slide</option>
+                <option value="spider">Spider</option>
+                <option value="whisper">Whisper</option>
+            </select>
+            <input type="text" id="char-crew" data-field="crew" placeholder="Crew">
+        </section>
+
+        <section class="info-section">
+            <input type="text" id="char-heritage" data-field="heritage" placeholder="Heritage">
+            <input type="text" id="char-background" data-field="background" placeholder="Background">
+            <input type="text" id="char-vice" data-field="vice" placeholder="Vice">
+            <input type="text" id="char-look" data-field="look" placeholder="Look">
+        </section>
+
+        <!-- Actions Row -->
+        <section class="actions-row">
+            <div class="attr-block">
+                <div class="attr-header">
+                    <span>INSIGHT</span>
+                    <div class="xp-track" data-xp="insight"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                </div>
+                <div class="action"><span>Hunt</span><div class="dots" data-action="hunt"><b></b><b></b><b></b><b></b></div></div>
+                <div class="action"><span>Study</span><div class="dots" data-action="study"><b></b><b></b><b></b><b></b></div></div>
+                <div class="action"><span>Survey</span><div class="dots" data-action="survey"><b></b><b></b><b></b><b></b></div></div>
+                <div class="action"><span>Tinker</span><div class="dots" data-action="tinker"><b></b><b></b><b></b><b></b></div></div>
+            </div>
+            <div class="attr-block">
+                <div class="attr-header">
+                    <span>PROWESS</span>
+                    <div class="xp-track" data-xp="prowess"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                </div>
+                <div class="action"><span>Finesse</span><div class="dots" data-action="finesse"><b></b><b></b><b></b><b></b></div></div>
+                <div class="action"><span>Prowl</span><div class="dots" data-action="prowl"><b></b><b></b><b></b><b></b></div></div>
+                <div class="action"><span>Skirmish</span><div class="dots" data-action="skirmish"><b></b><b></b><b></b><b></b></div></div>
+                <div class="action"><span>Wreck</span><div class="dots" data-action="wreck"><b></b><b></b><b></b><b></b></div></div>
+            </div>
+            <div class="attr-block">
+                <div class="attr-header">
+                    <span>RESOLVE</span>
+                    <div class="xp-track" data-xp="resolve"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                </div>
+                <div class="action"><span>Attune</span><div class="dots" data-action="attune"><b></b><b></b><b></b><b></b></div></div>
+                <div class="action"><span>Command</span><div class="dots" data-action="command"><b></b><b></b><b></b><b></b></div></div>
+                <div class="action"><span>Consort</span><div class="dots" data-action="consort"><b></b><b></b><b></b><b></b></div></div>
+                <div class="action"><span>Sway</span><div class="dots" data-action="sway"><b></b><b></b><b></b><b></b></div></div>
+            </div>
+        </section>
+
+        <!-- Harm/Stress/Trauma Section -->
+        <section class="harm-section">
+            <div class="harm-block">
+                <div class="section-header">HARM</div>
+                <div class="harm-grid">
+                    <div class="harm-row">
+                        <span class="harm-level">3</span>
+                        <input type="text" data-harm="3-1" placeholder="Need Help">
+                    </div>
+                    <div class="harm-row">
+                        <span class="harm-level">2</span>
+                        <input type="text" data-harm="2-1" placeholder="-1d">
+                        <input type="text" data-harm="2-2" placeholder="-1d">
+                    </div>
+                    <div class="harm-row">
+                        <span class="harm-level">1</span>
+                        <input type="text" data-harm="1-1" placeholder="Less Effect">
+                        <input type="text" data-harm="1-2" placeholder="Less Effect">
+                    </div>
+                </div>
+            </div>
+            <div class="status-column">
+                <div class="stress-block">
+                    <div class="section-header">STRESS</div>
+                    <div class="stress-track" id="stress-track">
+                        <b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b>
+                    </div>
+                </div>
+                <div class="trauma-block">
+                    <div class="section-header">TRAUMA</div>
+                    <div class="trauma-row">
+                        <div class="trauma-boxes" id="trauma-track"><b></b><b></b><b></b><b></b></div>
+                        <input type="text" id="trauma-list" data-field="traumaList" placeholder="Cold, Haunted, Obsessed...">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Healing/Armor/Load Row -->
+        <div class="main-content-row">
+            <section class="healing-section">
+                <div class="section-header">HEALING</div>
+                <div class="healing-track" id="healing-track"><b></b><b></b><b></b><b></b></div>
+            </section>
+            <section class="armor-block">
+                <div class="section-header">ARMOR</div>
+                <div class="armor-checkboxes">
+                    <label><input type="checkbox" id="armor-armor" data-armor="armor"> Armor</label>
+                    <label><input type="checkbox" id="armor-heavy" data-armor="heavy"> Heavy</label>
+                    <label><input type="checkbox" id="armor-special" data-armor="special"> Special</label>
+                </div>
+            </section>
+            <div class="load-block">
+                <div class="section-header">
+                    LOAD
+                    <span class="load-options">
+                        <label><input type="radio" name="load" value="light" checked><span>3</span></label>
+                        <label><input type="radio" name="load" value="normal"><span>5</span></label>
+                        <label><input type="radio" name="load" value="heavy"><span>6</span></label>
+                    </span>
+                </div>
+                <div class="load-track" id="load-track">
+                    <!-- Load boxes generated by JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Abilities/Contacts Row -->
+        <div class="abilities-contacts-row">
+            <section class="abilities-section">
+                <div class="section-header">
+                    <span>SPECIAL ABILITIES</span>
+                    <div class="playbook-xp-track" data-xp="playbook">
+                        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+                    </div>
+                </div>
+                <div class="abilities-grid">
+                    <!-- Dynamic rows managed by JS -->
+                </div>
+            </section>
+            <section class="contacts-block">
+                <div class="section-header">CONTACTS</div>
+                <!-- Dynamic contact rows managed by JS -->
+            </section>
+        </div>
+
+        <!-- Notes -->
+        <section class="notes-section">
+            <div class="section-header">NOTES</div>
+            <textarea id="notes" data-field="notes" placeholder="Notes..."></textarea>
+        </section>
+    </div>
+
+    <script type="module" src="js/blades.js"></script>
+</body>
+</html>

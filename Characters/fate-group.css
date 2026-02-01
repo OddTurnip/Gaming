@@ -1,0 +1,758 @@
+/* FATE Group Tracker - Compact Column Layout */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Oswald:wght@400;500;600&display=swap');
+
+:root {
+    --bg: #f0f4f8;
+    --card: #ffffff;
+    --input: #f8fafc;
+    --accent: #2563eb;
+    --accent-light: #60a5fa;
+    --accent-dark: #1d4ed8;
+    --success: #16a34a;
+    --danger: #dc2626;
+    --warning: #d97706;
+    --text: #1e293b;
+    --dim: #64748b;
+    --border: #cbd5e1;
+    --shadow: rgba(0, 0, 0, 0.1);
+
+    --column-width: 220px;
+    --column-gap: 12px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font: 13px/1.4 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+.tracker {
+    padding: 12px;
+    max-width: 100%;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px;
+    background: var(--accent);
+    border-radius: 8px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 8px var(--shadow);
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+header h1 {
+    font: 600 1.4rem 'Oswald', sans-serif;
+    color: #fff;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.controls {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.controls button {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: #fff;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    font: 600 12px 'Open Sans', sans-serif;
+    transition: background 0.15s;
+}
+
+.controls button:hover {
+    background: rgba(255, 255, 255, 0.35);
+}
+
+/* New Turn Button */
+#new-turn-btn {
+    background: rgba(100, 116, 139, 0.5);
+    font-weight: 700;
+    opacity: 0.7;
+    transition: all 0.2s;
+}
+
+#new-turn-btn:hover {
+    background: rgba(100, 116, 139, 0.7);
+}
+
+#new-turn-btn.ready {
+    background: var(--success);
+    opacity: 1;
+    animation: pulse-green 1.5s ease-in-out infinite;
+}
+
+#new-turn-btn.ready:hover {
+    background: #15803d;
+}
+
+@keyframes pulse-green {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.6); }
+    50% { box-shadow: 0 0 8px 2px rgba(22, 163, 74, 0.4); }
+}
+
+#add-char-btn {
+    background: rgba(255, 255, 255, 0.3);
+    font-weight: 700;
+}
+
+#add-char-btn:hover {
+    background: rgba(255, 255, 255, 0.35);
+}
+
+#import-char-btn {
+    background: rgba(255, 255, 255, 0.3);
+    font-weight: 700;
+}
+
+#import-char-btn:hover {
+    background: rgba(255, 255, 255, 0.35);
+}
+
+#add-npc-btn {
+    background: rgba(220, 38, 38, 0.6);
+    font-weight: 700;
+}
+
+#add-npc-btn:hover {
+    background: rgba(220, 38, 38, 0.8);
+}
+
+
+
+#autosave-status {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.8);
+    font-style: italic;
+}
+
+/* Rules Toggle */
+.rules-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.rules-toggle select {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font: 600 12px 'Open Sans', sans-serif;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    padding-right: 28px;
+}
+
+.rules-toggle select:hover {
+    background-color: rgba(255, 255, 255, 0.35);
+}
+
+.rules-toggle select:focus {
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.35);
+}
+
+.rules-toggle select option {
+    background: var(--accent);
+    color: #fff;
+}
+
+/* Characters Container - Horizontal Scroll */
+.characters-container {
+    display: flex;
+    gap: var(--column-gap);
+    overflow-x: auto;
+    padding-bottom: 12px;
+    scroll-behavior: smooth;
+}
+
+/* Character Column */
+.character-column {
+    flex: 0 0 var(--column-width);
+    background: var(--card);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px var(--shadow);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    align-self: flex-start;
+    transition: transform 0.15s, opacity 0.15s, box-shadow 0.15s;
+}
+
+/* Character Header - Sticky */
+.char-header {
+    background: var(--accent);
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.char-header-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+}
+
+.char-actions {
+    display: flex;
+    gap: 4px;
+    margin-left: auto;
+}
+
+/* NPC-only row */
+.npc-only {
+    display: none;
+}
+
+.character-column.npc .npc-only {
+    display: flex;
+}
+
+/* NPC Styling */
+.character-column.npc .char-header {
+    background: var(--danger);
+}
+
+.character-column.npc .pc-only {
+    display: none;
+}
+
+/* Drag Handle */
+.drag-handle {
+    cursor: grab;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 12px;
+    letter-spacing: -2px;
+    padding: 4px 2px;
+    user-select: none;
+    transition: color 0.15s;
+}
+
+.drag-handle:hover {
+    color: rgba(255, 255, 255, 0.9);
+    cursor: grab;
+}
+
+.drag-handle:active {
+    cursor: grabbing;
+}
+
+/* Drag and Drop States */
+.character-column.dragging {
+    opacity: 0.5;
+    transform: scale(0.98);
+}
+
+.character-column.drag-over {
+    box-shadow: -4px 0 0 var(--accent), 0 2px 8px var(--shadow);
+}
+
+.character-column.drag-over-right {
+    box-shadow: 4px 0 0 var(--accent), 0 2px 8px var(--shadow);
+}
+
+.char-name {
+    flex: 1;
+    min-width: 0;
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    color: #fff;
+    font: 600 14px 'Oswald', sans-serif;
+    padding: 6px 8px;
+    border-radius: 4px;
+}
+
+.char-name::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Fate Points in Header */
+.fate-points {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+    padding: 2px 4px;
+}
+
+.fp-btn {
+    width: 20px;
+    height: 20px;
+    border: none;
+    background: transparent;
+    color: #fff;
+    font: 700 14px sans-serif;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background 0.15s;
+}
+
+.fp-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.fp-value {
+    font: 700 16px 'Oswald', sans-serif;
+    color: #fff;
+    min-width: 20px;
+    text-align: center;
+}
+
+.fp-label {
+    font: 600 10px 'Open Sans', sans-serif;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+}
+
+.view-details-btn,
+.export-char-btn,
+.remove-char-btn {
+    width: 22px;
+    height: 22px;
+    border: none;
+    background: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.view-details-btn:hover {
+    background: rgba(255, 255, 255, 0.35);
+    color: #fff;
+}
+
+.export-char-btn:hover {
+    background: var(--success);
+    color: #fff;
+}
+
+.remove-char-btn:hover {
+    background: var(--danger);
+    color: #fff;
+}
+
+/* Sections */
+.section {
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border);
+}
+
+.section:last-child {
+    border-bottom: none;
+}
+
+.section-label {
+    font: 600 10px 'Oswald', sans-serif;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+}
+
+.section-label.toggle-section {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+}
+
+.section-label.toggle-section:hover {
+    color: var(--accent-dark);
+}
+
+.toggle-icon {
+    font-size: 8px;
+    transition: transform 0.2s;
+}
+
+.section-content {
+    transition: max-height 0.3s ease, opacity 0.2s ease;
+    overflow: hidden;
+}
+
+.section-content.collapsed {
+    max-height: 0 !important;
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.section-content hr {
+    margin: 5px 0px;
+}
+
+/* Combat Section */
+.combat-section {
+    background: rgba(37, 99, 235, 0.05);
+}
+
+.combat-header-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.combat-header-row .section-label {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.acted-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.acted-checkbox {
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    background: var(--input);
+    border: 2px solid var(--border);
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.15s;
+	margin: 0px 5px;
+}
+
+.acted-checkbox:checked {
+    background: var(--success);
+    border-color: var(--success);
+}
+
+.acted-checkbox:checked::after {
+    content: '✓';
+    display: block;
+    color: #fff;
+    font-size: 9px;
+    text-align: center;
+    line-height: 10px;
+}
+
+.combat-subsection {
+    margin-top: 8px;
+}
+
+.subsection-label {
+    font: 600 9px 'Open Sans', sans-serif;
+    color: var(--dim);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.action-row {
+	margin: 6px 0px;
+}
+
+.boosts-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.boosts-label {
+    font: 600 9px 'Open Sans', sans-serif;
+    color: var(--dim);
+    text-transform: uppercase;
+}
+
+/* Boost boxes - uses shared track styles with success color */
+.boost-boxes {
+    display: flex;
+    gap: 3px;
+    --box-size: 22px;
+    --box-radius: 3px;
+    --box-font-size: 10px;
+    --box-hover-color: var(--success);
+    --box-fill-color: var(--success);
+}
+
+/* Stress Section */
+.stress-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 4px;
+}
+
+.stress-row:last-child {
+    margin-bottom: 0;
+}
+
+.stress-type {
+    font: 600 10px 'Open Sans', sans-serif;
+    color: var(--dim);
+    width: 30px;
+    text-transform: uppercase;
+}
+
+/* Stress boxes - uses shared track styles with danger color */
+.stress-boxes {
+    display: flex;
+    gap: 3px;
+    --box-size: 22px;
+    --box-radius: 3px;
+    --box-font-size: 10px;
+    --box-hover-color: var(--danger);
+    --box-fill-color: var(--danger);
+}
+
+/* Consequences Section */
+.consequence-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 4px;
+}
+
+.consequence-row:last-child {
+    margin-bottom: 0;
+}
+
+.cons-level {
+    font: 700 11px 'Oswald', sans-serif;
+    color: var(--dim);
+    width: 20px;
+    text-align: center;
+}
+
+.cons-input {
+    flex: 1;
+    background: var(--input);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 4px 6px;
+    border-radius: 3px;
+    font: 12px 'Open Sans', sans-serif;
+}
+
+.cons-input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+.cons-input:not(:placeholder-shown) {
+    background: #fef2f2;
+    border-color: var(--danger);
+}
+
+/* Aspects Section */
+.aspect-input {
+    width: 100%;
+    background: var(--input);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 4px 6px;
+    border-radius: 3px;
+    font: 12px 'Open Sans', sans-serif;
+    margin-bottom: 4px;
+}
+
+.aspect-input:last-child {
+    margin-bottom: 0;
+}
+
+.aspect-input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+.aspect-input::placeholder {
+    color: var(--dim);
+    font-style: italic;
+}
+
+/* Skills Section */
+.skills-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.skill-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px 0;
+}
+
+.skill-row span {
+    font: 600 11px 'Open Sans', sans-serif;
+    color: var(--text);
+}
+
+/* Skill dots - small track boxes */
+.skill-dots {
+    display: flex;
+    gap: 2px;
+    --box-size: 14px;
+    --box-radius: 2px;
+    --box-hover-color: var(--accent-light);
+}
+.skill-dots b {
+    border-width: 1px;
+}
+
+/* Stunts Section */
+.stunts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.stunt-row {
+    display: flex;
+    gap: 4px;
+}
+
+.stunt-input {
+    flex: 1;
+    background: var(--input);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 4px 6px;
+    border-radius: 3px;
+    font: 12px 'Open Sans', sans-serif;
+}
+
+.stunt-input:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+/* Scrollbar Styling */
+.characters-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.characters-container::-webkit-scrollbar-track {
+    background: var(--border);
+    border-radius: 4px;
+}
+
+.characters-container::-webkit-scrollbar-thumb {
+    background: var(--dim);
+    border-radius: 4px;
+}
+
+.characters-container::-webkit-scrollbar-thumb:hover {
+    background: var(--text);
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--dim);
+    font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    :root {
+        --column-width: 200px;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    header h1 {
+        text-align: center;
+    }
+
+    .controls {
+        justify-content: center;
+    }
+}
+
+/* Touch-friendly targets - sheet-specific only */
+/* Base track sizes handled by controls.css */
+@media (pointer: coarse) {
+    .fp-btn {
+        width: 28px;
+        height: 28px;
+    }
+    .view-details-btn,
+    .export-char-btn,
+    .remove-char-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
+    }
+}
+
+/* Print Styles */
+@media print {
+    body {
+        background: #fff;
+    }
+
+    header {
+        background: #fff;
+        color: var(--accent);
+        border: 2px solid var(--accent);
+    }
+
+    header h1, .controls button {
+        color: var(--accent);
+    }
+
+    .controls {
+        display: none;
+    }
+
+    .remove-char-btn {
+        display: none;
+    }
+
+    .character-column {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid var(--border);
+    }
+
+    .char-header {
+        background: var(--accent);
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .section-content.collapsed {
+        max-height: none !important;
+        opacity: 1;
+    }
+}
