@@ -4,46 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Character Sheets</title>
+    <link rel="stylesheet" href="../Dice/Style.css">
+    <script src="../Dice/theme-init.js"></script>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #1a1a2e;
-            color: #eee;
+            background: var(--bg-gradient);
+            color: var(--text-primary);
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 40px 20px;
         }
-        h1 {
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            padding: 30px 20px 20px;
+        }
+        .header h1 {
             font-size: 2rem;
-            margin-bottom: 40px;
-            color: #fff;
+            margin-bottom: 10px;
+            color: var(--text-primary);
         }
         .sheets {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 24px;
             max-width: 900px;
-            width: 100%;
+            margin: 0 auto 30px;
         }
         .card {
-            background: #252540;
+            background: var(--bg-white);
             border-radius: 12px;
             padding: 24px;
             transition: transform 0.2s, box-shadow 0.2s;
         }
         .card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
         }
         .card h2 {
             font-size: 1.4rem;
             margin-bottom: 8px;
+            color: var(--text-primary);
         }
         .card p {
-            color: #aaa;
+            color: var(--text-secondary);
             font-size: 0.9rem;
             margin-bottom: 16px;
             line-height: 1.5;
@@ -63,32 +71,32 @@
             transition: background 0.15s;
         }
         .btn-primary {
-            background: #4a6cf7;
+            background: var(--accent-primary);
             color: #fff;
         }
         .btn-primary:hover {
-            background: #3a5ce7;
+            background: var(--accent-secondary);
         }
         .btn-secondary {
-            background: #3a3a55;
-            color: #ccc;
+            background: var(--border-light);
+            color: var(--text-secondary);
         }
         .btn-secondary:hover {
-            background: #4a4a65;
-            color: #fff;
+            background: var(--border-medium);
+            color: var(--text-primary);
         }
         /* Theme accents */
         .card.blades { border-left: 4px solid #c9a227; }
         .card.fate { border-left: 4px solid #2563eb; }
         .card.gotham { border-left: 4px solid #8b1a1a; }
         .footer {
-            margin-top: 50px;
+            margin-top: 30px;
             text-align: center;
-            color: #888;
+            color: var(--text-secondary);
             font-size: 0.9rem;
         }
         .footer a {
-            color: #4a6cf7;
+            color: var(--accent-primary);
             text-decoration: none;
         }
         .footer a:hover {
@@ -100,17 +108,16 @@
             gap: 10px;
             margin-top: 15px;
             padding: 8px 15px;
-            background: #252540;
-            border: 2px solid #3a3a55;
+            background: var(--bg-white);
+            border: 2px solid var(--border-medium);
             border-radius: 8px;
             text-decoration: none;
-            color: #ccc;
+            color: var(--text-secondary);
             font-weight: 600;
             transition: all 0.2s;
         }
         .oddturnip-link:hover {
-            border-color: #4a6cf7;
-            background: #2a2a45;
+            border-color: var(--accent-primary);
             transform: translateY(-2px);
             text-decoration: none;
         }
@@ -121,8 +128,11 @@
     </style>
 </head>
 <body>
-    <h1>Character Sheets</h1>
-    <div class="sheets">
+    <div class="container">
+        <div class="header">
+            <h1>Character Sheets</h1>
+        </div>
+        <div class="sheets">
         <div class="card blades">
             <h2>Blades in the Dark</h2>
             <p>Daring scoundrels in a haunted industrial-fantasy city. Standard playbooks, actions, stress, harm, and the full BitD dice system.</p>
@@ -147,16 +157,25 @@
                 <a href="GothamReunion.html" class="btn-primary">Open Sheet</a>
             </div>
         </div>
-    </div>
-    <div class="footer">
-        <p>Made with <a href="https://claude.ai/code" target="_blank" rel="noopener noreferrer">Claude Code</a></p>
-        <div style="display: flex; justify-content: center; align-items: center; gap: 15px; flex-wrap: wrap;">
-            <a href="../index.html" class="oddturnip-link">← Gaming</a>
-            <a href="https://www.oddturnip.com" target="_blank" rel="noopener noreferrer" class="oddturnip-link">
-                <img src="../Names/odd_turnip.png" alt="OddTurnip Logo">
-                <span>OddTurnip.com</span>
-            </a>
+        </div>
+        <div class="footer">
+            <p>Made with <a href="https://claude.ai/code" target="_blank" rel="noopener noreferrer">Claude Code</a></p>
+            <div style="display: flex; justify-content: center; align-items: center; gap: 15px; flex-wrap: wrap;">
+                <a href="../index.html" class="oddturnip-link">← Gaming</a>
+                <a href="https://www.oddturnip.com" target="_blank" rel="noopener noreferrer" class="oddturnip-link">
+                    <img src="../Names/odd_turnip.png" alt="OddTurnip Logo">
+                    <span>OddTurnip.com</span>
+                </a>
+            </div>
         </div>
     </div>
+
+    <script type="module">
+        import { addThemeSelector } from '../Dice/theme-manager.js';
+        import { createSeasonalEffects } from '../Dice/snowflakes.js';
+
+        window.createSeasonalEffects = createSeasonalEffects;
+        document.addEventListener('DOMContentLoaded', addThemeSelector);
+    </script>
 </body>
 </html>

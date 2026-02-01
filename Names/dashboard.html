@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Source Dashboard</title>
     <link rel="icon" type="image/x-icon" href="odd_turnip.ico">
+    <link rel="stylesheet" href="../Dice/Style.css">
     <link rel="stylesheet" href="styles.css">
+    <script src="../Dice/theme-init.js"></script>
     <style>
         /* Page-specific styles */
-        header {
+        .header {
             padding: 40px 30px;
         }
 
@@ -235,11 +237,11 @@
 </head>
 <body>
     <div class="container">
-        <header>
+        <div class="header">
             <a href="index.html" class="home-button">Home</a>
             <h1>📊 Source Dashboard</h1>
             <p>View name availability by source</p>
-        </header>
+        </div>
 
         <div class="content">
             <div id="status" class="status loading">
@@ -452,6 +454,14 @@
 
         // Load database on page load
         window.addEventListener('DOMContentLoaded', loadDatabase);
+    </script>
+
+    <script type="module">
+        import { addThemeSelector } from '../Dice/theme-manager.js';
+        import { createSeasonalEffects } from '../Dice/snowflakes.js';
+
+        window.createSeasonalEffects = createSeasonalEffects;
+        document.addEventListener('DOMContentLoaded', addThemeSelector);
     </script>
 </body>
 </html>

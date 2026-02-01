@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Name Generator</title>
     <link rel="icon" type="image/x-icon" href="odd_turnip.ico">
+    <link rel="stylesheet" href="../Dice/Style.css">
     <link rel="stylesheet" href="styles.css">
+    <script src="../Dice/theme-init.js"></script>
     <style>
         /* Page-specific styles */
         .container {
@@ -248,11 +250,11 @@
 </head>
 <body>
     <div class="container">
-        <header>
+        <div class="header">
             <a href="index.html" class="home-button">Home</a>
             <h1>🎲 Name Generator</h1>
             <p>Generate random full names from the database</p>
-        </header>
+        </div>
 
         <div class="content">
             <div class="controls" style="display: none;" id="controls">
@@ -671,6 +673,14 @@
 
         // Load database when page loads
         window.addEventListener('DOMContentLoaded', loadDatabase);
+    </script>
+
+    <script type="module">
+        import { addThemeSelector } from '../Dice/theme-manager.js';
+        import { createSeasonalEffects } from '../Dice/snowflakes.js';
+
+        window.createSeasonalEffects = createSeasonalEffects;
+        document.addEventListener('DOMContentLoaded', addThemeSelector);
     </script>
 </body>
 </html>
