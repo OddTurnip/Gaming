@@ -3,73 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dice Rollers</title>
-    <link rel="stylesheet" href="Style.css">
-	<link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>Gaming Tools</title>
+    <link rel="stylesheet" href="Dice/Style.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <!-- Apply theme immediately to prevent flash of unstyled content -->
-    <script src="theme-init.js"></script>
+    <script src="Dice/theme-init.js"></script>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>Dice Rollers</h1>
+            <h1>Gaming Tools</h1>
         </div>
 
-        <!-- Basic Dice Roller Link -->
-        <a href="basic.html" class="link-container">
-            <h2>Basic Dice Roller</h2>
-            <p>Roll basic polyhedrals (d4, d6, d8, d10, d12, d20, and d100).</p>
+        <!-- Dice Rollers Link -->
+        <a href="Dice/index.html" class="link-container">
+            <h2>Dice Rollers</h2>
+            <p>A collection of dice rollers for tabletop RPGs including basic polyhedrals, Fate/Fudge dice, Blades in the Dark, and tarot readings.</p>
         </a>
 
-        <!-- Custom Dice Roller Link -->
-        <a href="custom.html" class="link-container">
-            <h2>Custom Dice Roller</h2>
-            <p>Roll custom-sized polyhedrals, up to 1,000 dice at a time.</p>
+        <!-- Name Generator Link -->
+        <a href="Names/index.html" class="link-container">
+            <h2>Name Generator</h2>
+            <p>Generate random names for your characters and NPCs. Browse and search through a database of names from various cultures and origins.</p>
         </a>
 
-        <!-- Fate Dice Roller Link -->
-        <a href="fate.html" class="link-container">
-            <h2>Fate Dice Roller</h2>
-            <p>Roll Fate/Fudge dice (4dF). Each die shows plus (+), minus (-), or blank, with results ranging from -4 to +4.</p>
-        </a>
-
-        <!-- Blades in the Dark Dice Roller Link -->
-        <a href="blades.html" class="link-container">
-            <h2>Blades in the Dark Dice Roller</h2>
-            <p>Rolls d6s for Blades In The Dark. Your high result determines your result: 1-3 is a failure, 4-5 is a mixed result, and a 6 is a success. For 0 dot actions, the lowest result of 2d6 is used instead.</p>
-        </a>
-
-        <h1>Other Tools</h1>
-
-        <!-- Tarot Reading Link -->
-        <a href="tarot.html" class="link-container">
-            <h2>Tarot Reading</h2>
-            <p>Perform a 3-card tarot spread (Past, Present, Future) using the Major Arcana. Each reading draws from a fresh deck.</p>
-        </a>
+        <!-- Character Sheets Link (Coming Soon) -->
+        <div class="link-container" style="opacity: 0.6; cursor: not-allowed;">
+            <h2>Character Sheets</h2>
+            <p>Digital character sheets for various tabletop RPG systems. Coming soon!</p>
+        </div>
 
         <!-- About Section -->
         <div class="section">
             <h2>About</h2>
-            <p>This is a collection of online dice rollers for tabletop gaming. Each roller is designed for specific gaming systems and keeps a history of your rolls during your session.</p>
-            <p>More dice rollers will be added in the future to support additional gaming systems and mechanics.</p>
-        </div>
-
-        <!-- External Links Section -->
-        <div class="section">
-            <h2>External Links</h2>
-            <ul>
-                <li><a href="https://anydice.com/docs/" target="_blank" rel="noopener noreferrer">AnyDice Documentation</a> - Advanced dice probability calculator and documentation</li>
-                <li><a href="https://anydice.com/program/2357e" target="_blank" rel="noopener noreferrer">AnyDice program for 4dF</a> - Probability distribution for Fate/Fudge dice</li>
-                <li><a href="https://anydice.com/program/e5e" target="_blank" rel="noopener noreferrer">AnyDice program for 4d6, drop lowest</a> - Probability distribution for ability score generation</li>
-                <li><a href="https://evilhat.com/product/blades-in-the-dark/" target="_blank" rel="noopener noreferrer">Blades In the Dark (official store)</a></li>
-                <li><a href="https://evilhat.com/product/fate-core-system/" target="_blank" rel="noopener noreferrer">Fate Core (official store)</a></li>
-                <li><a href="https://fate-srd.com/" target="_blank" rel="noopener noreferrer">The official Fate SRD</a></li>
-            </ul>
+            <p>This is a collection of online tools for tabletop gaming. Each tool is designed to enhance your gaming experience and is free to use.</p>
         </div>
 
         <!-- Footer -->
         <div class="footer">
-            <p>Made with <a href="https://claude.com/claude-code" target="_blank" rel="noopener noreferrer">Claude Code</a></p>
+            <p>Made with <a href="https://claude.ai/code" target="_blank" rel="noopener noreferrer">Claude Code</a></p>
             <a href="https://www.oddturnip.com" target="_blank" rel="noopener noreferrer" class="oddturnip-link">
                 <img src="Names/odd_turnip.png" alt="OddTurnip Logo">
                 <span>OddTurnip.com</span>
@@ -79,8 +51,8 @@
     </div>
 
     <script type="module">
-        import { addThemeSelector } from './theme-manager.js';
-        import { createSeasonalEffects } from './snowflakes.js';
+        import { addThemeSelector } from './Dice/theme-manager.js';
+        import { createSeasonalEffects } from './Dice/snowflakes.js';
 
         // Make createSeasonalEffects available globally for the animated checkbox
         window.createSeasonalEffects = createSeasonalEffects;
