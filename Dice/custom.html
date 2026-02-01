@@ -12,8 +12,20 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Custom Dice Roller</h1>
-            <a href="index.html" class="close-button" aria-label="Close">✕</a>
+            <div class="header-row">
+                <!-- Left: Navigation -->
+                <div class="header-nav">
+                    <a href="index.html" class="nav-button">← Back</a>
+                </div>
+
+                <!-- Center: Title -->
+                <div class="header-title">
+                    <h1>Custom Dice Roller</h1>
+                </div>
+
+                <!-- Right: Theme selector -->
+                <div class="header-theme" id="theme-slot"></div>
+            </div>
         </div>
 
         <div class="controls">
@@ -107,7 +119,11 @@
     <script type="module">
         // Import dice rolling logic
         import { rollDiceWithModifiers, rollWithAdvantage } from './dice-library.js';
-        import { addThemeSelector } from '../Themes/theme-manager.js';
+        import {
+            createThemeSelector,
+            getAnimationsEnabled,
+            setAnimationsEnabled
+        } from '../Themes/theme-manager.js';
         import { createSeasonalEffects } from '../Themes/snowflakes.js';
 
         // Make createSeasonalEffects available globally for the animated checkbox
@@ -116,7 +132,56 @@
         // Wait for DOM to be fully loaded
         document.addEventListener('DOMContentLoaded', function() {
             // Add theme selector to the page
-            addThemeSelector();
+            const slot = document.getElementById('theme-slot');
+            if (slot) {
+                const wrapper = document.createElement('div');
+                wrapper.className = 'theme-selector-wrapper';
+                wrapper.style.flexDirection = 'column';
+                wrapper.style.alignItems = 'flex-end';
+
+                const topRow = document.createElement('div');
+                topRow.style.display = 'flex';
+                topRow.style.alignItems = 'center';
+                topRow.style.gap = '8px';
+
+                const label = document.createElement('label');
+                label.textContent = 'Theme:';
+                label.htmlFor = 'theme-selector';
+
+                topRow.appendChild(label);
+                topRow.appendChild(createThemeSelector());
+                wrapper.appendChild(topRow);
+
+                const bottomRow = document.createElement('div');
+                bottomRow.style.display = 'flex';
+                bottomRow.style.alignItems = 'center';
+                bottomRow.style.justifyContent = 'flex-end';
+                bottomRow.style.marginTop = '6px';
+                bottomRow.style.gap = '5px';
+
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.id = 'animated-checkbox';
+                checkbox.checked = getAnimationsEnabled();
+
+                const checkboxLabel = document.createElement('label');
+                checkboxLabel.htmlFor = 'animated-checkbox';
+                checkboxLabel.textContent = 'Animated';
+                checkboxLabel.style.cursor = 'pointer';
+
+                checkbox.addEventListener('change', (e) => {
+                    setAnimationsEnabled(e.target.checked);
+                    if (window.createSeasonalEffects) {
+                        window.createSeasonalEffects();
+                    }
+                });
+
+                bottomRow.appendChild(checkbox);
+                bottomRow.appendChild(checkboxLabel);
+                wrapper.appendChild(bottomRow);
+
+                slot.appendChild(wrapper);
+            }
 
             // Get references to DOM elements
             const rollButton = document.getElementById('rollButton');
