@@ -7,7 +7,7 @@
  * Includes full 78-card deck: 22 Major Arcana + 56 Minor Arcana
  */
 
-import { createDeck, shuffleDeck, drawCard } from './card-library.js';
+import { createDeck, shuffleDeck, drawCard } from '../Dice/card-library.js';
 
 // Major Arcana cards (0-21) with meanings
 export const majorArcana = [

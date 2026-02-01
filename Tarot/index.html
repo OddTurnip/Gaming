@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tarot Reading</title>
-    <link rel="stylesheet" href="Style.css">
+    <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="../favicon.ico" type="image/x-icon">
     <!-- Apply theme immediately to prevent flash of unstyled content -->
     <script src="../Themes/theme-init.js"></script>
@@ -15,7 +15,7 @@
             <div class="header-row">
                 <!-- Left: Navigation -->
                 <div class="header-nav">
-                    <a href="index.html" class="nav-button">← Back</a>
+                    <a href="../index.html" class="nav-button">← Home</a>
                 </div>
 
                 <!-- Center: Title -->
@@ -100,7 +100,7 @@
     <script type="module">
         // Import Tarot reading logic and history utilities
         import { performThreeCardSpread, formatTarotCard, getCardImagePath, getCardMeaning } from './tarot.js';
-        import { createComplexHistoryEntry, addToHistory } from './history-log.js';
+        import { createComplexHistoryEntry, addToHistory } from '../Dice/history-log.js';
         import {
             createThemeSelector,
             getAnimationsEnabled,
