@@ -61,4 +61,4 @@ See [ARCHITECTURE.md](ARCHITECTURE.md) for detailed documentation. Run `npm test
 
 ## License
 
-MIT License - This project is provided as-is for use in gaming and simulation applications.
+[CC BY-NC-SA 4.0](LICENSE.md) - Free to share and adapt for non-commercial use with attribution.
