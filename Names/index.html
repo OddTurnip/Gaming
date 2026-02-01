@@ -11,82 +11,7 @@
     <style>
         /* Page-specific overrides */
         .container {
-            max-width: 900px;
-        }
-
-        .intro {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .intro h2 {
-            color: var(--heading-primary, #333);
-            margin-bottom: 15px;
-            font-size: 1.8em;
-        }
-
-        .intro p {
-            color: var(--text-secondary, #666);
-            font-size: 1.1em;
-            line-height: 1.6;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin: 40px 0;
-        }
-
-        .feature-card {
-            background: var(--bg-white, linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%));
-            padding: 30px;
-            border-radius: 12px;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 2px solid var(--border-light, transparent);
-            cursor: pointer;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px var(--button-shadow, rgba(102, 126, 234, 0.3));
-            border-color: var(--accent-primary, #667eea);
-        }
-
-        .feature-card .icon {
-            font-size: 3em;
-            margin-bottom: 15px;
-        }
-
-        .feature-card h3 {
-            color: var(--accent-primary, #667eea);
-            margin-bottom: 10px;
-            font-size: 1.4em;
-        }
-
-        .feature-card p {
-            color: var(--text-secondary, #666);
-            line-height: 1.5;
-        }
-
-        .feature-card .btn {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 12px 25px;
-            background: linear-gradient(135deg, var(--button-gradient-start, #667eea) 0%, var(--button-gradient-end, #764ba2) 100%);
-            color: var(--text-white, white);
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: 600;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .feature-card .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px var(--button-shadow, rgba(102, 126, 234, 0.4));
+            max-width: 600px;
         }
 
         .database-info {
@@ -120,12 +45,6 @@
             margin-right: 8px;
         }
 
-        /* Responsive overrides */
-        @media (max-width: 768px) {
-            .features {
-                grid-template-columns: 1fr;
-            }
-        }
     </style>
 </head>
 <body>
@@ -149,46 +68,23 @@
         </div>
 
         <div class="content">
-            <div class="intro">
-                <h2>Welcome!</h2>
-                <p>
-                    This project provides a flexible name generation system backed by a SQLite database.
-                    Generate random character names with weighted probabilities, or browse and filter
-                    the entire collection of names with their metadata.
-                </p>
-            </div>
+            <!-- Name Generator Link -->
+            <a href="random.html" class="link-container">
+                <h2>🎲 Name Generator</h2>
+                <p>Generate full character names with titles, first names, optional middle names or nicknames, and last names. Uses weighted random selection based on frequency.</p>
+            </a>
 
-            <div class="features">
-                <div class="feature-card" onclick="window.location.href='random.html'">
-                    <div class="icon">🎲</div>
-                    <h3>Name Generator</h3>
-                    <p>
-                        Generate full character names with titles, first names, optional middle names
-                        or nicknames, and last names. Uses weighted random selection based on frequency.
-                    </p>
-                    <a href="random.html" class="btn" onclick="event.stopPropagation()">Generate Names</a>
-                </div>
+            <!-- Database Viewer Link -->
+            <a href="viewer.html" class="link-container">
+                <h2>📊 Database Viewer</h2>
+                <p>Browse all names in the database with filtering by position and gender. Click column headers to sort. View tags, pronunciation, and meanings.</p>
+            </a>
 
-                <div class="feature-card" onclick="window.location.href='viewer.html'">
-                    <div class="icon">📊</div>
-                    <h3>Database Viewer</h3>
-                    <p>
-                        Browse all names in the database with filtering by position and gender.
-                        Click column headers to sort. View tags, pronunciation, and meanings.
-                    </p>
-                    <a href="viewer.html" class="btn" onclick="event.stopPropagation()">View Database</a>
-                </div>
-
-                <div class="feature-card" onclick="window.location.href='dashboard.html'">
-                    <div class="icon">📈</div>
-                    <h3>Source Dashboard</h3>
-                    <p>
-                        View statistics for each source showing first and last name counts.
-                        Identify undersupplied sources that need more names for better generation.
-                    </p>
-                    <a href="dashboard.html" class="btn" onclick="event.stopPropagation()">View Dashboard</a>
-                </div>
-            </div>
+            <!-- Source Dashboard Link -->
+            <a href="dashboard.html" class="link-container">
+                <h2>📈 Source Dashboard</h2>
+                <p>View statistics for each source showing first and last name counts. Identify undersupplied sources that need more names for better generation.</p>
+            </a>
 
             <div class="database-info">
                 <h3>📚 Database Contents</h3>
@@ -200,14 +96,6 @@
                 </ul>
             </div>
 
-            <div class="intro">
-                <h2>🛠️ Technical Details</h2>
-                <p>
-                    Built with pure HTML, CSS, and JavaScript. Uses SQL.js to run SQLite entirely
-                    in the browser—no server required. All data is stored in a local names.db file
-                    that can be regenerated or customized using the included Python script.
-                </p>
-            </div>
         </div>
 
         <div class="footer">
