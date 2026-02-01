@@ -2,7 +2,7 @@
 """
 Simple HTTP server for the Gaming project.
 Run: python server.py
-Serves all sub-projects (Dice, Names, Characters) from one server.
+Serves all sub-projects (Dice, Names, Characters, Tarot) from one server.
 """
 
 import http.server
@@ -51,6 +51,7 @@ if __name__ == '__main__':
         print(f"  Dice:       http://localhost:{PORT}/Dice/")
         print(f"  Names:      http://localhost:{PORT}/Names/")
         print(f"  Characters: http://localhost:{PORT}/Characters/")
+        print(f"  Tarot:      http://localhost:{PORT}/Tarot/")
         print("Press Ctrl+C to stop")
         Timer(0.5, lambda: open_browser(start_path)).start()
         try:
