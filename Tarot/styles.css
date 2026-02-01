@@ -5,6 +5,11 @@
 
 @import url('../Themes/themes.css');
 
+/* Container width to match Dice pages */
+.container {
+    max-width: 600px;
+}
+
 /* Controls section */
 .controls {
     background: var(--bg-light, #f8f9fa);
