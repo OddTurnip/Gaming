@@ -156,8 +156,21 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🎭 Name Database</h1>
-            <p>A SQLite-powered random name generation tool</p>
+            <div class="header-row">
+                <!-- Left: Navigation -->
+                <div class="header-nav">
+                    <a href="../index.html" class="nav-button">← Home</a>
+                </div>
+
+                <!-- Center: Title -->
+                <div class="header-title">
+                    <h1>🎭 Name Database</h1>
+                    <p>A SQLite-powered random name generation tool</p>
+                </div>
+
+                <!-- Right: Theme selector -->
+                <div class="header-theme" id="theme-slot"></div>
+            </div>
         </div>
 
         <div class="content">
@@ -227,25 +240,78 @@
             <div class="made-with">
                 Made with <a href="https://github.com/anthropics/claude-code" target="_blank">Claude Code</a>
             </div>
-            <div style="display: flex; justify-content: center; align-items: center; gap: 15px; flex-wrap: wrap;">
-                <a href="../index.html" class="oddturnip-link">← Gaming</a>
-                <a href="https://www.oddturnip.com" target="_blank" class="oddturnip-link">
-                    <picture>
-                        <source srcset="https://www.oddturnip.com/img/odd_turnip_480.png" media="(min-width: 1024px)">
-                        <img src="https://www.oddturnip.com/img/odd_turnip_48.png" alt="OddTurnip Logo">
-                    </picture>
-                    <span>OddTurnip.com</span>
-                </a>
-            </div>
+            <a href="https://www.oddturnip.com" target="_blank" class="oddturnip-link">
+                <picture>
+                    <source srcset="https://www.oddturnip.com/img/odd_turnip_480.png" media="(min-width: 1024px)">
+                    <img src="https://www.oddturnip.com/img/odd_turnip_48.png" alt="OddTurnip Logo">
+                </picture>
+                <span>OddTurnip.com</span>
+            </a>
         </div>
     </div>
 
     <script type="module">
-        import { addThemeSelector } from '../Themes/theme-manager.js';
+        import {
+            createThemeSelector,
+            getAnimationsEnabled,
+            setAnimationsEnabled
+        } from '../Themes/theme-manager.js';
         import { createSeasonalEffects } from '../Themes/snowflakes.js';
 
         window.createSeasonalEffects = createSeasonalEffects;
-        document.addEventListener('DOMContentLoaded', addThemeSelector);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const slot = document.getElementById('theme-slot');
+            if (!slot) return;
+
+            const wrapper = document.createElement('div');
+            wrapper.className = 'theme-selector-wrapper';
+            wrapper.style.flexDirection = 'column';
+            wrapper.style.alignItems = 'flex-end';
+
+            const topRow = document.createElement('div');
+            topRow.style.display = 'flex';
+            topRow.style.alignItems = 'center';
+            topRow.style.gap = '8px';
+
+            const label = document.createElement('label');
+            label.textContent = 'Theme:';
+            label.htmlFor = 'theme-selector';
+
+            topRow.appendChild(label);
+            topRow.appendChild(createThemeSelector());
+            wrapper.appendChild(topRow);
+
+            const bottomRow = document.createElement('div');
+            bottomRow.style.display = 'flex';
+            bottomRow.style.alignItems = 'center';
+            bottomRow.style.justifyContent = 'flex-end';
+            bottomRow.style.marginTop = '6px';
+            bottomRow.style.gap = '5px';
+
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.id = 'animated-checkbox';
+            checkbox.checked = getAnimationsEnabled();
+
+            const checkboxLabel = document.createElement('label');
+            checkboxLabel.htmlFor = 'animated-checkbox';
+            checkboxLabel.textContent = 'Animated';
+            checkboxLabel.style.cursor = 'pointer';
+
+            checkbox.addEventListener('change', (e) => {
+                setAnimationsEnabled(e.target.checked);
+                if (window.createSeasonalEffects) {
+                    window.createSeasonalEffects();
+                }
+            });
+
+            bottomRow.appendChild(checkbox);
+            bottomRow.appendChild(checkboxLabel);
+            wrapper.appendChild(bottomRow);
+
+            slot.appendChild(wrapper);
+        });
     </script>
 </body>
 </html>
