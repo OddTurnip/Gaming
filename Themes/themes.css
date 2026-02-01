@@ -989,6 +989,11 @@ html.abyssal-theme .container {
     box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8), 0 0 40px rgba(153, 27, 27, 0.1), 0 0 80px rgba(180, 83, 9, 0.05) !important;
 }
 
+/* Abyssal theme: Statistics label in red */
+html.abyssal-theme .stats-toggle {
+    color: #ef4444 !important;
+}
+
 /* ========================================
    SHARED BASE STYLES
    These provide consistent styling across all pages
