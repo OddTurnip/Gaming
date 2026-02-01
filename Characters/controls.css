@@ -1,0 +1,371 @@
+/* ==========================================================================
+   CONTROLS.CSS - Shared UI Components for Character Sheets
+
+   This file provides reusable UI patterns used across all character sheets.
+   Each sheet imports this and sets theme colors via CSS custom properties.
+
+   Required CSS variables (set in each sheet's :root):
+   --input, --border, --accent, --danger, --success, --text, --dim, --shadow
+   ========================================================================== */
+
+/* ==========================================================================
+   TRACK BOXES - Clickable pips for stress, XP, skills, etc.
+
+   Usage: <div class="track"><b></b><b></b><b></b></div>
+   Or:    <div class="track track--danger"><b>1</b><b>2</b></div>
+   ========================================================================== */
+
+.track {
+    display: flex;
+    gap: var(--track-gap, 4px);
+}
+
+/* Base track box styles - matches .track > b and common existing patterns */
+.track > b,
+.track-box,
+[class$="-rating"] > b,
+[class$="-boxes"] > b,
+[class$="-dots"] > b,
+[class$="-track"] > b {
+    width: var(--box-size, 22px);
+    height: var(--box-size, 22px);
+    border-radius: var(--box-radius, 4px);
+    background: var(--input);
+    border: 2px solid var(--border);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--box-font-size, 11px);
+    font-weight: 600;
+    color: var(--dim);
+    transition: all 0.15s;
+    flex-shrink: 0;
+}
+
+.track > b:hover,
+.track-box:hover,
+[class$="-rating"] > b:hover,
+[class$="-boxes"] > b:hover,
+[class$="-dots"] > b:hover,
+[class$="-track"] > b:hover {
+    border-color: var(--box-hover-color, var(--accent));
+}
+
+.track > b.filled,
+.track-box.filled,
+[class$="-rating"] > b.filled,
+[class$="-boxes"] > b.filled,
+[class$="-dots"] > b.filled,
+[class$="-track"] > b.filled {
+    background: var(--box-fill-color, var(--accent));
+    border-color: var(--box-fill-color, var(--accent));
+    color: #fff;
+}
+
+/* Size variants */
+.track--sm > b,
+.track-box--sm {
+    --box-size: 14px;
+    --box-font-size: 9px;
+    border-width: 1px;
+}
+
+/* Shape variants */
+.track--round > b,
+.track-box--round {
+    --box-radius: 50%;
+}
+
+.track--md > b,
+.track-box--md {
+    --box-size: 22px;
+    --box-font-size: 11px;
+}
+
+.track--lg > b,
+.track-box--lg {
+    --box-size: 32px;
+    --box-font-size: 14px;
+}
+
+/* Color variants */
+.track--danger {
+    --box-hover-color: var(--danger);
+    --box-fill-color: var(--danger);
+}
+
+.track--success {
+    --box-hover-color: var(--success);
+    --box-fill-color: var(--success);
+}
+
+.track--accent {
+    --box-hover-color: var(--accent);
+    --box-fill-color: var(--accent);
+}
+
+/* XP track variant (uses <i> elements, smaller boxes) */
+.track--xp {
+    --box-size: 12px;
+    gap: 2px;
+}
+
+.track--xp > i {
+    width: var(--box-size);
+    height: var(--box-size);
+    border-radius: 2px;
+    background: var(--input);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.track--xp > i:hover {
+    border-color: var(--xp, var(--accent));
+}
+
+.track--xp > i.filled {
+    background: var(--xp, var(--accent));
+    border-color: var(--xp, var(--accent));
+}
+
+
+/* ==========================================================================
+   DYNAMIC ROWS - Auto-expanding input lists
+
+   Usage: <div class="dynamic-list">
+            <div class="dynamic-row">
+              <input class="dynamic-input" placeholder="...">
+            </div>
+          </div>
+   ========================================================================== */
+
+.dynamic-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--row-gap, 6px);
+}
+
+.dynamic-row {
+    display: flex;
+    gap: var(--row-gap, 6px);
+    align-items: flex-start;
+}
+
+.dynamic-input {
+    flex: 1;
+    min-width: 0;
+    background: var(--input);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 6px 10px;
+    border-radius: 4px;
+    font: inherit;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.dynamic-input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(var(--accent-rgb, 37, 99, 235), 0.15);
+}
+
+.dynamic-input::placeholder {
+    color: var(--dim);
+    opacity: 0.7;
+}
+
+/* Textarea variant */
+textarea.dynamic-input {
+    min-height: 32px;
+    resize: vertical;
+}
+
+
+/* ==========================================================================
+   FORM INPUTS - Consistent text inputs, textareas, selects
+   ========================================================================== */
+
+.form-input,
+.form-select,
+.form-textarea {
+    background: var(--input);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 6px 10px;
+    border-radius: 4px;
+    font: inherit;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(var(--accent-rgb, 37, 99, 235), 0.15);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+    color: var(--dim);
+    opacity: 0.7;
+}
+
+.form-textarea {
+    min-height: 60px;
+    resize: vertical;
+}
+
+
+/* ==========================================================================
+   SECTION CARDS - Content containers with headers
+   ========================================================================== */
+
+.card {
+    background: var(--card);
+    border-radius: 8px;
+    box-shadow: 0 1px 4px var(--shadow);
+    overflow: hidden;
+}
+
+.card__header {
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    background: var(--accent);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card__body {
+    padding: 12px 16px;
+}
+
+
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+
+.btn {
+    background: var(--input);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.btn--icon {
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+
+.btn--primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+}
+
+.btn--primary:hover {
+    filter: brightness(1.1);
+}
+
+.btn--danger {
+    --box-hover-color: var(--danger);
+}
+
+.btn--danger:hover {
+    background: var(--danger);
+    border-color: var(--danger);
+    color: #fff;
+}
+
+
+/* ==========================================================================
+   TOUCH-FRIENDLY TARGETS
+   Single location for all touch overrides
+   ========================================================================== */
+
+@media (pointer: coarse) {
+    /* Increase track box sizes for touch */
+    .track > b,
+    .track-box,
+    [class$="-rating"] > b,
+    [class$="-boxes"] > b,
+    [class$="-dots"] > b,
+    [class$="-track"] > b {
+        --box-size: 32px;
+        --box-font-size: 14px;
+    }
+
+    .track--sm > b,
+    .track-box--sm {
+        --box-size: 28px;
+    }
+
+    .track--xp > i {
+        --box-size: 20px;
+    }
+
+    /* Larger buttons */
+    .btn {
+        padding: 10px 16px;
+    }
+
+    .btn--icon {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+    }
+
+    /* Larger form inputs */
+    .form-input,
+    .form-select,
+    .dynamic-input {
+        padding: 10px 12px;
+    }
+}
+
+
+/* ==========================================================================
+   PRINT OVERRIDES
+   ========================================================================== */
+
+@media print {
+    .card {
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+
+    .card__header {
+        background: #fff;
+        color: var(--accent);
+        border-bottom: 2px solid var(--accent);
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .btn,
+    .controls {
+        display: none;
+    }
+}

@@ -1,0 +1,607 @@
+/* Blades in the Dark - Dark Industrial Victorian Theme */
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=IM+Fell+English:ital@0;1&display=swap');
+
+:root {
+    --bg: #1a1a1e;
+    --card: #252529;
+    --input: #2d2d32;
+    --accent: #c9a227;           /* Gaslight gold */
+    --accent-dim: #8a7320;
+    --danger: #8b2020;           /* Blood red */
+    --xp: #7c5ccf;               /* Vivid purple for XP */
+    --text: #d4d4d4;
+    --dim: #9a9aa0;              /* Improved contrast (5.2:1 vs bg) */
+    --border: #3a3a40;
+    --shadow: rgba(0, 0, 0, 0.4);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font: 15px/1.4 'Crimson Text', Georgia, serif;
+    background: var(--bg);
+    color: var(--text);
+    background-image:
+        radial-gradient(ellipse at 10% 20%, rgba(201, 162, 39, 0.03) 0%, transparent 40%),
+        radial-gradient(ellipse at 90% 80%, rgba(139, 32, 32, 0.02) 0%, transparent 40%);
+}
+
+.sheet { max-width: 1100px; margin: 0 auto; padding: 8px; }
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 2px solid var(--accent);
+    margin-bottom: 8px;
+}
+header h1 {
+    font: 700 1.6rem 'IM Fell English', Georgia, serif;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+.controls { display: flex; gap: 4px; align-items: center; }
+.controls button {
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 4px 8px;
+    cursor: pointer;
+    border-radius: 2px;
+    font-size: 13px;
+}
+.controls button:hover {
+    background: var(--accent);
+    color: var(--bg);
+    border-color: var(--accent);
+}
+#autosave-status { font-size: 12px; color: var(--dim); font-style: italic; }
+
+/* Section headers */
+.section-header {
+    font: 600 14px 'IM Fell English', Georgia, serif;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2px;
+}
+
+/* Common inputs */
+input[type="text"], select, textarea {
+    background: var(--input);
+    border: 1px solid var(--border);
+    border-bottom-width: 2px;
+    color: var(--text);
+    padding: 3px 5px;
+    border-radius: 2px;
+    font: inherit;
+}
+input[type="text"]:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: #333338;
+}
+input[type="text"]::placeholder, textarea::placeholder {
+    color: var(--dim);
+    font-style: italic;
+    opacity: 0.7;
+}
+
+/* Checkboxes */
+input[type="checkbox"], input[type="radio"] {
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    background: var(--input);
+    border: 1px solid var(--dim);
+    cursor: pointer;
+    flex-shrink: 0;
+}
+input[type="radio"] { border-radius: 50%; }
+input[type="checkbox"]:checked, input[type="radio"]:checked {
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+/* Character Info */
+.info-section {
+    display: flex;
+    gap: 4px;
+    background: var(--card);
+    padding: 6px 8px;
+    border-radius: 2px;
+    margin-bottom: 8px;
+    border: 1px solid var(--border);
+}
+.info-section input, .info-section select {
+    flex: 1;
+    min-width: 0;
+    font-size: 14px;
+}
+
+/* Actions Row */
+.actions-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 8px;
+}
+.attr-block {
+    background: var(--card);
+    padding: 6px 8px;
+    border-radius: 2px;
+    border: 1px solid var(--border);
+}
+.attr-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font: 600 14px 'IM Fell English', Georgia, serif;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding-bottom: 3px;
+    border-bottom: 1px solid var(--accent-dim);
+    margin-bottom: 4px;
+}
+.action {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px 0;
+}
+.action span { color: var(--text); font-size: 14px; }
+
+/* Action dots - circular track boxes */
+.dots {
+    display: flex;
+    gap: 3px;
+    --box-size: 14px;
+    --box-radius: 50%;
+    --box-fill-color: var(--text);
+}
+.dots b { border-color: var(--dim); }
+.dots b:hover { border-color: var(--accent); }
+
+/* XP tracks - uses <i> elements */
+.xp-track, .playbook-xp-track {
+    display: flex;
+    gap: 2px;
+}
+.xp-track i, .playbook-xp-track i {
+    display: block;
+    width: 10px;
+    height: 10px;
+    background: var(--input);
+    border: 2px solid var(--xp);
+    cursor: pointer;
+    transition: all 0.15s;
+}
+.xp-track i:hover, .playbook-xp-track i:hover { border-color: #9d7ef0; }
+.xp-track i.filled, .playbook-xp-track i.filled {
+    background: var(--xp);
+    border-color: var(--xp);
+}
+.playbook-xp-track i { width: 12px; height: 12px; }
+
+/* Status Column */
+.status-column {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.stress-block, .trauma-block {
+    background: var(--card);
+    padding: 6px 8px;
+    border-radius: 2px;
+    border: 1px solid var(--border);
+}
+.stress-block .section-header,
+.trauma-block .section-header {
+    border-bottom: none;
+    margin-bottom: 4px;
+}
+/* Stress and Trauma tracks - uses shared styles with danger color */
+.stress-track, .trauma-boxes {
+    display: flex;
+    gap: 3px;
+    --box-size: 18px;
+    --box-radius: 0;
+    --box-hover-color: var(--accent);
+    --box-fill-color: var(--danger);
+}
+.stress-track b { border-color: var(--danger); }
+.trauma-boxes b { border-color: #6b3030; }
+.trauma-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.trauma-row input { flex: 1; font-size: 13px; }
+
+/* Harm Section */
+.harm-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 8px;
+}
+.harm-block {
+    grid-column: span 2;
+}
+.harm-block, .load-block {
+    background: var(--card);
+    padding: 6px 8px;
+    border-radius: 2px;
+    border: 1px solid var(--border);
+}
+.harm-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.harm-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.harm-level {
+    width: 20px;
+    text-align: center;
+    font-weight: 700;
+    color: var(--danger);
+}
+.harm-row input {
+    flex: 1;
+    font-size: 13px;
+}
+.armor-checkboxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+}
+.armor-checkboxes label {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 13px;
+    cursor: pointer;
+}
+/* Healing track - green color variant */
+.healing-track {
+    display: flex;
+    gap: 3px;
+    --box-size: 18px;
+    --box-radius: 0;
+    --box-hover-color: var(--accent);
+    --box-fill-color: #2a6b2a;
+}
+.healing-track b { border-color: #2a6b2a; }
+
+/* Main Content Row - Healing + Armor + Load */
+.main-content-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+/* Abilities/Contacts Row */
+.abilities-contacts-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+.healing-section, .armor-block, .abilities-section, .contacts-block {
+    background: var(--card);
+    padding: 6px 8px;
+    border-radius: 2px;
+    border: 1px solid var(--border);
+}
+.abilities-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.ability-row {
+    display: flex;
+    align-items: center;
+}
+.ability-row input[type="text"] {
+    flex: 1;
+    font-size: 13px;
+}
+
+/* Load */
+.load-options {
+    display: inline-flex;
+    gap: 8px;
+    font: inherit;
+}
+.load-options label {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 11px;
+    color: var(--dim);
+    cursor: pointer;
+}
+.load-options input[type="radio"] { width: 10px; height: 10px; }
+.load-options input:checked + span { color: var(--text); font-weight: 600; }
+/* Load track */
+.load-track {
+    display: flex;
+    gap: 3px;
+    flex-wrap: wrap;
+    --box-size: 20px;
+    --box-radius: 0;
+    --box-fill-color: var(--text);
+}
+.load-track b { border-color: var(--dim); }
+.contact {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    margin-bottom: 2px;
+}
+.contact select { width: 48px; text-align: center; padding: 2px; font-size: 16px; }
+.contact input { flex: 1; font-size: 13px; min-width: 0; }
+
+/* Notes */
+.notes-section {
+    background: var(--card);
+    padding: 6px 8px;
+    border-radius: 2px;
+    border: 1px solid var(--border);
+}
+.notes-section textarea {
+    width: 100%;
+    min-height: 80px;
+    resize: vertical;
+    font-size: 13px;
+}
+
+/* Clickable Skills */
+.action span.rollable {
+    cursor: pointer;
+    transition: color 0.15s ease;
+}
+.action span.rollable:hover {
+    color: var(--accent);
+    text-decoration: underline;
+}
+
+/* Dice Roll Popup */
+.dice-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.15s ease-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.dice-popup {
+    background: var(--card);
+    border: 2px solid var(--accent);
+    border-radius: 4px;
+    padding: 16px 24px;
+    min-width: 280px;
+    max-width: 400px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    animation: popIn 0.2s ease-out;
+    position: relative;
+}
+@keyframes popIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+.dice-popup-title {
+    font: 700 16px 'IM Fell English', Georgia, serif;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 8px;
+    padding-right: 24px;
+}
+.dice-popup-subtitle {
+    font-weight: 400;
+    color: var(--dim);
+    text-transform: capitalize;
+    letter-spacing: 0.05em;
+}
+.dice-zero-indicator {
+    font: 400 13px 'Crimson Text', serif;
+    color: var(--dim);
+    margin-bottom: 8px;
+    font-style: italic;
+}
+.dice-container {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 5px;
+    margin-bottom: 16px;
+}
+.die {
+    width: 42px;
+    height: 42px;
+    border: 2px solid var(--dim);
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font: 700 22px 'Crimson Text', serif;
+    background: var(--input);
+    transition: transform 0.15s ease;
+}
+.die.selected {
+    transform: scale(1.15);
+    border-width: 3px;
+    box-shadow: 0 0 8px currentColor;
+}
+.die.failure { color: #c44; border-color: #c44; }
+.die.mixed { color: #c98a20; border-color: #c98a20; }
+.die.success { color: #3a9a3a; border-color: #3a9a3a; }
+.dice-result {
+    font: 700 20px 'IM Fell English', Georgia, serif;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 8px 16px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+}
+.dice-result.failure { color: #c44; background: rgba(204, 68, 68, 0.1); border: 1px solid #c44; }
+.dice-result.mixed { color: #c98a20; background: rgba(201, 138, 32, 0.1); border: 1px solid #c98a20; }
+.dice-result.success { color: #3a9a3a; background: rgba(58, 154, 58, 0.1); border: 1px solid #3a9a3a; }
+.dice-result.critical {
+    color: #2a8a2a;
+    background: linear-gradient(135deg, rgba(58, 154, 58, 0.15), rgba(201, 162, 39, 0.15));
+    border: 2px solid #3a9a3a;
+    text-shadow: 1px 1px 0 var(--accent-dim);
+}
+.dice-bonus-section {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+.dice-bonus-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    min-width: 70px;
+}
+.dice-bonus-die-slot {
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.dice-bonus-die {
+    width: 36px;
+    height: 36px;
+    border: 2px solid var(--dim);
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font: 700 18px 'Crimson Text', serif;
+    background: var(--input);
+    animation: dieAppear 0.2s ease-out;
+}
+@keyframes dieAppear {
+    from { transform: scale(0); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+.dice-bonus-die.failure { color: #c44; border-color: #c44; }
+.dice-bonus-die.mixed { color: #c98a20; border-color: #c98a20; }
+.dice-bonus-die.success { color: #3a9a3a; border-color: #3a9a3a; }
+.dice-bonus-die.selected {
+    transform: scale(1.1);
+    border-width: 3px;
+    box-shadow: 0 0 6px currentColor;
+}
+.dice-bonus-die.dice-mode-flip {
+    background: transparent;
+    border: 2px dashed var(--dim);
+    font-size: 20px;
+    box-shadow: none;
+}
+.dice-bonus-btn {
+    background: var(--card);
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 3px;
+    font: 600 12px 'Crimson Text', serif;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.15s ease;
+}
+.dice-bonus-btn:hover:not(:disabled) {
+    background: var(--accent);
+    color: var(--bg);
+}
+.dice-bonus-btn:disabled {
+    background: var(--bg);
+    border-color: var(--border);
+    color: var(--dim);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+.dice-popup-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: transparent;
+    border: none;
+    color: var(--dim);
+    padding: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+    opacity: 0.7;
+    transition: opacity 0.15s ease;
+}
+.dice-popup-close:hover { opacity: 1; }
+
+/* Responsive */
+@media (max-width: 900px) {
+    .info-section { flex-wrap: wrap; }
+    .actions-row { grid-template-columns: repeat(2, 1fr); }
+    .harm-section, .main-content-row { grid-template-columns: repeat(3, 1fr); }
+    .abilities-contacts-row { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+    .actions-row, .harm-section, .main-content-row, .abilities-contacts-row { grid-template-columns: 1fr; }
+    .harm-block { grid-column: span 1; }
+}
+
+/* Touch-friendly targets - sheet-specific only */
+/* Base track sizes handled by controls.css */
+@media (pointer: coarse) {
+    /* XP uses <i> elements, not covered by controls.css */
+    .xp-track i,
+    .playbook-xp-track i {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/* Print */
+@media print {
+    body { background: #fff; color: #000; background-image: none; }
+    .controls { display: none; }
+    .sheet { max-width: 100%; }
+    header h1, .section-header, .attr-header { color: #000; }
+    section, .attr-block, .stress-block, .trauma-block, .harm-block, .armor-block,
+    .load-block, .healing-section, .abilities-section, .contacts-block,
+    .notes-section, .info-section, .abilities-contacts-row section {
+        background: #fff;
+        border: 1px solid #999;
+    }
+}

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FATE - Group Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="controls.css">
+    <link rel="stylesheet" href="fate-shared.css">
+    <link rel="stylesheet" href="fate-group.css">
+</head>
+<body>
+    <div class="tracker">
+        <header>
+            <h1>FATE Group Tracker</h1>
+            <div class="rules-toggle">
+                <select id="fate-version">
+                    <option value="core">Core</option>
+                    <option value="condensed" selected>Condensed</option>
+                    <option value="accelerated">Accelerated</option>
+                </select>
+            </div>
+			<div class="controls">
+				<button id="new-turn-btn" title="Clear all 'Acted' checkboxes">New Turn</button>
+			</div>
+            <div class="controls">
+                <button id="add-char-btn" title="Add Character">+ Add PC</button>
+				<button id="import-char-btn" title="Import character from Fate.html">+ Import PC</button>
+                <button id="add-npc-btn" title="Add NPC">+ Add NPC</button>
+                <input type="file" id="import-char-file" accept=".json,.char.json" hidden>
+                <span id="autosave-status"></span>
+                <button id="save-btn" title="Save to file">Export Group</button>
+                <button id="load-btn" title="Load from file">Import Group</button>
+                <input type="file" id="load-file" accept=".json,.char.json" hidden>
+                <button id="clear-btn" title="Clear all">Clear</button>
+            </div>
+        </header>
+
+        <div class="characters-container" id="characters-container">
+            <!-- Character columns will be added dynamically -->
+        </div>
+    </div>
+
+    <!-- Character Column Template -->
+    <template id="character-template">
+        <div class="character-column" data-char-id="">
+            <div class="char-header">
+                <div class="char-header-row">
+                    <span class="drag-handle" draggable="true" title="Drag to reorder">⋮⋮</span>
+                    <input type="text" class="char-name" placeholder="Character Name">
+                    <button class="view-details-btn pc-only" title="View full character sheet">&#x2197;</button>
+                </div>
+                <div class="char-header-row pc-only">
+                    <div class="fate-points">
+                        <button class="fp-btn minus">-</button>
+                        <span class="fp-value">3</span>
+                        <button class="fp-btn plus">+</button>
+                        <span class="fp-label">FP</span>
+                    </div>
+                    <div class="char-actions">
+                        <button class="export-char-btn" title="Export this character">&#x21E9;</button>
+                        <button class="remove-char-btn" title="Remove character">×</button>
+                    </div>
+                </div>
+                <div class="char-header-row npc-only">
+                    <div class="char-actions">
+                        <button class="export-char-btn" title="Export this character">&#x21E9;</button>
+                        <button class="remove-char-btn" title="Remove character">×</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Combat Section (Collapsible, includes Stress + Consequences) -->
+            <div class="section combat-section">
+                <div class="combat-header-row">
+                    
+                    <div class="section-label toggle-section" data-toggle="combat">
+                        COMBAT <span class="toggle-icon">▼</span>
+                    </div>
+                </div>
+                <div class="section-content" data-content="combat">
+					<div class="action-row">
+						<label class="acted-label">
+							<input type="checkbox" class="acted-checkbox"> Acted this turn
+						</label>
+					</div>
+                    <div class="boosts-row">
+                        <div class="boosts-label">Boosts</div>
+                        <div class="boost-boxes">
+                            <b></b><b></b><b></b><b></b><b></b>
+                        </div>
+                    </div>
+                    <div class="combat-subsection">
+                        <div class="subsection-label">STRESS</div>
+                        <div class="stress-row">
+                            <span class="stress-type">Phys</span>
+                            <div class="stress-boxes physical-stress">
+                                <b data-val="1">1</b><b data-val="2">2</b><b data-val="3">3</b>
+                            </div>
+                        </div>
+                        <div class="stress-row">
+                            <span class="stress-type">Ment</span>
+                            <div class="stress-boxes mental-stress">
+                                <b data-val="1">1</b><b data-val="2">2</b><b data-val="3">3</b>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="combat-subsection">
+                        <div class="subsection-label">CONSEQUENCES</div>
+                        <div class="consequence-row">
+                            <span class="cons-level">-2</span>
+                            <input type="text" class="cons-input" data-cons="mild" placeholder="Mild">
+                        </div>
+                        <div class="consequence-row">
+                            <span class="cons-level">-4</span>
+                            <input type="text" class="cons-input" data-cons="moderate" placeholder="Moderate">
+                        </div>
+                        <div class="consequence-row">
+                            <span class="cons-level">-6</span>
+                            <input type="text" class="cons-input" data-cons="severe" placeholder="Severe">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Aspects Section (Collapsible, PC only) -->
+            <div class="section aspects-section pc-only">
+                <div class="section-label toggle-section" data-toggle="aspects">
+                    ASPECTS <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content" data-content="aspects">
+                    <input type="text" class="aspect-input" data-aspect="highConcept" placeholder="High Concept">
+                    <input type="text" class="aspect-input" data-aspect="trouble" placeholder="Trouble">
+                    <input type="text" class="aspect-input" data-aspect="aspect3" placeholder="Aspect 3">
+                    <input type="text" class="aspect-input" data-aspect="aspect4" placeholder="Aspect 4">
+                    <input type="text" class="aspect-input" data-aspect="aspect5" placeholder="Aspect 5">
+                </div>
+            </div>
+
+            <!-- Skills Section (Collapsible, collapsed by default, PC only) -->
+            <div class="section skills-section pc-only">
+                <div class="section-label toggle-section" data-toggle="skills">
+                    SKILLS <span class="toggle-icon">▶</span>
+                </div>
+                <div class="section-content collapsed" data-content="skills">
+                    <div class="skills-grid">
+                        <div class="skill-row"><span>Academics</span><div class="skill-dots" data-skill="academics"><b></b><b></b><b></b><b></b><b></b></div></div>
+                        <div class="skill-row"><span>Athletics</span><div class="skill-dots" data-skill="athletics"><b></b><b></b><b></b><b></b><b></b></div></div>
+                        <div class="skill-row"><span>Burglary</span><div class="skill-dots" data-skill="burglary"><b></b><b></b><b></b><b></b><b></b></div></div>
+                        <div class="skill-row"><span>Contacts</span><div class="skill-dots" data-skill="contacts"><b></b><b></b><b></b><b></b><b></b></div></div>
+                        <div class="skill-row"><span>Crafts</span><div class="skill-dots" data-skill="crafts"><b></b><b></b><b></b><b></b><b></b></div></div>
+                        <div class="skill-row"><span>Deceive</span><div class="skill-dots" data-skill="deceive"><b></b><b></b><b></b><b></b><b></b></div></div>
+                        <div class="skill-row"><span>Drive</span><div class="skill-dots" data-skill="drive"><b></b><b></b><b></b><b></b><b></b></div></div>
+                        <div class="skill-row"><span>Empathy</span><div class="skill-dots" data-skill="empathy"><b></b><b></b><b></b><b></b><b></b></div></div>
+                        <div class="skill-row"><span>Fight</span><div class="skill-dots" data-skill="fight"><b></b><b></b><b></b><b></b><b></b></div></div>
+                        <div class="skill-row"><span>Investigate</span><div class="skill-dots" data-skill="investigate"><b></b><b></b><b></b><b></b><b></b></div></div>
+                        <div class="skill-row"><span>Lore</span><div class="skill-dots" data-skill="lore"><b></b><b></b><b></b><b></b><b></b></div></div>
+                        <div class="skill-row"><span>Notice</span><div class="skill-dots" data-skill="notice"><b></b><b></b><b></b><b></b><b></b></div></div>
+                        <div class="skill-row"><span>Physique</span><div class="skill-dots" data-skill="physique"><b></b><b></b><b></b><b></b><b></b></div></div>
+                        <div class="skill-row"><span>Provoke</span><div class="skill-dots" data-skill="provoke"><b></b><b></b><b></b><b></b><b></b></div></div>
+                        <div class="skill-row"><span>Rapport</span><div class="skill-dots" data-skill="rapport"><b></b><b></b><b></b><b></b><b></b></div></div>
+                        <div class="skill-row"><span>Resources</span><div class="skill-dots" data-skill="resources"><b></b><b></b><b></b><b></b><b></b></div></div>
+                        <div class="skill-row"><span>Shoot</span><div class="skill-dots" data-skill="shoot"><b></b><b></b><b></b><b></b><b></b></div></div>
+                        <div class="skill-row"><span>Stealth</span><div class="skill-dots" data-skill="stealth"><b></b><b></b><b></b><b></b><b></b></div></div>
+                        <div class="skill-row"><span>Will</span><div class="skill-dots" data-skill="will"><b></b><b></b><b></b><b></b><b></b></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stunts Section (Collapsible, collapsed by default, PC only) -->
+            <div class="section stunts-section pc-only">
+                <div class="section-label toggle-section" data-toggle="stunts">
+                    STUNTS <span class="toggle-icon">▶</span>
+                </div>
+                <div class="section-content collapsed" data-content="stunts">
+                    <div class="stunts-list">
+                        <!-- Dynamic stunt rows -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <script type="module" src="js/fate-group.js"></script>
+</body>
+</html>
