@@ -7,7 +7,7 @@
  * Includes full 78-card deck: 22 Major Arcana + 56 Minor Arcana
  */
 
-import { createDeck, shuffleDeck, drawCard } from './card-library.js';
+import { createDeck, shuffleDeck, drawCard } from '../Dice/card-library.js';
 
 // Major Arcana cards (0-21) with meanings
 export const majorArcana = [
@@ -253,7 +253,7 @@ export function getCardImagePath(card) {
         // Major Arcana: e.g., "00-thefool.png"
         const number = String(card.number).padStart(2, '0');
         const name = card.name.replace(/\s+/g, '').toLowerCase(); // Remove spaces and lowercase
-        return `img/tarot/${number}-${name}.png`;
+        return `img/${number}-${name}.png`;
     } else {
         // Minor Arcana: e.g., "wands01.png", "cups11.png"
         const rankNumbers = {
@@ -263,7 +263,7 @@ export function getCardImagePath(card) {
             "Queen": "13", "King": "14"
         };
         const number = rankNumbers[card.rank];
-        return `img/tarot/${card.suit.toLowerCase()}${number}.png`;
+        return `img/${card.suit.toLowerCase()}${number}.png`;
     }
 }
 

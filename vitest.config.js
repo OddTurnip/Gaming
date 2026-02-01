@@ -3,6 +3,11 @@ import { defineConfig } from 'vitest/config';
 export default defineConfig({
   test: {
     environment: 'happy-dom',
-    include: ['Dice/tests/**/*.test.js'],
+    include: [
+      'Dice/tests/**/*.test.js',
+      'Names/**/*.test.js',
+      'Characters/**/*.test.js',
+      'Themes/**/*.test.js',
+    ],
   },
 });

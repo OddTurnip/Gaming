@@ -4,16 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tarot Reading</title>
-    <link rel="stylesheet" href="Style.css">
+    <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="../favicon.ico" type="image/x-icon">
     <!-- Apply theme immediately to prevent flash of unstyled content -->
-    <script src="theme-init.js"></script>
+    <script src="../Themes/theme-init.js"></script>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>Tarot Reading</h1>
-            <a href="index.html" class="close-button" aria-label="Close">✕</a>
+            <div class="header-row">
+                <!-- Left: Navigation -->
+                <div class="header-nav">
+                    <a href="../index.html" class="nav-button">← Home</a>
+                </div>
+
+                <!-- Center: Title -->
+                <div class="header-title">
+                    <h1>Tarot Reading</h1>
+                </div>
+
+                <!-- Right: Theme selector -->
+                <div class="header-theme" id="theme-slot"></div>
+            </div>
         </div>
 
         <div class="controls">
@@ -88,15 +100,11 @@
     <script type="module">
         // Import Tarot reading logic and history utilities
         import { performThreeCardSpread, formatTarotCard, getCardImagePath, getCardMeaning } from './tarot.js';
-        import { createComplexHistoryEntry, addToHistory } from './history-log.js';
-        import { addThemeSelector } from './theme-manager.js';
-        import { createSeasonalEffects } from './snowflakes.js';
+        import { createComplexHistoryEntry, addToHistory } from '../Dice/history-log.js';
+        import { initThemeSelector } from '../Themes/theme-setup.js';
 
-        // Make createSeasonalEffects available globally for the animated checkbox
-        window.createSeasonalEffects = createSeasonalEffects;
-
-        // Add theme selector to the page
-        addThemeSelector();
+        // Initialize theme selector
+        initThemeSelector();
 
         // State management
         let handCounter = 0;
@@ -137,6 +145,9 @@
                 closeCardModal();
             }
         });
+
+        // Perform initial reading on page load
+        performReading();
 
         /**
          * Perform a new tarot reading

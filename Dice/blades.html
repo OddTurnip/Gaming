@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="Style.css">
     <link rel="icon" href="../favicon.ico" type="image/x-icon">
     <!-- Apply theme immediately to prevent flash of unstyled content -->
-    <script src="theme-init.js"></script>
+    <script src="../Themes/theme-init.js"></script>
     <style>
         /* Bonus dice section */
         .bonus-section {
@@ -78,8 +78,20 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Blades Dice Roller</h1>
-            <a href="index.html" class="close-button" aria-label="Close">✕</a>
+            <div class="header-row">
+                <!-- Left: Navigation -->
+                <div class="header-nav">
+                    <a href="index.html" class="nav-button">← Back</a>
+                </div>
+
+                <!-- Center: Title -->
+                <div class="header-title">
+                    <h1>BITD Dice</h1>
+                </div>
+
+                <!-- Right: Theme selector -->
+                <div class="header-theme" id="theme-slot"></div>
+            </div>
         </div>
 
         <div class="controls">
@@ -203,17 +215,13 @@
         // Import Blades dice logic and history utilities
         import { rollBladesDice, rollD6, evaluateDicePool, getDieClass, getOutcomeColor } from './blades.js';
         import { createHistoryEntry, addToHistory } from './history-log.js';
-        import { addThemeSelector } from './theme-manager.js';
-        import { createSeasonalEffects } from './snowflakes.js';
+        import { initThemeSelector } from '../Themes/theme-setup.js';
 
-        // Make createSeasonalEffects available globally for the animated checkbox
-        window.createSeasonalEffects = createSeasonalEffects;
+        // Initialize theme selector
+        initThemeSelector();
 
         // Blades in the Dark Dice Roller
         document.addEventListener('DOMContentLoaded', function() {
-            // Add theme selector to the page
-            addThemeSelector();
-
             // Get references to DOM elements (UI layer)
             const numDiceSelect = document.getElementById('numDice');
             const rollButton = document.getElementById('rollButton');

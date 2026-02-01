@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Name Generator</title>
     <link rel="icon" type="image/x-icon" href="odd_turnip.ico">
+    <link rel="stylesheet" href="../Themes/themes.css">
     <link rel="stylesheet" href="styles.css">
+    <script src="../Themes/theme-init.js"></script>
     <style>
         /* Page-specific styles */
         .container {
@@ -34,10 +36,10 @@
         .results-header {
             font-size: 1.3em;
             font-weight: 600;
-            color: #333;
+            color: var(--heading-primary, #333);
             margin-bottom: 15px;
             padding-bottom: 10px;
-            border-bottom: 2px solid #667eea;
+            border-bottom: 2px solid var(--accent-primary, #667eea);
         }
 
         .names-list {
@@ -47,22 +49,22 @@
         }
 
         .name-item {
-            background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
+            background: var(--bg-light, linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%));
             padding: 15px 20px;
             border-radius: 8px;
             font-size: 1.2em;
-            color: #333;
-            border-left: 4px solid #667eea;
+            color: var(--text-primary, #333);
+            border-left: 4px solid var(--accent-primary, #667eea);
             transition: transform 0.2s, box-shadow 0.2s;
         }
 
         .name-item:hover {
             transform: translateX(5px);
-            box-shadow: 0 3px 10px rgba(102, 126, 234, 0.2);
+            box-shadow: 0 3px 10px var(--button-shadow, rgba(102, 126, 234, 0.2));
         }
 
         .nav-link {
-            color: #667eea;
+            color: var(--accent-primary, #667eea);
             text-decoration: none;
             font-weight: 600;
         }
@@ -74,13 +76,13 @@
         .gender-filters {
             margin-top: 15px;
             padding: 15px;
-            background: #f8f9ff;
+            background: var(--bg-light, #f8f9ff);
             border-radius: 6px;
         }
 
         .gender-filters label {
             font-weight: 600;
-            color: #333;
+            color: var(--text-primary, #333);
             display: block;
             margin-bottom: 10px;
         }
@@ -101,6 +103,7 @@
             width: 18px;
             height: 18px;
             cursor: pointer;
+            accent-color: var(--accent-primary, #667eea);
         }
 
         .checkbox-group label {
@@ -113,13 +116,13 @@
         .source-filters {
             margin-top: 15px;
             padding: 15px;
-            background: #f8f9ff;
+            background: var(--bg-light, #f8f9ff);
             border-radius: 6px;
         }
 
         .source-filters > label {
             font-weight: 600;
-            color: #333;
+            color: var(--text-primary, #333);
             display: block;
             margin-bottom: 10px;
         }
@@ -134,10 +137,10 @@
             width: 100%;
             padding: 10px 15px;
             font-size: 1em;
-            border: 2px solid #667eea;
+            border: 2px solid var(--accent-primary, #667eea);
             border-radius: 6px;
-            background: white;
-            color: #333;
+            background: var(--bg-white, white);
+            color: var(--text-primary, #333);
             cursor: pointer;
             text-align: left;
             display: flex;
@@ -146,21 +149,21 @@
         }
 
         .source-dropdown-button span {
-            color: #333;
+            color: var(--text-primary, #333);
         }
 
         .source-dropdown-button:hover {
-            border-color: #764ba2;
+            border-color: var(--accent-secondary, #764ba2);
         }
 
         .source-dropdown-content {
             display: none;
             position: absolute;
-            background-color: white;
+            background-color: var(--bg-white, white);
             width: 100%;
             max-height: 300px;
             overflow-y: auto;
-            border: 2px solid #667eea;
+            border: 2px solid var(--accent-primary, #667eea);
             border-radius: 6px;
             margin-top: 5px;
             z-index: 1000;
@@ -180,7 +183,7 @@
         }
 
         .source-checkbox-group:hover {
-            background-color: #f8f9ff;
+            background-color: var(--bg-hover, #f8f9ff);
         }
 
         .source-checkbox-group.indented {
@@ -191,7 +194,7 @@
             width: 16px;
             height: 16px;
             cursor: pointer;
-            accent-color: #667eea;
+            accent-color: var(--accent-primary, #667eea);
         }
 
         /* Make indeterminate state more visible */
@@ -209,28 +212,28 @@
 
         .source-actions {
             padding: 10px 12px;
-            border-top: 1px solid #e0e0e0;
+            border-top: 1px solid var(--border-light, #e0e0e0);
             display: flex;
             gap: 10px;
-            background: #f8f9ff;
+            background: var(--bg-light, #f8f9ff);
         }
 
         .source-action-btn {
             flex: 1;
             padding: 6px 12px;
             font-size: 0.9em;
-            border: 1px solid #667eea;
+            border: 1px solid var(--accent-primary, #667eea);
             border-radius: 4px;
-            background: white;
-            color: #667eea;
+            background: var(--bg-white, white);
+            color: var(--accent-primary, #667eea);
             cursor: pointer;
             font-weight: 500;
             transition: all 0.2s;
         }
 
         .source-action-btn:hover {
-            background: #667eea;
-            color: white;
+            background: var(--accent-primary, #667eea);
+            color: var(--text-white, white);
         }
 
         .generate-button-container {
@@ -248,11 +251,23 @@
 </head>
 <body>
     <div class="container">
-        <header>
-            <a href="index.html" class="home-button">Home</a>
-            <h1>🎲 Name Generator</h1>
-            <p>Generate random full names from the database</p>
-        </header>
+        <div class="header">
+            <div class="header-row">
+                <!-- Left: Navigation -->
+                <div class="header-nav">
+                    <a href="index.html" class="nav-button">← Back</a>
+                </div>
+
+                <!-- Center: Title -->
+                <div class="header-title">
+                    <h1>🎲 Name Generator</h1>
+                    <p>Generate random full names from the database</p>
+                </div>
+
+                <!-- Right: Theme selector -->
+                <div class="header-theme" id="theme-slot"></div>
+            </div>
+        </div>
 
         <div class="content">
             <div class="controls" style="display: none;" id="controls">
@@ -324,7 +339,7 @@
                         <label for="genderQueer">Queer</label>
                     </div>
                 </div>
-                <div style="margin-top: 8px; font-size: 0.85em; color: #666;">
+                <div style="margin-top: 8px; font-size: 0.85em; color: var(--text-secondary, #666);">
                     Note: "Any" gender names are always included
                 </div>
                 <div class="generate-button-container">
@@ -671,6 +686,11 @@
 
         // Load database when page loads
         window.addEventListener('DOMContentLoaded', loadDatabase);
+    </script>
+
+    <script type="module">
+        import { autoInitThemeSelector } from '../Themes/theme-setup.js';
+        autoInitThemeSelector();
     </script>
 </body>
 </html>

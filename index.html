@@ -4,39 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gaming Tools</title>
-    <link rel="stylesheet" href="Dice/Style.css">
+    <link rel="stylesheet" href="Themes/themes.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <!-- Apply theme immediately to prevent flash of unstyled content -->
-    <script src="Dice/theme-init.js"></script>
+    <script src="Themes/theme-init.js"></script>
+    <style>
+        .container { max-width: 600px; }
+    </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>Gaming Tools</h1>
+            <div class="header-row">
+                <!-- Left: Navigation (empty for root) -->
+                <div class="header-nav"></div>
+
+                <!-- Center: Title -->
+                <div class="header-title">
+                    <h1>Gaming Tools</h1>
+                </div>
+
+                <!-- Right: Theme selector -->
+                <div class="header-theme" id="theme-slot"></div>
+            </div>
         </div>
 
-        <!-- Dice Rollers Link -->
-        <a href="Dice/index.html" class="link-container">
-            <h2>Dice Rollers</h2>
-            <p>A collection of dice rollers for tabletop RPGs including basic polyhedrals, Fate/Fudge dice, Blades in the Dark, and tarot readings.</p>
-        </a>
+        <div class="content">
+            <!-- Dice Rollers Link -->
+            <a href="Dice/index.html" class="link-container">
+                <h2>Dice Rollers</h2>
+                <p>A collection of dice rollers for tabletop RPGs including basic polyhedrals, Fate/Fudge dice, and Blades in the Dark.</p>
+            </a>
 
-        <!-- Name Generator Link -->
-        <a href="Names/index.html" class="link-container">
-            <h2>Name Generator</h2>
-            <p>Generate random names for your characters and NPCs. Browse and search through a database of names from various cultures and origins.</p>
-        </a>
+            <!-- Name Generator Link -->
+            <a href="Names/index.html" class="link-container">
+                <h2>Name Generator</h2>
+                <p>Generate random names for your characters and NPCs. Browse and search through a database of names from various cultures and origins.</p>
+            </a>
 
-        <!-- Character Sheets Link -->
-        <a href="Characters/index.html" class="link-container">
-            <h2>Character Sheets</h2>
-            <p>Digital character sheets for FATE, Blades in the Dark, and other tabletop RPG systems.</p>
-        </a>
+            <!-- Character Sheets Link -->
+            <a href="Characters/index.html" class="link-container">
+                <h2>Character Sheets</h2>
+                <p>Digital character sheets for FATE, Blades in the Dark, and other tabletop RPG systems.</p>
+            </a>
 
-        <!-- About Section -->
-        <div class="section">
-            <h2>About</h2>
-            <p>This is a collection of online tools for tabletop gaming. Each tool is designed to enhance your gaming experience and is free to use.</p>
+            <!-- Tarot Reading Link -->
+            <a href="Tarot/index.html" class="link-container">
+                <h2>Tarot Reading</h2>
+                <p>Three-card spreads (Past, Present, Future) with the full 78-card deck. Choose Major Arcana, Minor Arcana, or both. Click cards to view meanings.</p>
+            </a>
+
+            <!-- About Link -->
+            <a href="About.html" class="link-container">
+                <h2>About</h2>
+                <p>Tech stack, source code on GitHub, and project credits.</p>
+            </a>
+
         </div>
 
         <!-- Footer -->
@@ -51,13 +74,8 @@
     </div>
 
     <script type="module">
-        import { addThemeSelector } from './Dice/theme-manager.js';
-        import { createSeasonalEffects } from './Dice/snowflakes.js';
-
-        // Make createSeasonalEffects available globally for the animated checkbox
-        window.createSeasonalEffects = createSeasonalEffects;
-
-        document.addEventListener('DOMContentLoaded', addThemeSelector);
+        import { autoInitThemeSelector } from './Themes/theme-setup.js';
+        autoInitThemeSelector();
     </script>
 </body>
 </html>

@@ -5,114 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Name Database</title>
     <link rel="icon" type="image/x-icon" href="odd_turnip.ico">
+    <link rel="stylesheet" href="../Themes/themes.css">
     <link rel="stylesheet" href="styles.css">
+    <script src="../Themes/theme-init.js"></script>
     <style>
         /* Page-specific overrides */
         .container {
-            max-width: 900px;
-        }
-
-        header {
-            padding: 50px 30px;
-        }
-
-        header h1 {
-            font-size: 3em;
-            margin-bottom: 15px;
-        }
-
-        header p {
-            font-size: 1.2em;
-        }
-
-        .content {
-            padding: 40px 30px;
-        }
-
-        .intro {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .intro h2 {
-            color: #333;
-            margin-bottom: 15px;
-            font-size: 1.8em;
-        }
-
-        .intro p {
-            color: #666;
-            font-size: 1.1em;
-            line-height: 1.6;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin: 40px 0;
-        }
-
-        .feature-card {
-            background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
-            padding: 30px;
-            border-radius: 12px;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 2px solid transparent;
-            cursor: pointer;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
-            border-color: #667eea;
-        }
-
-        .feature-card .icon {
-            font-size: 3em;
-            margin-bottom: 15px;
-        }
-
-        .feature-card h3 {
-            color: #667eea;
-            margin-bottom: 10px;
-            font-size: 1.4em;
-        }
-
-        .feature-card p {
-            color: #666;
-            line-height: 1.5;
-        }
-
-        .feature-card .btn {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 12px 25px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: 600;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .feature-card .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            max-width: 600px;
         }
 
         .database-info {
-            background: #f8f9fa;
+            background: var(--bg-light, #f8f9fa);
             padding: 25px;
             border-radius: 8px;
             margin: 30px 0;
         }
 
         .database-info h3 {
-            color: #333;
+            color: var(--heading-primary, #333);
             margin-bottom: 15px;
             font-size: 1.3em;
         }
@@ -124,100 +34,71 @@
 
         .database-info li {
             padding: 8px 0;
-            color: #555;
+            color: var(--text-primary, #555);
             font-size: 1.05em;
         }
 
         .database-info li::before {
             content: "✓ ";
-            color: #667eea;
+            color: var(--accent-primary, #667eea);
             font-weight: bold;
             margin-right: 8px;
         }
 
-        /* Responsive overrides */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2em;
-            }
-
-            .content {
-                padding: 30px 20px;
-            }
-
-            .features {
-                grid-template-columns: 1fr;
-            }
-        }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>🎭 Name Database</h1>
-            <p>A SQLite-powered random name generation tool</p>
-        </header>
+        <div class="header">
+            <div class="header-row">
+                <!-- Left: Navigation -->
+                <div class="header-nav">
+                    <a href="../index.html" class="nav-button">← Home</a>
+                </div>
+
+                <!-- Center: Title -->
+                <div class="header-title">
+                    <h1>🎭 Names DB</h1>
+                </div>
+
+                <!-- Right: Theme selector -->
+                <div class="header-theme" id="theme-slot"></div>
+            </div>
+        </div>
 
         <div class="content">
-            <div class="intro">
-                <h2>Welcome!</h2>
-                <p>
-                    This project provides a flexible name generation system backed by a SQLite database.
-                    Generate random character names with weighted probabilities, or browse and filter
-                    the entire collection of names with their metadata.
-                </p>
-            </div>
+            <!-- Name Generator Link -->
+            <a href="random.html" class="link-container">
+                <h2>🎲 Name Generator</h2>
+                <p>Generate full character names.
+				<br/>Supports titles, middle names, and or nicknames.
+				<br/>Uses weighted random selection based on frequency.</p>
+            </a>
 
-            <div class="features">
-                <div class="feature-card" onclick="window.location.href='random.html'">
-                    <div class="icon">🎲</div>
-                    <h3>Name Generator</h3>
-                    <p>
-                        Generate full character names with titles, first names, optional middle names
-                        or nicknames, and last names. Uses weighted random selection based on frequency.
-                    </p>
-                    <a href="random.html" class="btn" onclick="event.stopPropagation()">Generate Names</a>
-                </div>
+            <!-- Database Viewer Link -->
+            <a href="viewer.html" class="link-container">
+                <h2>📊 Database Viewer</h2>
+                <p>Browse all names in the database.
+				<br/>Filter data based on multiple fields. Click column headers to sort. View tags, pronunciation, and meanings.</p>
+            </a>
 
-                <div class="feature-card" onclick="window.location.href='viewer.html'">
-                    <div class="icon">📊</div>
-                    <h3>Database Viewer</h3>
-                    <p>
-                        Browse all names in the database with filtering by position and gender.
-                        Click column headers to sort. View tags, pronunciation, and meanings.
-                    </p>
-                    <a href="viewer.html" class="btn" onclick="event.stopPropagation()">View Database</a>
-                </div>
-
-                <div class="feature-card" onclick="window.location.href='dashboard.html'">
-                    <div class="icon">📈</div>
-                    <h3>Source Dashboard</h3>
-                    <p>
-                        View statistics for each source showing first and last name counts.
-                        Identify undersupplied sources that need more names for better generation.
-                    </p>
-                    <a href="dashboard.html" class="btn" onclick="event.stopPropagation()">View Dashboard</a>
-                </div>
-            </div>
+            <!-- Source Dashboard Link -->
+            <a href="dashboard.html" class="link-container">
+                <h2>📈 Source Dashboard</h2>
+                <p>View statistics across the database. 
+				<br/>Helps identify undersupplied sources that need more names for better generation, etc..</p>
+            </a>
 
             <div class="database-info">
                 <h3>📚 Database Contents</h3>
                 <ul>
-                    <li>1,000+ names across 5 gender categories (male, female, ambiguous, queer, any)</li>
+                    <li>1,000+ names across numerous categories</li>
                     <li>Weighted random selection for more realistic distributions</li>
                     <li>Tag system for organizing names by source, vibe, and theme</li>
                     <li>Extensible schema for adding custom names and metadata</li>
                 </ul>
             </div>
 
-            <div class="intro">
-                <h2>🛠️ Technical Details</h2>
-                <p>
-                    Built with pure HTML, CSS, and JavaScript. Uses SQL.js to run SQLite entirely
-                    in the browser—no server required. All data is stored in a local names.db file
-                    that can be regenerated or customized using the included Python script.
-                </p>
-            </div>
         </div>
 
         <div class="footer">
@@ -225,17 +106,19 @@
             <div class="made-with">
                 Made with <a href="https://github.com/anthropics/claude-code" target="_blank">Claude Code</a>
             </div>
-            <div style="display: flex; justify-content: center; align-items: center; gap: 15px; flex-wrap: wrap;">
-                <a href="../index.html" class="oddturnip-link">← Gaming</a>
-                <a href="https://www.oddturnip.com" target="_blank" class="oddturnip-link">
-                    <picture>
-                        <source srcset="https://www.oddturnip.com/img/odd_turnip_480.png" media="(min-width: 1024px)">
-                        <img src="https://www.oddturnip.com/img/odd_turnip_48.png" alt="OddTurnip Logo">
-                    </picture>
-                    <span>OddTurnip.com</span>
-                </a>
-            </div>
+            <a href="https://www.oddturnip.com" target="_blank" class="oddturnip-link">
+                <picture>
+                    <source srcset="https://www.oddturnip.com/img/odd_turnip_480.png" media="(min-width: 1024px)">
+                    <img src="https://www.oddturnip.com/img/odd_turnip_48.png" alt="OddTurnip Logo">
+                </picture>
+                <span>OddTurnip.com</span>
+            </a>
         </div>
     </div>
+
+    <script type="module">
+        import { autoInitThemeSelector } from '../Themes/theme-setup.js';
+        autoInitThemeSelector();
+    </script>
 </body>
 </html>

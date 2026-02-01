@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Template - Gaming Tools</title>
+    <link rel="stylesheet" href="Themes/themes.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Apply theme immediately to prevent flash of unstyled content -->
+    <script src="Themes/theme-init.js"></script>
+    <style>
+        /* ========================================
+           PAGE-SPECIFIC STYLES
+           Most styles come from themes.css - only add page-specific overrides here
+           ======================================== */
+
+        .example-box {
+            background: var(--bg-light, #f8f9ff);
+            border: 2px solid var(--border-light, #e0e7ff);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .example-box h3 {
+            color: var(--accent-primary, #667eea);
+            margin-bottom: 10px;
+        }
+
+        .example-box code {
+            background: var(--bg-hover, #f0f0f0);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', monospace;
+        }
+
+        .example-box pre {
+            background: var(--bg-hover, #f0f0f0);
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 10px;
+            overflow-x: auto;
+        }
+
+        .content h2 {
+            color: var(--heading-primary, #333);
+            margin-bottom: 15px;
+        }
+
+        .content p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- ========================================
+             HEADER WITH THREE-COLUMN LAYOUT
+             ======================================== -->
+        <div class="header">
+            <div class="header-row">
+                <!-- Left: Navigation (leave empty for root pages) -->
+                <div class="header-nav">
+                    <a href="index.html" class="nav-button">← Back</a>
+                </div>
+
+                <!-- Center: Title -->
+                <div class="header-title">
+                    <h1>Page Template</h1>
+                    <p>Three-column header layout example</p>
+                </div>
+
+                <!-- Right: Theme selector (injected by JavaScript) -->
+                <div class="header-theme" id="theme-slot">
+                    <!-- Theme selector will be inserted here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================
+             MAIN CONTENT
+             ======================================== -->
+        <div class="content">
+            <h2>Template Overview</h2>
+            <p>This template demonstrates the standard page layout for Gaming Tools pages with theme support.</p>
+
+            <div class="example-box">
+                <h3>Header Structure</h3>
+                <p>The header uses a three-column CSS grid layout:</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li><strong>Left:</strong> Navigation button (← Back) - leave empty for root pages</li>
+                    <li><strong>Center:</strong> Page title and optional subtitle</li>
+                    <li><strong>Right:</strong> Theme selector with animated toggle</li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <h3>Required Imports</h3>
+                <p>Add these to your <code>&lt;head&gt;</code>:</p>
+                <pre><code>&lt;link rel="stylesheet" href="Themes/themes.css"&gt;
+&lt;script src="Themes/theme-init.js"&gt;&lt;/script&gt;</code></pre>
+                <p style="margin-top: 15px;">Add this before <code>&lt;/body&gt;</code>:</p>
+                <pre><code>&lt;script type="module"&gt;
+    import { autoInitThemeSelector } from './Themes/theme-setup.js';
+    autoInitThemeSelector();
+&lt;/script&gt;</code></pre>
+                <p style="margin-top: 15px;">For subdirectories, adjust the path:</p>
+                <pre><code>&lt;script type="module"&gt;
+    import { autoInitThemeSelector } from '../Themes/theme-setup.js';
+    autoInitThemeSelector();
+&lt;/script&gt;</code></pre>
+            </div>
+
+            <div class="example-box">
+                <h3>Theme Setup Functions</h3>
+                <p>The <code>theme-setup.js</code> module provides two functions:</p>
+                <ul style="margin-left: 20px; margin-top: 10px; line-height: 1.8;">
+                    <li><code>autoInitThemeSelector()</code> - Waits for DOMContentLoaded, then initializes</li>
+                    <li><code>initThemeSelector()</code> - Initializes immediately (use when DOM is ready)</li>
+                </ul>
+                <p style="margin-top: 15px;">Both functions look for <code>#theme-slot</code> to inject the theme selector.</p>
+            </div>
+
+            <div class="example-box">
+                <h3>CSS Variables</h3>
+                <p>Use these CSS variables for theme-aware styling:</p>
+                <ul style="margin-left: 20px; margin-top: 10px; line-height: 1.8;">
+                    <li><code>--bg-gradient-start/end</code> - Page background gradient</li>
+                    <li><code>--container-bg</code> - Container background color</li>
+                    <li><code>--text-primary</code> - Main text color</li>
+                    <li><code>--text-secondary</code> - Muted text color</li>
+                    <li><code>--accent-primary</code> - Primary accent color</li>
+                    <li><code>--button-gradient-start/end</code> - Button/header gradients</li>
+                    <li><code>--bg-white</code>, <code>--bg-light</code>, <code>--bg-hover</code> - Background variations</li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <h3>Available Themes</h3>
+                <p>11 themes available: Autumn (default), Winter, Spring, Summer, Stars, Light, Dark, Gothic, Cthulhu, Beach, Cyberpunk</p>
+            </div>
+        </div>
+
+        <!-- ========================================
+             FOOTER
+             ======================================== -->
+        <div class="footer">
+            <p>Made with <a href="https://claude.ai/code" target="_blank" rel="noopener noreferrer">Claude Code</a></p>
+            <a href="https://www.oddturnip.com" target="_blank" rel="noopener noreferrer" class="oddturnip-link">
+                <img src="Names/odd_turnip.png" alt="OddTurnip Logo">
+                <span>OddTurnip.com</span>
+            </a>
+        </div>
+    </div>
+
+    <script type="module">
+        import { autoInitThemeSelector } from './Themes/theme-setup.js';
+        autoInitThemeSelector();
+    </script>
+</body>
+</html>

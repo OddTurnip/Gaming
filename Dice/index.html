@@ -5,14 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dice Rollers</title>
     <link rel="stylesheet" href="Style.css">
-	<link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
     <!-- Apply theme immediately to prevent flash of unstyled content -->
-    <script src="theme-init.js"></script>
+    <script src="../Themes/theme-init.js"></script>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>Dice Rollers</h1>
+            <div class="header-row">
+                <!-- Left: Navigation -->
+                <div class="header-nav">
+                    <a href="../index.html" class="nav-button">← Home</a>
+                </div>
+
+                <!-- Center: Title -->
+                <div class="header-title">
+                    <h1>Dice Rollers</h1>
+                </div>
+
+                <!-- Right: Theme selector -->
+                <div class="header-theme" id="theme-slot"></div>
+            </div>
         </div>
 
         <!-- Basic Dice Roller Link -->
@@ -39,21 +52,6 @@
             <p>Rolls d6s for Blades In The Dark. Your high result determines your result: 1-3 is a failure, 4-5 is a mixed result, and a 6 is a success. For 0 dot actions, the lowest result of 2d6 is used instead.</p>
         </a>
 
-        <h1>Other Tools</h1>
-
-        <!-- Tarot Reading Link -->
-        <a href="tarot.html" class="link-container">
-            <h2>Tarot Reading</h2>
-            <p>Perform a 3-card tarot spread (Past, Present, Future) using the Major Arcana. Each reading draws from a fresh deck.</p>
-        </a>
-
-        <!-- About Section -->
-        <div class="section">
-            <h2>About</h2>
-            <p>This is a collection of online dice rollers for tabletop gaming. Each roller is designed for specific gaming systems and keeps a history of your rolls during your session.</p>
-            <p>More dice rollers will be added in the future to support additional gaming systems and mechanics.</p>
-        </div>
-
         <!-- External Links Section -->
         <div class="section">
             <h2>External Links</h2>
@@ -70,25 +68,17 @@
         <!-- Footer -->
         <div class="footer">
             <p>Made with <a href="https://claude.ai/code" target="_blank" rel="noopener noreferrer">Claude Code</a></p>
-            <div style="display: flex; justify-content: center; align-items: center; gap: 15px; flex-wrap: wrap;">
-                <a href="../index.html" class="oddturnip-link">← Gaming</a>
-                <a href="https://www.oddturnip.com" target="_blank" rel="noopener noreferrer" class="oddturnip-link">
-                    <img src="../Names/odd_turnip.png" alt="OddTurnip Logo">
-                    <span>OddTurnip.com</span>
-                </a>
-            </div>
+            <a href="https://www.oddturnip.com" target="_blank" rel="noopener noreferrer" class="oddturnip-link">
+                <img src="../Names/odd_turnip.png" alt="OddTurnip Logo">
+                <span>OddTurnip.com</span>
+            </a>
             <p style="margin-top: 15px;">Provided as-is with no warranties, express or implied. Use at your own risk.</p>
         </div>
     </div>
 
     <script type="module">
-        import { addThemeSelector } from './theme-manager.js';
-        import { createSeasonalEffects } from './snowflakes.js';
-
-        // Make createSeasonalEffects available globally for the animated checkbox
-        window.createSeasonalEffects = createSeasonalEffects;
-
-        document.addEventListener('DOMContentLoaded', addThemeSelector);
+        import { autoInitThemeSelector } from '../Themes/theme-setup.js';
+        autoInitThemeSelector();
     </script>
 </body>
 </html>
