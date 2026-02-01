@@ -12,7 +12,8 @@ import os
 from threading import Timer
 
 PORT = 8080
-DIRECTORY = os.path.dirname(os.path.abspath(__file__))
+# Serve from Gaming root to allow cross-folder imports (e.g., ../../Dice/)
+DIRECTORY = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 class QuietHandler(http.server.SimpleHTTPRequestHandler):
@@ -29,13 +30,13 @@ class QuietHandler(http.server.SimpleHTTPRequestHandler):
 
 def open_browser():
     """Open browser after server starts."""
-    webbrowser.open(f'http://localhost:{PORT}/index.html')
+    webbrowser.open(f'http://localhost:{PORT}/Characters/index.html')
 
 
 if __name__ == '__main__':
     with socketserver.TCPServer(("", PORT), QuietHandler) as httpd:
-        print(f"Serving CharacterSheets at http://localhost:{PORT}")
-        print(f"Opening GothamReunion.html...")
+        print(f"Serving Gaming at http://localhost:{PORT}")
+        print(f"Opening Characters/index.html...")
         print("Press Ctrl+C to stop")
         Timer(0.5, open_browser).start()
         try:

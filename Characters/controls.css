@@ -26,7 +26,8 @@
 [class$="-rating"] > b,
 [class$="-boxes"] > b,
 [class$="-dots"] > b,
-[class$="-track"] > b {
+[class$="-track"] > b,
+.dots > b {
     width: var(--box-size, 22px);
     height: var(--box-size, 22px);
     border-radius: var(--box-radius, 4px);
@@ -48,7 +49,8 @@
 [class$="-rating"] > b:hover,
 [class$="-boxes"] > b:hover,
 [class$="-dots"] > b:hover,
-[class$="-track"] > b:hover {
+[class$="-track"] > b:hover,
+.dots > b:hover {
     border-color: var(--box-hover-color, var(--accent));
 }
 
@@ -57,7 +59,8 @@
 [class$="-rating"] > b.filled,
 [class$="-boxes"] > b.filled,
 [class$="-dots"] > b.filled,
-[class$="-track"] > b.filled {
+[class$="-track"] > b.filled,
+.dots > b.filled {
     background: var(--box-fill-color, var(--accent));
     border-color: var(--box-fill-color, var(--accent));
     color: #fff;
