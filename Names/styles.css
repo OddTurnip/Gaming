@@ -68,7 +68,7 @@ button:disabled {
 .status {
     background: var(--bg-light, #f0f4ff);
     border-left: 4px solid var(--accent-primary, #667eea);
-    padding: 15px 20px;
+    padding: 10px 20px;
     margin-bottom: 20px;
     border-radius: 4px;
     font-size: 0.95em;
@@ -76,13 +76,11 @@ button:disabled {
 }
 
 .status.loading {
-    border-left-color: #ffa500;
-    background: #fff9f0;
+    border-left-color: var(--accent-tertiary, #ffa500);
 }
 
 .status.success {
-    border-left-color: #28a745;
-    background: #f0fff4;
+    border-left-color: var(--accent-primary, #28a745);
 }
 
 .status.error {

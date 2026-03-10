@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dice Roller</title>
-    <link rel="stylesheet" href="Style.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="icon" href="../favicon.ico" type="image/x-icon">
     <!-- Apply theme immediately to prevent flash of unstyled content -->
     <script src="../Themes/theme-init.js"></script>
@@ -81,8 +81,8 @@
 
     <script type="module">
         // Import dice rolling logic and history utilities
-        import { rollDice, formatDiceRoll } from './dice-library.js';
-        import { createHistoryEntry, addToHistory } from './history-log.js';
+        import { rollDice, formatDiceRoll } from '../code/dice-library.js';
+        import { createHistoryEntry, addToHistory } from '../code/history-log.js';
         import { initThemeSelector } from '../Themes/theme-setup.js';
 
         // Initialize theme selector

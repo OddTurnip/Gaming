@@ -2,7 +2,7 @@
 """
 Simple HTTP server for the Gaming project.
 Run: python server.py
-Serves all sub-projects (Dice, Names, Characters, Tarot) from one server.
+Serves the project on localhost with correct MIME types for ES6 modules.
 """
 
 import http.server
@@ -48,10 +48,6 @@ if __name__ == '__main__':
 
     with socketserver.TCPServer(("", PORT), QuietHandler) as httpd:
         print(f"Gaming server at http://localhost:{PORT}")
-        print(f"  Dice:       http://localhost:{PORT}/Dice/")
-        print(f"  Names:      http://localhost:{PORT}/Names/")
-        print(f"  Characters: http://localhost:{PORT}/Characters/")
-        print(f"  Tarot:      http://localhost:{PORT}/Tarot/")
         print("Press Ctrl+C to stop")
         Timer(0.5, lambda: open_browser(start_path)).start()
         try:

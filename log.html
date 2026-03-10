@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Log - Gaming Tools</title>
+    <link rel="stylesheet" href="Themes/themes.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <script src="Themes/theme-init.js"></script>
+    <style>
+        .container { max-width: 600px; }
+
+        .changelog-entry {
+            margin-bottom: 30px;
+        }
+
+        .changelog-date {
+            color: var(--accent-tertiary, #7a6952);
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid var(--border-light, #eee);
+        }
+
+        .changelog-entry h3 {
+            color: var(--heading-primary, #333);
+            font-size: 1em;
+            margin: 14px 0 6px;
+        }
+
+        .changelog-entry ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .changelog-entry li {
+            padding: 3px 0;
+            color: var(--text-primary, #555);
+            font-size: 0.92em;
+            line-height: 1.5;
+        }
+
+        .changelog-entry li::before {
+            content: "- ";
+            color: var(--accent-primary, #4a7c3c);
+            font-weight: bold;
+        }
+
+        .changelog-entry a {
+            color: var(--accent-primary, #4a7c3c);
+        }
+
+        .changelog-entry a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-row">
+                <div class="header-nav">
+                    <a href="index.html" class="nav-button">&larr; Home</a>
+                </div>
+                <div class="header-title">
+                    <h1>Change Log</h1>
+                </div>
+                <div class="header-theme" id="theme-slot"></div>
+            </div>
+        </div>
+
+        <div class="content">
+
+            <div class="changelog-entry">
+                <div class="changelog-date">March 10, 2026</div>
+
+                <h3>New</h3>
+                <ul>
+                    <li>Added <a href="Cards/deck.html">virtual card deck</a> with deal, discard, and shuffle</li>
+                    <li>Deck state saves to browser storage and restores on reload</li>
+                    <li>Keyboard shortcuts for the card deck: D to deal, S to shuffle</li>
+                    <li>Added Grey theme (monochrome high-contrast, no color)</li>
+                    <li>Added Black theme (true black background with muted desaturated tones)</li>
+                    <li>Added Crayon theme (colorful and playful with crayon-doodle border)</li>
+                    <li>Added this change log</li>
+                </ul>
+
+                <h3>Improved</h3>
+                <ul>
+                    <li>Richer theme expression across pages using accent colors</li>
+                    <li>Compact <a href="Names/index.html">name generator</a> controls with inline labels</li>
+                    <li>Streamlined <a href="About.html">About page</a></li>
+                </ul>
+            </div>
+
+            <div class="changelog-entry">
+                <div class="changelog-date">February 1, 2026</div>
+
+                <h3>New</h3>
+                <ul>
+                    <li>Added Halloween theme (dark with fiery reds, oranges, and yellows)</li>
+                    <li>Added <a href="About.html">About page</a> with tech stack and project credits</li>
+                </ul>
+
+                <h3>Improved</h3>
+                <ul>
+                    <li>Unified three-column header layout across all pages</li>
+                    <li>Consolidated shared CSS into themes.css for consistent styling</li>
+                    <li>Restyled <a href="Cards/Tarot/index.html">Tarot</a> controls with full theme support</li>
+                    <li>Tarot auto-performs initial reading on page load</li>
+                    <li>Improved result display colors for Dark, Light, and Cyberpunk themes</li>
+                </ul>
+            </div>
+
+            <div class="changelog-entry">
+                <div class="changelog-date">January 1, 2026</div>
+
+                <h3>New</h3>
+                <ul>
+                    <li>Added Cyberpunk theme (neon-lit dark theme with electric blues and magentas)</li>
+                </ul>
+            </div>
+
+            <div class="changelog-entry">
+                <div class="changelog-date">December 1, 2025</div>
+
+                <h3>New</h3>
+                <ul>
+                    <li>Added Beach theme (warm sandy tones with ocean blues)</li>
+                </ul>
+            </div>
+
+            <div class="changelog-entry">
+                <div class="changelog-date">November 5, 2025</div>
+
+                <h3>New</h3>
+                <ul>
+                    <li>Added Cthulhu theme (eldritch dark greens and deep sea tones)</li>
+                    <li>Added Gothic theme (dark with crimson and stone accents)</li>
+                    <li>Added <a href="Names/index.html">Name Generator</a> for fantasy character names</li>
+                </ul>
+            </div>
+
+            <div class="changelog-entry">
+                <div class="changelog-date">November 1, 2025</div>
+
+                <h3>New</h3>
+                <ul>
+                    <li>Added Stars theme with twinkling animation</li>
+                    <li>Added seasonal animations for all seasonal themes (toggle with Animated checkbox)</li>
+                </ul>
+
+                <h3>Improved</h3>
+                <ul>
+                    <li>Better background gradient contrast for Spring, Summer, and Winter themes</li>
+                </ul>
+            </div>
+
+            <div class="changelog-entry">
+                <div class="changelog-date">October 24, 2025</div>
+
+                <h3>New</h3>
+                <ul>
+                    <li>Added <a href="Dice/blades.html">Blades in the Dark dice roller</a> with outcome indicators</li>
+                    <li>Added collapsible probability statistics to <a href="Dice/blades.html">Blades</a> and <a href="Dice/fate.html">Fate</a> rollers</li>
+                    <li>Added theme system with 6 color schemes (Autumn, Light, Dark, Winter, Spring, Summer)</li>
+                    <li>Added shareable URL support for saving <a href="Dice/custom.html">custom dice</a> configurations</li>
+                </ul>
+
+                <h3>Improved</h3>
+                <ul>
+                    <li><a href="Cards/Tarot/index.html">Tarot</a> card images added to reading interface</li>
+                    <li>Added option to include or exclude reversed Tarot cards</li>
+                </ul>
+            </div>
+
+            <div class="changelog-entry">
+                <div class="changelog-date">October 23, 2025</div>
+
+                <h3>New</h3>
+                <ul>
+                    <li>Initial release</li>
+                    <li><a href="Dice/basic.html">Basic dice roller</a> (d4, d6, d8, d10, d12, d20, d100)</li>
+                    <li><a href="Dice/fate.html">Fate/Fudge dice roller</a> with visual dice display</li>
+                    <li><a href="Dice/custom.html">Custom dice roller</a> with drop, keep, exploding, and advantage/disadvantage</li>
+                    <li><a href="Cards/Tarot/index.html">Tarot reading page</a> with 3-card spread, card descriptions, and reversals</li>
+                    <li>Roll history with hover effects</li>
+                    <li>Home page with navigation to all tools</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="footer">
+            <a href="https://www.oddturnip.com" target="_blank" rel="noopener noreferrer" class="oddturnip-link">
+                <img src="Names/odd_turnip.png" alt="OddTurnip Logo">
+                <span>OddTurnip.com</span>
+            </a>
+        </div>
+    </div>
+
+    <script type="module">
+        import { autoInitThemeSelector } from './Themes/theme-setup.js';
+        autoInitThemeSelector();
+    </script>
+</body>
+</html>

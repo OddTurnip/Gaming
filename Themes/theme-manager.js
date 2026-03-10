@@ -7,7 +7,9 @@
 const THEMES = {
     AUTUMN: 'autumn',
     LIGHT: 'light',
+    GREY: 'grey',
     DARK: 'dark',
+    BLACK: 'black',
     WINTER: 'winter',
     SPRING: 'spring',
     SUMMER: 'summer',
@@ -16,7 +18,8 @@ const THEMES = {
     CTHULHU: 'cthulhu',
     BEACH: 'beach',
     CYBERPUNK: 'cyberpunk',
-    HALLOWEEN: 'halloween'
+    HALLOWEEN: 'halloween',
+    CRAYON: 'crayon'
 };
 
 // Default theme
@@ -132,14 +135,17 @@ function createThemeSelector() {
                 { value: THEMES.CTHULHU, label: 'Cthulhu' },
                 { value: THEMES.BEACH, label: 'Beach' },
                 { value: THEMES.CYBERPUNK, label: 'Cyberpunk' },
-                { value: THEMES.HALLOWEEN, label: 'Halloween' }
+                { value: THEMES.HALLOWEEN, label: 'Halloween' },
+                { value: THEMES.CRAYON, label: 'Crayon' }
             ]
         },
         {
             label: 'Basic',
             options: [
                 { value: THEMES.LIGHT, label: 'Light' },
-                { value: THEMES.DARK, label: 'Dark' }
+                { value: THEMES.GREY, label: 'Grey' },
+                { value: THEMES.DARK, label: 'Dark' },
+                { value: THEMES.BLACK, label: 'Black' }
             ]
         }
     ];

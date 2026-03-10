@@ -76,6 +76,13 @@ html,
     --result-text-shadow: rgba(0, 0, 0, 0.2) !important;
 }
 
+/* Autumn Theme (explicit selector — same as :root defaults) */
+html.autumn-theme,
+html.autumn-theme:root,
+body.autumn-theme {
+    /* Inherits all :root defaults — no overrides needed */
+}
+
 /* Light Theme */
 html.light-theme,
 html.light-theme:root,
@@ -119,6 +126,61 @@ body.light-theme {
     --link-hover-gradient-end: rgba(25, 118, 210, 0.03) !important;
 
     --history-border-shadow: rgba(33, 150, 243, 0.15) !important;
+}
+
+/* Grey Theme - monochrome only, high contrast */
+html.grey-theme,
+html.grey-theme:root,
+body.grey-theme {
+    --bg-gradient-start: #e8e8e8 !important;
+    --bg-gradient-end: #c0c0c0 !important;
+    --bg-gradient: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+    --container-bg: rgba(250, 250, 250, 0.98) !important;
+    --result-gradient-start: #555 !important;
+    --result-gradient-end: #333 !important;
+
+    --heading-primary: #111 !important;
+    --heading-secondary: #222 !important;
+    --heading-tertiary: #333 !important;
+    --text-primary: #333 !important;
+    --text-secondary: #555 !important;
+    --text-light: #888 !important;
+    --text-white: #fff !important;
+
+    --accent-primary: #444 !important;
+    --accent-primary-dark: #222 !important;
+    --accent-secondary: #666 !important;
+    --accent-tertiary: #999 !important;
+
+    --button-gradient-start: #444 !important;
+    --button-gradient-end: #222 !important;
+    --button-shadow: rgba(0, 0, 0, 0.3) !important;
+
+    --border-light: #d0d0d0 !important;
+    --border-medium: #b0b0b0 !important;
+    --border-accent: #666 !important;
+
+    --bg-light: #f0f0f0 !important;
+    --bg-white: #fafafa !important;
+    --bg-hover: #e0e0e0 !important;
+
+    --error-bg: #e0e0e0 !important;
+    --error-border: #666 !important;
+    --error-text: #222 !important;
+
+    --fate-die-bg: #333 !important;
+
+    --scrollbar-thumb: #888 !important;
+    --scrollbar-thumb-hover: #666 !important;
+
+    --close-btn-bg: rgba(0, 0, 0, 0.08) !important;
+    --close-btn-bg-hover: rgba(0, 0, 0, 0.15) !important;
+    --close-btn-color: #333 !important;
+
+    --link-hover-gradient-start: rgba(0, 0, 0, 0.03) !important;
+    --link-hover-gradient-end: rgba(0, 0, 0, 0.05) !important;
+
+    --history-border-shadow: rgba(0, 0, 0, 0.15) !important;
 }
 
 /* Dark Theme */
@@ -174,6 +236,64 @@ body.dark-theme {
     --link-hover-gradient-end: rgba(56, 142, 60, 0.05) !important;
 
     --history-border-shadow: rgba(76, 175, 80, 0.2) !important;
+}
+
+/* Black Theme - black background, muted desaturated colors */
+html.black-theme,
+html.black-theme:root,
+body.black-theme {
+    --bg-gradient-start: #000000 !important;
+    --bg-gradient-end: #0a0a0a !important;
+    --bg-gradient: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+    --container-bg: rgba(18, 18, 18, 0.96) !important;
+    --result-gradient-start: #3a4a5c !important;
+    --result-gradient-end: #2a3542 !important;
+
+    --heading-primary: #b0b8c0 !important;
+    --heading-secondary: #94a0ac !important;
+    --heading-tertiary: #7a8896 !important;
+    --text-primary: #8a9098 !important;
+    --text-secondary: #6e767e !important;
+    --text-light: #4a5058 !important;
+    --text-white: #c8cdd2 !important;
+
+    --accent-primary: #607080 !important;
+    --accent-primary-dark: #485868 !important;
+    --accent-secondary: #708090 !important;
+    --accent-tertiary: #586878 !important;
+
+    --button-gradient-start: #4a5a6a !important;
+    --button-gradient-end: #344454 !important;
+    --button-shadow: rgba(70, 90, 110, 0.35) !important;
+
+    --border-light: #1e1e1e !important;
+    --border-medium: #2a2a2a !important;
+    --border-accent: #506070 !important;
+
+    --bg-light: #0e0e0e !important;
+    --bg-white: #141414 !important;
+    --bg-hover: #1a1a1a !important;
+
+    --error-bg: #1a1214 !important;
+    --error-border: #6e4450 !important;
+    --error-text: #a07080 !important;
+
+    --fate-die-bg: #1a2430 !important;
+
+    --scrollbar-track: #0a0a0a !important;
+    --scrollbar-thumb: #3a4a5a !important;
+    --scrollbar-thumb-hover: #4a5a6a !important;
+
+    --close-btn-bg: rgba(160, 180, 200, 0.08) !important;
+    --close-btn-bg-hover: rgba(160, 180, 200, 0.14) !important;
+    --close-btn-color: #8a9098 !important;
+
+    --link-hover-gradient-start: rgba(96, 112, 128, 0.06) !important;
+    --link-hover-gradient-end: rgba(72, 88, 104, 0.06) !important;
+
+    --history-border-shadow: rgba(96, 112, 128, 0.15) !important;
+
+    --result-text-shadow: rgba(0, 0, 0, 0.8) !important;
 }
 
 /* Winter Theme */
@@ -1003,6 +1123,120 @@ html.halloween-theme .nav-button {
 html.halloween-theme .nav-button:hover {
     background: linear-gradient(135deg, #c2410c 0%, #a3520d 100%) !important;
     border-color: rgba(251, 191, 36, 0.5) !important;
+}
+
+/* Crayon Theme - colorful, playful, works with crayon-doodle.png border */
+html.crayon-theme,
+html.crayon-theme:root,
+body.crayon-theme {
+    --bg-gradient-start: #fff8e1 !important;
+    --bg-gradient-end: #fce4ec !important;
+    --bg-gradient: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+    --container-bg: rgba(255, 255, 255, 0.92) !important;
+    --result-gradient-start: #e91e63 !important;
+    --result-gradient-end: #c2185b !important;
+
+    --heading-primary: #d81b60 !important;
+    --heading-secondary: #7b1fa2 !important;
+    --heading-tertiary: #1565c0 !important;
+    --text-primary: #4a4a4a !important;
+    --text-secondary: #666 !important;
+    --text-light: #999 !important;
+    --text-white: #fff !important;
+
+    --accent-primary: #e91e63 !important;
+    --accent-primary-dark: #c2185b !important;
+    --accent-secondary: #7b1fa2 !important;
+    --accent-tertiary: #1565c0 !important;
+
+    --button-gradient-start: #e91e63 !important;
+    --button-gradient-end: #c2185b !important;
+    --button-shadow: rgba(233, 30, 99, 0.4) !important;
+
+    --border-light: #f8bbd0 !important;
+    --border-medium: #f48fb1 !important;
+    --border-accent: #7b1fa2 !important;
+
+    --bg-light: #fff9c4 !important;
+    --bg-white: #fffde7 !important;
+    --bg-hover: #fce4ec !important;
+
+    --error-bg: #ffebee !important;
+    --error-border: #ef5350 !important;
+    --error-text: #c62828 !important;
+
+    --fate-die-bg: #7b1fa2 !important;
+
+    --scrollbar-thumb: #e91e63 !important;
+    --scrollbar-thumb-hover: #c2185b !important;
+
+    --close-btn-bg: rgba(233, 30, 99, 0.08) !important;
+    --close-btn-bg-hover: rgba(233, 30, 99, 0.15) !important;
+    --close-btn-color: #d81b60 !important;
+
+    --link-hover-gradient-start: rgba(233, 30, 99, 0.05) !important;
+    --link-hover-gradient-end: rgba(123, 31, 162, 0.05) !important;
+
+    --history-border-shadow: rgba(233, 30, 99, 0.2) !important;
+}
+
+/* Crayon theme: background image with crayon doodle border */
+html.crayon-theme body {
+    background-image: url('backgrounds/crayon-doodle.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+/* Crayon theme: container with soft rounded look */
+html.crayon-theme .container {
+    border: 3px solid #f48fb1 !important;
+    border-radius: 20px !important;
+    box-shadow: 0 8px 32px rgba(233, 30, 99, 0.15), 0 4px 16px rgba(123, 31, 162, 0.1) !important;
+}
+
+/* Crayon theme: playful rounded buttons */
+html.crayon-theme .roll-button {
+    border-radius: 20px !important;
+    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3) !important;
+}
+
+html.crayon-theme .roll-button:hover {
+    box-shadow: 0 6px 20px rgba(233, 30, 99, 0.5), 0 2px 10px rgba(123, 31, 162, 0.3) !important;
+}
+
+/* Crayon theme: colorful dice */
+html.crayon-theme .fate-die {
+    background-color: #7b1fa2 !important;
+    color: #fff !important;
+    border: 2px solid #9c27b0 !important;
+    border-radius: 10px !important;
+}
+
+html.crayon-theme .die {
+    background-color: #1565c0 !important;
+    color: #fff !important;
+    border: 2px solid #1976d2 !important;
+    border-radius: 10px !important;
+}
+
+/* Crayon theme: result display with playful glow */
+html.crayon-theme .result-display {
+    border-radius: 16px !important;
+    box-shadow: 0 4px 20px rgba(233, 30, 99, 0.25), 0 2px 10px rgba(123, 31, 162, 0.15) !important;
+}
+
+/* Crayon theme: nav button */
+html.crayon-theme .nav-button {
+    border-radius: 16px !important;
+    background: linear-gradient(135deg, #7b1fa2 0%, #512da8 100%) !important;
+    border-color: rgba(156, 39, 176, 0.3) !important;
+}
+
+html.crayon-theme .nav-button:hover {
+    background: linear-gradient(135deg, #9c27b0 0%, #7b1fa2 100%) !important;
+    border-color: rgba(156, 39, 176, 0.5) !important;
 }
 
 /* ========================================

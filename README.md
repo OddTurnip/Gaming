@@ -47,7 +47,7 @@ Dice/
 ├── UI & Themes/
 │   ├── ThemeManager.js    # Theme switching
 │   ├── Snowflakes.js      # Seasonal effects
-│   └── Style.css          # All themes & styling
+│   └── style.css          # All themes & styling
 └── Pages/                 # HTML files
     ├── Index.html
     ├── Basic.html
