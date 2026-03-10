@@ -57,6 +57,26 @@
             color: var(--text-white, #fff);
         }
 
+        /* Keyboard shortcut hint */
+        .keyboard-hint {
+            text-align: center;
+            font-size: 0.8em;
+            color: var(--text-light, #999);
+            margin-bottom: 16px;
+        }
+
+        .keyboard-hint kbd {
+            display: inline-block;
+            padding: 2px 6px;
+            font-family: inherit;
+            font-size: 0.9em;
+            font-weight: 600;
+            color: var(--text-secondary, #666);
+            background: var(--bg-light, #f8f9fa);
+            border: 1px solid var(--border-medium, #ccc);
+            border-radius: 4px;
+        }
+
         /* Deck info bar */
         .deck-info {
             display: flex;
@@ -401,6 +421,10 @@
                     Include Jokers
                 </label>
             </div>
+        </div>
+
+        <div class="keyboard-hint">
+            <kbd>D</kbd> Deal &middot; <kbd>S</kbd> Shuffle
         </div>
 
         <div class="hand-area">
