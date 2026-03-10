@@ -249,7 +249,7 @@ Gaming/
 ### Code Organization Improvements
 - **theme-setup.js** - Centralized theme selector code, eliminating duplication across HTML files
 - **themes.css** - All shared CSS consolidated (controls, history, modal, card display, etc.)
-- **12 themes** available: Autumn (default), Light, Dark, Winter, Spring, Summer, Stars, Gothic, Cthulhu, Beach, Cyberpunk, Halloween
+- **15 themes** available: Autumn (default), Light, Grey, Dark, Black, Winter, Spring, Summer, Stars, Gothic, Cthulhu, Beach, Cyberpunk, Halloween, Crayon
 
 ### Test Coverage
 - **313 tests** passing across 11 test files
