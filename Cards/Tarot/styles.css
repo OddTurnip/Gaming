@@ -64,6 +64,11 @@
     cursor: pointer;
 }
 
+/* Position labels use tertiary accent for a warm decorative touch */
+.card-label {
+    color: var(--accent-tertiary, #7a6952);
+}
+
 /* New Reading button override */
 .roll-button {
     padding: 12px 30px;
