@@ -87,16 +87,20 @@
 
         .gender-filters {
             margin-top: 15px;
-            padding: 15px;
+            padding: 10px 15px;
             background: var(--bg-light, #f8f9ff);
             border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
-        .gender-filters label {
+        .gender-filters > label {
             font-weight: 600;
             color: var(--text-primary, #333);
-            display: block;
-            margin-bottom: 10px;
+            margin: 0;
+            white-space: nowrap;
         }
 
         .gender-checkboxes {
@@ -126,23 +130,26 @@
         }
 
         .source-filters {
-            margin-top: 15px;
-            padding: 15px;
+            margin-top: 10px;
+            padding: 10px 15px;
             background: var(--bg-light, #f8f9ff);
             border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
         .source-filters > label {
             font-weight: 600;
             color: var(--text-primary, #333);
-            display: block;
-            margin-bottom: 10px;
+            margin: 0;
+            white-space: nowrap;
         }
 
         .source-dropdown {
             position: relative;
             display: inline-block;
-            width: 100%;
+            flex: 1;
         }
 
         .source-dropdown-button {
@@ -249,7 +256,7 @@
         }
 
         .generate-button-container {
-            margin-top: 15px;
+            margin-top: 10px;
             text-align: center;
         }
 
@@ -326,20 +333,13 @@
                 </table>
             </div>
 
-            <div class="source-filters" style="display: none;" id="sourceFilters">
-                <label>Select Sources:</label>
-                <div class="source-dropdown">
-                    <button type="button" class="source-dropdown-button" id="sourceDropdownBtn">
-                        <span id="sourceDropdownText">Select Sources (all)</span>
-                        <span>▼</span>
-                    </button>
-                    <div class="source-dropdown-content" id="sourceDropdownContent"></div>
-                </div>
-            </div>
-
             <div class="gender-filters" style="display: none;" id="genderFilters">
-                <label>Select Genders:</label>
+                <label>Genders:</label>
                 <div class="gender-checkboxes">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="genderAny" value="any" checked>
+                        <label for="genderAny">Any</label>
+                    </div>
                     <div class="checkbox-group">
                         <input type="checkbox" id="genderMale" value="male" checked>
                         <label for="genderMale">Male</label>
@@ -357,15 +357,24 @@
                         <label for="genderQueer">Queer</label>
                     </div>
                 </div>
-                <div style="margin-top: 8px; font-size: 0.85em; color: var(--text-secondary, #666);">
-                    Note: "Any" gender names are always included
-                </div>
-                <div class="generate-button-container">
-                    <button id="generateBtn">Generate Names</button>
+            </div>
+
+            <div class="source-filters" style="display: none;" id="sourceFilters">
+                <label>Sources:</label>
+                <div class="source-dropdown">
+                    <button type="button" class="source-dropdown-button" id="sourceDropdownBtn">
+                        <span id="sourceDropdownText">Select Sources (all)</span>
+                        <span>▼</span>
+                    </button>
+                    <div class="source-dropdown-content" id="sourceDropdownContent"></div>
                 </div>
             </div>
 
-            <div id="status" class="status loading">
+            <div class="generate-button-container" style="display: none;" id="generateBtnContainer">
+                <button id="generateBtn">Generate Names</button>
+            </div>
+
+            <div id="status" class="status loading" style="margin-top: 10px;">
                 Loading database...
             </div>
 
@@ -411,9 +420,10 @@
                 statusEl.textContent = '✓ Database loaded! Select genders and click "Generate Names" to create random names.';
 
                 // Show controls and filters
-                controlsEl.style.display = 'flex';
-                document.getElementById('sourceFilters').style.display = 'block';
-                genderFiltersEl.style.display = 'block';
+                controlsEl.style.display = 'block';
+                genderFiltersEl.style.display = 'flex';
+                document.getElementById('sourceFilters').style.display = 'flex';
+                document.getElementById('generateBtnContainer').style.display = 'block';
 
             } catch (error) {
                 console.error('Error loading database:', error);
@@ -622,8 +632,11 @@
          * @returns {string[]} Array of selected gender names
          */
         function getSelectedGenders() {
-            const genders = ['any']; // Always include 'any'
+            const genders = [];
 
+            if (document.getElementById('genderAny').checked) {
+                genders.push('any');
+            }
             if (document.getElementById('genderMale').checked) {
                 genders.push('male');
             }
