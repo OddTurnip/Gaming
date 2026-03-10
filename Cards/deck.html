@@ -17,15 +17,22 @@
             align-items: center;
             justify-content: center;
             flex-wrap: wrap;
+            margin-top: 10px;
             margin-bottom: 20px;
             padding: 8px 20px;
         }
 
         .controls-bar .roll-button {
             min-width: 100px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 2px 8px var(--button-shadow, rgba(0,0,0,0.2)),
-                        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            background: var(--bg-white, #fff);
+            color: var(--accent-primary, #4a7c3c);
+            border: 2px solid var(--accent-primary, #4a7c3c);
+            box-shadow: 0 2px 8px var(--button-shadow, rgba(0,0,0,0.2));
+        }
+
+        .controls-bar .roll-button:hover {
+            background: var(--accent-primary, #4a7c3c);
+            color: var(--text-white, #fff);
         }
 
         .controls-bar .roll-button:disabled {
@@ -84,7 +91,7 @@
         .pile-stack {
             position: relative;
             width: 70px;
-            height: 96px;
+            height: 110px;
         }
 
         .pile-card {
@@ -421,6 +428,36 @@
         let dealtCards = [];
         let discardPile = [];
 
+        const STORAGE_KEY = 'cardDeckState';
+
+        function saveState() {
+            try {
+                const state = {
+                    deck,
+                    dealtCards,
+                    discardPile,
+                    includeJokers: includeJokersCheckbox.checked
+                };
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+            } catch { /* storage full or unavailable — silently ignore */ }
+        }
+
+        function loadState() {
+            try {
+                const raw = localStorage.getItem(STORAGE_KEY);
+                if (!raw) return false;
+                const state = JSON.parse(raw);
+                if (!Array.isArray(state.deck)) return false;
+                deck = state.deck;
+                dealtCards = state.dealtCards || [];
+                discardPile = state.discardPile || [];
+                includeJokersCheckbox.checked = !!state.includeJokers;
+                return true;
+            } catch {
+                return false;
+            }
+        }
+
         // DOM references
         const deckPileEl = document.getElementById('deckPile');
         const discardPileEl = document.getElementById('discardPile');
@@ -435,8 +472,12 @@
         const discardList = document.getElementById('discardList');
         const warningToast = document.getElementById('warningToast');
 
-        // Initialize
-        resetDeck();
+        // Initialize — restore saved state or start fresh
+        if (!loadState()) {
+            resetDeck();
+        } else {
+            updateDisplay();
+        }
 
         // Event listeners
         dealBtn.addEventListener('click', dealCard);
@@ -489,6 +530,7 @@
             renderDiscardList();
             updateCounts();
             dealBtn.disabled = isDeckEmpty(deck);
+            saveState();
         }
 
         function applyStackOffset(el, layerIndex, zIndex) {
@@ -497,8 +539,15 @@
             el.style.zIndex = zIndex;
         }
 
+        function pileLayerCount(cardCount, maxCards) {
+            if (cardCount === 0) return 0;
+            // Scale 1-7 layers based on proportion of cards remaining
+            return Math.max(1, Math.round((cardCount / maxCards) * 7));
+        }
+
         function renderDeckPile() {
             const size = getDeckSize(deck);
+            const totalCards = size + dealtCards.length + discardPile.length;
             deckPileEl.innerHTML = '';
 
             if (size === 0) {
@@ -506,7 +555,7 @@
                 return;
             }
 
-            const layers = Math.min(4, Math.ceil(size / 13));
+            const layers = pileLayerCount(size, totalCards);
             for (let i = 0; i < layers; i++) {
                 const card = document.createElement('div');
                 card.className = 'pile-card pile-card-back';
@@ -523,19 +572,21 @@
                 return;
             }
 
-            const layers = Math.min(3, discardPile.length);
-            for (let i = layers - 1; i >= 0; i--) {
-                const card = discardPile[i];
+            const totalCards = getDeckSize(deck) + dealtCards.length + discardPile.length;
+            const layers = pileLayerCount(discardPile.length, totalCards);
+            for (let i = 0; i < layers; i++) {
                 const el = document.createElement('div');
-                const color = getCardColor(card);
+                const isTop = (i === layers - 1);
 
-                if (i === 0) {
+                if (isTop) {
+                    const card = discardPile[0];
+                    const color = getCardColor(card);
                     el.className = `pile-card pile-card-face ${color}`;
                     el.textContent = getCardShortName(card);
                 } else {
                     el.className = 'pile-card pile-card-back';
                 }
-                applyStackOffset(el, layers - 1 - i, layers - i);
+                applyStackOffset(el, i, i);
                 discardPileEl.appendChild(el);
             }
         }
