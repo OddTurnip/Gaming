@@ -542,8 +542,9 @@
         function pileLayerCount(cardCount, maxCards) {
             if (cardCount === 0) return 0;
             if (cardCount === 1) return 1;
-            // 2+ cards: at least 2 layers, scaling up to 7
-            return Math.max(2, Math.round((cardCount / maxCards) * 7));
+            // 2+ cards: map into 6 equal bands (layers 2-7)
+            const fraction = cardCount / maxCards;
+            return 2 + Math.min(5, Math.floor(fraction * 6));
         }
 
         function renderDeckPile() {
