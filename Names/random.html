@@ -15,25 +15,30 @@
         }
 
         .controls {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
+            margin-bottom: 20px;
         }
 
-        .control-group {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
+        .controls table {
+            margin: 0 auto;
+            border-spacing: 15px 4px;
         }
 
-        .control-group label {
+        .controls th {
             font-size: 0.85em;
             font-weight: 600;
             color: var(--text-secondary, #666);
+            text-align: center;
+            padding: 0;
+        }
+
+        .controls td {
+            text-align: center;
+            padding: 0;
+        }
+
+        .controls select {
+            padding: 6px 10px;
+            font-size: 0.95em;
         }
 
         .results {
@@ -278,41 +283,47 @@
 
         <div class="content">
             <div class="controls" style="display: none;" id="controls">
-                <div class="control-group">
-                    <label for="quantity">Number of names:</label>
-                    <select id="quantity">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3" selected>3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                    </select>
-                </div>
-                <div class="control-group">
-                    <label for="nicknameFreq">Nickname:</label>
-                    <select id="nicknameFreq">
-                        <option value="0">Never</option>
-                        <option value="0.10">10%</option>
-                        <option value="0.25" selected>25%</option>
-                        <option value="0.50">50%</option>
-                        <option value="1.0">Always</option>
-                    </select>
-                </div>
-                <div class="control-group">
-                    <label for="titleFreq">Title:</label>
-                    <select id="titleFreq">
-                        <option value="0">Never</option>
-                        <option value="0.10" selected>10%</option>
-                        <option value="0.25">25%</option>
-                        <option value="0.50">50%</option>
-                        <option value="1.0">Always</option>
-                    </select>
-                </div>
+                <table>
+                    <tr>
+                        <th><label for="quantity">Names</label></th>
+                        <th><label for="nicknameFreq">Nickname</label></th>
+                        <th><label for="titleFreq">Title</label></th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select id="quantity">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3" selected>3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select id="nicknameFreq">
+                                <option value="0">Never</option>
+                                <option value="0.10">10%</option>
+                                <option value="0.25" selected>25%</option>
+                                <option value="0.50">50%</option>
+                                <option value="1.0">Always</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select id="titleFreq">
+                                <option value="0">Never</option>
+                                <option value="0.10" selected>10%</option>
+                                <option value="0.25">25%</option>
+                                <option value="0.50">50%</option>
+                                <option value="1.0">Always</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
             </div>
 
             <div class="source-filters" style="display: none;" id="sourceFilters">
