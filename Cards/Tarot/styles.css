@@ -3,7 +3,7 @@
    Import theme variables and add tarot-specific styles
    ======================================== */
 
-@import url('../Themes/themes.css');
+@import url('../../Themes/themes.css');
 
 /* Container width to match Dice pages */
 .container {

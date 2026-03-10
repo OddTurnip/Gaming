@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Deck</title>
+    <link rel="stylesheet" href="../Themes/themes.css">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <script src="../Themes/theme-init.js"></script>
+    <style>
+        .container { max-width: 600px; }
+
+        /* Card display area */
+        .card-area {
+            background: var(--bg-light, #f8f9fa);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 20px;
+            text-align: center;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dealt-card {
+            font-size: 3em;
+            font-weight: bold;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+
+        .dealt-card.red { color: #c0392b; }
+        .dealt-card.black { color: var(--text-primary, #333); }
+
+        .dealt-card-name {
+            font-size: 1.2em;
+            color: var(--text-secondary, #666);
+        }
+
+        .placeholder-text {
+            font-size: 1.2em;
+            color: var(--text-muted, #999);
+            font-style: italic;
+        }
+
+        /* Deck info bar */
+        .deck-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+            background: var(--bg-light, #f8f9fa);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 1.05em;
+            color: var(--text-secondary, #666);
+        }
+
+        .deck-info span {
+            font-weight: 600;
+            color: var(--text-primary, #333);
+        }
+
+        /* Button row */
+        .button-row {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .button-row .roll-button {
+            flex: 1;
+            min-width: 120px;
+            max-width: 200px;
+        }
+
+        .button-row .roll-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Discard pile toggle */
+        .discard-section {
+            margin-top: 20px;
+        }
+
+        .discard-toggle {
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--heading-secondary, #444);
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        .discard-toggle:hover {
+            color: var(--accent-primary, #667eea);
+        }
+
+        .discard-arrow {
+            transition: transform 0.2s;
+            display: inline-block;
+        }
+
+        .discard-arrow.open {
+            transform: rotate(90deg);
+        }
+
+        .discard-list {
+            display: none;
+            max-height: 400px;
+            overflow-y: auto;
+            background: var(--bg-light, #f8f9fa);
+            border-radius: 8px;
+            padding: 10px;
+        }
+
+        .discard-list.open {
+            display: block;
+        }
+
+        .discard-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            border-bottom: 1px solid var(--border-light, #eee);
+        }
+
+        .discard-item:last-child {
+            border-bottom: none;
+        }
+
+        .discard-item-symbol {
+            font-size: 1.3em;
+            font-weight: bold;
+            min-width: 50px;
+        }
+
+        .discard-item-symbol.red { color: #c0392b; }
+        .discard-item-symbol.black { color: var(--text-primary, #333); }
+
+        .discard-item-name {
+            color: var(--text-secondary, #666);
+        }
+
+        .discard-item-index {
+            margin-left: auto;
+            color: var(--text-muted, #999);
+            font-size: 0.85em;
+        }
+
+        .empty-discard {
+            text-align: center;
+            color: var(--text-muted, #999);
+            font-style: italic;
+            padding: 20px;
+        }
+
+        /* Checkbox control */
+        .option-row {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-row">
+                <div class="header-nav">
+                    <a href="index.html" class="nav-button">&larr; Back</a>
+                </div>
+                <div class="header-title">
+                    <h1>Card Deck</h1>
+                </div>
+                <div class="header-theme" id="theme-slot"></div>
+            </div>
+        </div>
+
+        <div class="option-row">
+            <label class="checkbox-label">
+                <input type="checkbox" id="includeJokers">
+                Include Jokers
+            </label>
+        </div>
+
+        <div class="card-area" id="cardArea">
+            <div class="placeholder-text">Deal a card to begin</div>
+        </div>
+
+        <div class="deck-info">
+            <div>Deck: <span id="deckCount">52</span></div>
+            <div>Dealt: <span id="dealtCount">0</span></div>
+            <div>Discards: <span id="discardCount">0</span></div>
+        </div>
+
+        <div class="button-row">
+            <button id="dealBtn" class="roll-button">Deal</button>
+            <button id="discardBtn" class="roll-button" disabled>Discard</button>
+            <button id="shuffleBtn" class="roll-button">Shuffle All</button>
+        </div>
+
+        <div class="discard-section">
+            <div class="discard-toggle" id="discardToggle">
+                <span class="discard-arrow" id="discardArrow">&#9654;</span>
+                <h2 style="margin: 0; font-size: 1.1em;">Discard Pile</h2>
+            </div>
+            <div class="discard-list" id="discardList">
+                <div class="empty-discard">No discards yet</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <a href="https://www.oddturnip.com" target="_blank" rel="noopener noreferrer" class="oddturnip-link">
+                <img src="../Names/odd_turnip.png" alt="OddTurnip Logo">
+                <span>OddTurnip.com</span>
+            </a>
+        </div>
+    </div>
+
+    <script type="module">
+        import { drawCard, getDeckSize, isDeckEmpty, shuffleDeck } from '../code/card-library.js';
+        import { createPokerDeck, getCardColor, getCardShortName, formatPokerCard } from './poker-cards.js';
+        import { autoInitThemeSelector } from '../Themes/theme-setup.js';
+
+        autoInitThemeSelector();
+
+        // State
+        let deck = [];
+        let currentCard = null;
+        let discardPile = [];
+
+        // DOM references
+        const cardArea = document.getElementById('cardArea');
+        const deckCountEl = document.getElementById('deckCount');
+        const dealtCountEl = document.getElementById('dealtCount');
+        const discardCountEl = document.getElementById('discardCount');
+        const dealBtn = document.getElementById('dealBtn');
+        const discardBtn = document.getElementById('discardBtn');
+        const shuffleBtn = document.getElementById('shuffleBtn');
+        const includeJokersCheckbox = document.getElementById('includeJokers');
+        const discardToggle = document.getElementById('discardToggle');
+        const discardArrow = document.getElementById('discardArrow');
+        const discardList = document.getElementById('discardList');
+
+        // Initialize
+        resetDeck();
+
+        // Event listeners
+        dealBtn.addEventListener('click', dealCard);
+        discardBtn.addEventListener('click', discardCard);
+        shuffleBtn.addEventListener('click', resetDeck);
+        includeJokersCheckbox.addEventListener('change', resetDeck);
+
+        discardToggle.addEventListener('click', () => {
+            discardList.classList.toggle('open');
+            discardArrow.classList.toggle('open');
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'd' || e.key === 'D') dealCard();
+            if (e.key === 'x' || e.key === 'X') discardCard();
+            if (e.key === 's' || e.key === 'S') resetDeck();
+        });
+
+        function resetDeck() {
+            const includeJokers = includeJokersCheckbox.checked;
+            deck = shuffleDeck(createPokerDeck(includeJokers));
+            currentCard = null;
+            discardPile = [];
+            updateDisplay();
+            renderDiscardPile();
+        }
+
+        function dealCard() {
+            if (isDeckEmpty(deck)) return;
+
+            // If there's a current card showing, auto-discard it first
+            if (currentCard) {
+                discardPile.unshift(currentCard);
+            }
+
+            currentCard = drawCard(deck);
+            updateDisplay();
+            renderDiscardPile();
+        }
+
+        function discardCard() {
+            if (!currentCard) return;
+
+            discardPile.unshift(currentCard);
+            currentCard = null;
+            updateDisplay();
+            renderDiscardPile();
+        }
+
+        function updateDisplay() {
+            // Card area
+            if (currentCard) {
+                const color = getCardColor(currentCard);
+                const shortName = getCardShortName(currentCard);
+                const fullName = formatPokerCard(currentCard);
+                cardArea.innerHTML = `
+                    <div class="dealt-card ${color}">${shortName}</div>
+                    <div class="dealt-card-name">${fullName}</div>
+                `;
+            } else {
+                if (isDeckEmpty(deck) && discardPile.length === 0) {
+                    cardArea.innerHTML = '<div class="placeholder-text">Deck is empty. Shuffle to start over.</div>';
+                } else if (isDeckEmpty(deck)) {
+                    cardArea.innerHTML = '<div class="placeholder-text">Deck is empty. Shuffle to recollect cards.</div>';
+                } else {
+                    cardArea.innerHTML = '<div class="placeholder-text">Deal a card to begin</div>';
+                }
+            }
+
+            // Counts
+            const dealtTotal = (currentCard ? 1 : 0) + discardPile.length;
+            deckCountEl.textContent = getDeckSize(deck);
+            dealtCountEl.textContent = dealtTotal;
+            discardCountEl.textContent = discardPile.length;
+
+            // Button states
+            dealBtn.disabled = isDeckEmpty(deck);
+            discardBtn.disabled = !currentCard;
+        }
+
+        function renderDiscardPile() {
+            if (discardPile.length === 0) {
+                discardList.innerHTML = '<div class="empty-discard">No discards yet</div>';
+                return;
+            }
+
+            discardList.innerHTML = '';
+            discardPile.forEach((card, i) => {
+                const item = document.createElement('div');
+                item.className = 'discard-item';
+
+                const color = getCardColor(card);
+                item.innerHTML = `
+                    <span class="discard-item-symbol ${color}">${getCardShortName(card)}</span>
+                    <span class="discard-item-name">${formatPokerCard(card)}</span>
+                    <span class="discard-item-index">#${i + 1}</span>
+                `;
+                discardList.appendChild(item);
+            });
+        }
+    </script>
+</body>
+</html>

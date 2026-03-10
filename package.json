@@ -1,7 +1,7 @@
 {
-  "name": "dice-roller",
+  "name": "gaming-tools",
   "version": "1.0.0",
-  "description": "A collection of dice rollers and card readers for tabletop RPGs",
+  "description": "A collection of dice rollers, card decks, and tools for tabletop RPGs",
   "type": "module",
   "scripts": {
     "test": "vitest",
@@ -11,12 +11,14 @@
   },
   "keywords": [
     "dice",
+    "cards",
     "roller",
     "rpg",
     "tabletop",
     "fate",
     "blades",
-    "tarot"
+    "tarot",
+    "poker"
   ],
   "author": "",
   "license": "MIT",

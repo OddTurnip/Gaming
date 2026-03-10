@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cards</title>
+    <link rel="stylesheet" href="../Themes/themes.css">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <script src="../Themes/theme-init.js"></script>
+    <style>
+        .container { max-width: 600px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-row">
+                <div class="header-nav">
+                    <a href="../index.html" class="nav-button">&larr; Home</a>
+                </div>
+                <div class="header-title">
+                    <h1>Cards</h1>
+                </div>
+                <div class="header-theme" id="theme-slot"></div>
+            </div>
+        </div>
+
+        <div class="content">
+            <a href="deck.html" class="link-container">
+                <h2>Card Deck</h2>
+                <p>A standard 52-card deck with deal, discard, and shuffle. Optional Jokers. Great for any card game that needs a virtual deck.</p>
+            </a>
+
+            <a href="Tarot/index.html" class="link-container">
+                <h2>Tarot Reading</h2>
+                <p>Three-card spreads (Past, Present, Future) with the full 78-card deck. Choose Major Arcana, Minor Arcana, or both. Click cards to view meanings.</p>
+            </a>
+        </div>
+
+        <div class="footer">
+            <a href="https://www.oddturnip.com" target="_blank" rel="noopener noreferrer" class="oddturnip-link">
+                <img src="../Names/odd_turnip.png" alt="OddTurnip Logo">
+                <span>OddTurnip.com</span>
+            </a>
+        </div>
+    </div>
+
+    <script type="module">
+        import { autoInitThemeSelector } from '../Themes/theme-setup.js';
+        autoInitThemeSelector();
+    </script>
+</body>
+</html>
