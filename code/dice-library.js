@@ -138,10 +138,14 @@ export function rollExploding(numDice, diceType, mode = 'standard') {
  * @param {string} [dropType='lowest'] - 'lowest' or 'highest'
  * @returns {Object} - { keptRolls: number[], droppedRolls: number[], total: number }
  */
-export function dropDice(rolls, dropCount, dropType = 'lowest') {
+function validateRolls(rolls) {
     if (!Array.isArray(rolls) || rolls.length === 0) {
         throw new Error('Rolls must be a non-empty array');
     }
+}
+
+export function dropDice(rolls, dropCount, dropType = 'lowest') {
+    validateRolls(rolls);
     if (!Number.isInteger(dropCount) || dropCount < 0) {
         throw new Error(`Invalid drop count: ${dropCount}`);
     }
@@ -231,7 +235,7 @@ export function countSuccesses(rolls, threshold, comparison = '>=') {
  */
 export function calculateStats(rolls) {
     if (!Array.isArray(rolls) || rolls.length === 0) {
-        return { min: 0, max: 0, average: 0, sum: 0 };
+        return { min: 0, max: 0, average: 0, sum: 0 }; // Graceful fallback for empty/invalid input
     }
 
     const sum = rolls.reduce((a, b) => a + b, 0);

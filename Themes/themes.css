@@ -683,7 +683,7 @@ body.gothic-theme {
 
 /* Gothic theme: use background image */
 html.gothic-theme body {
-    background: url('backgrounds/gotham.png') center center / cover no-repeat fixed !important;
+    background: url('backgrounds/gotham.webp') center center / cover no-repeat fixed !important;
 }
 
 /* Gothic theme: dice styling with black background and yellow text */
@@ -769,7 +769,7 @@ body.cthulhu-theme {
 
 /* Cthulhu theme: use background image */
 html.cthulhu-theme body {
-    background: url('backgrounds/cthulhu.png') center center / cover no-repeat fixed !important;
+    background: url('backgrounds/cthulhu.webp') center center / cover no-repeat fixed !important;
 }
 
 /* Cthulhu theme: dice styling with dark background and eldritch green text */
@@ -858,7 +858,7 @@ body.beach-theme {
 
 /* Beach theme: use background image */
 html.beach-theme body {
-    background: url('backgrounds/beach.png') center center / cover no-repeat fixed !important;
+    background: url('backgrounds/beach.webp') center center / cover no-repeat fixed !important;
 }
 
 /* Beach theme: dice styling with ocean blue and sandy accents */
@@ -947,7 +947,7 @@ body.cyberpunk-theme {
 
 /* Cyberpunk theme: use background image */
 html.cyberpunk-theme body {
-    background: url('backgrounds/cyberpunk.png') center center / cover no-repeat fixed !important;
+    background: url('backgrounds/cyberpunk.webp') center center / cover no-repeat fixed !important;
 }
 
 /* Cyberpunk theme: dice styling with neon glow */
@@ -1182,7 +1182,7 @@ body.crayon-theme {
 
 /* Crayon theme: background image with crayon doodle border */
 html.crayon-theme body {
-    background-image: url('backgrounds/crayon-doodle.png');
+    background-image: url('backgrounds/crayon-doodle.webp');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
