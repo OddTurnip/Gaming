@@ -3,7 +3,7 @@
    Import theme variables and add tarot-specific styles
    ======================================== */
 
-@import url('../Themes/themes.css');
+@import url('../../Themes/themes.css');
 
 /* Container width to match Dice pages */
 .container {
@@ -62,6 +62,11 @@
     height: 18px;
     accent-color: var(--accent-primary, #667eea);
     cursor: pointer;
+}
+
+/* Position labels use tertiary accent for a warm decorative touch */
+.card-label {
+    color: var(--accent-tertiary, #7a6952);
 }
 
 /* New Reading button override */

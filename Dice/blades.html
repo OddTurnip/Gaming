@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blades Dice Roller</title>
-    <link rel="stylesheet" href="Style.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="icon" href="../favicon.ico" type="image/x-icon">
     <!-- Apply theme immediately to prevent flash of unstyled content -->
     <script src="../Themes/theme-init.js"></script>
@@ -49,7 +49,7 @@
         .bonus-btn {
             padding: 8px 16px;
             border-radius: 6px;
-            border: 2px solid var(--border-color, #555);
+            border: 2px solid var(--accent-tertiary, #7a6952);
             background: var(--input-bg, #2a2a3a);
             color: var(--text-color, #eee);
             cursor: pointer;
@@ -214,7 +214,7 @@
     <script type="module">
         // Import Blades dice logic and history utilities
         import { rollBladesDice, rollD6, evaluateDicePool, getDieClass, getOutcomeColor } from './blades.js';
-        import { createHistoryEntry, addToHistory } from './history-log.js';
+        import { createHistoryEntry, addToHistory } from '../code/history-log.js';
         import { initThemeSelector } from '../Themes/theme-setup.js';
 
         // Initialize theme selector

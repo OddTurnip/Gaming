@@ -76,6 +76,13 @@ html,
     --result-text-shadow: rgba(0, 0, 0, 0.2) !important;
 }
 
+/* Autumn Theme (explicit selector — same as :root defaults) */
+html.autumn-theme,
+html.autumn-theme:root,
+body.autumn-theme {
+    /* Inherits all :root defaults — no overrides needed */
+}
+
 /* Light Theme */
 html.light-theme,
 html.light-theme:root,

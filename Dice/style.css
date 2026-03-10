@@ -293,6 +293,7 @@ h2 {
 .info-icon {
     font-size: 1.2em;
     margin-right: 5px;
+    color: var(--accent-tertiary, #7a6952);
 }
 
 .stats-content {

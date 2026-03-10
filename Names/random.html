@@ -15,18 +15,33 @@
         }
 
         .controls {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
+            margin-bottom: 20px;
+            padding: 10px 15px;
+            background: var(--bg-light, #f8f9ff);
+            border-radius: 6px;
         }
 
-        .control-group {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        .controls table {
+            margin: 0 auto;
+            border-spacing: 15px 4px;
+        }
+
+        .controls th {
+            font-size: 0.85em;
+            font-weight: 600;
+            color: var(--accent-tertiary, #7a6952);
+            text-align: center;
+            padding: 0;
+        }
+
+        .controls td {
+            text-align: center;
+            padding: 0;
+        }
+
+        .controls select {
+            padding: 6px 10px;
+            font-size: 0.95em;
         }
 
         .results {
@@ -36,10 +51,10 @@
         .results-header {
             font-size: 1.3em;
             font-weight: 600;
-            color: var(--heading-primary, #333);
+            color: var(--heading-tertiary, #7a6952);
             margin-bottom: 15px;
             padding-bottom: 10px;
-            border-bottom: 2px solid var(--accent-primary, #667eea);
+            border-bottom: 2px solid var(--border-accent, #667eea);
         }
 
         .names-list {
@@ -60,7 +75,7 @@
 
         .name-item:hover {
             transform: translateX(5px);
-            box-shadow: 0 3px 10px var(--button-shadow, rgba(102, 126, 234, 0.2));
+            box-shadow: 0 3px 10px var(--shadow-secondary, rgba(0, 0, 0, 0.15));
         }
 
         .nav-link {
@@ -75,16 +90,20 @@
 
         .gender-filters {
             margin-top: 15px;
-            padding: 15px;
+            padding: 10px 15px;
             background: var(--bg-light, #f8f9ff);
             border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
-        .gender-filters label {
+        .gender-filters > label {
             font-weight: 600;
-            color: var(--text-primary, #333);
-            display: block;
-            margin-bottom: 10px;
+            color: var(--accent-tertiary, #7a6952);
+            margin: 0;
+            white-space: nowrap;
         }
 
         .gender-checkboxes {
@@ -114,30 +133,33 @@
         }
 
         .source-filters {
-            margin-top: 15px;
-            padding: 15px;
+            margin-top: 10px;
+            padding: 10px 15px;
             background: var(--bg-light, #f8f9ff);
             border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
         .source-filters > label {
             font-weight: 600;
-            color: var(--text-primary, #333);
-            display: block;
-            margin-bottom: 10px;
+            color: var(--accent-tertiary, #7a6952);
+            margin: 0;
+            white-space: nowrap;
         }
 
         .source-dropdown {
             position: relative;
             display: inline-block;
-            width: 100%;
+            flex: 1;
         }
 
         .source-dropdown-button {
             width: 100%;
             padding: 10px 15px;
             font-size: 1em;
-            border: 2px solid var(--accent-primary, #667eea);
+            border: 2px solid var(--border-medium, #ddd);
             border-radius: 6px;
             background: var(--bg-white, white);
             color: var(--text-primary, #333);
@@ -153,7 +175,7 @@
         }
 
         .source-dropdown-button:hover {
-            border-color: var(--accent-secondary, #764ba2);
+            border-color: var(--border-accent, #764ba2);
         }
 
         .source-dropdown-content {
@@ -163,11 +185,11 @@
             width: 100%;
             max-height: 300px;
             overflow-y: auto;
-            border: 2px solid var(--accent-primary, #667eea);
+            border: 2px solid var(--border-medium, #ddd);
             border-radius: 6px;
             margin-top: 5px;
             z-index: 1000;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px var(--shadow-secondary, rgba(0, 0, 0, 0.1));
         }
 
         .source-dropdown-content.show {
@@ -222,7 +244,7 @@
             flex: 1;
             padding: 6px 12px;
             font-size: 0.9em;
-            border: 1px solid var(--accent-primary, #667eea);
+            border: 1px solid var(--border-accent, #667eea);
             border-radius: 4px;
             background: var(--bg-white, white);
             color: var(--accent-primary, #667eea);
@@ -237,14 +259,14 @@
         }
 
         .generate-button-container {
-            margin-top: 15px;
+            margin-top: 10px;
             text-align: center;
         }
 
         /* Responsive overrides */
         @media (max-width: 768px) {
             .controls {
-                flex-direction: column;
+                gap: 10px;
             }
         }
     </style>
@@ -271,57 +293,56 @@
 
         <div class="content">
             <div class="controls" style="display: none;" id="controls">
-                <div class="control-group">
-                    <label for="quantity">Number of names:</label>
-                    <select id="quantity">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3" selected>3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                    </select>
-                </div>
-                <div class="control-group">
-                    <label for="nicknameFreq">Nickname:</label>
-                    <select id="nicknameFreq">
-                        <option value="0">Never</option>
-                        <option value="0.10">10%</option>
-                        <option value="0.25" selected>25%</option>
-                        <option value="0.50">50%</option>
-                        <option value="1.0">Always</option>
-                    </select>
-                </div>
-                <div class="control-group">
-                    <label for="titleFreq">Title:</label>
-                    <select id="titleFreq">
-                        <option value="0">Never</option>
-                        <option value="0.10" selected>10%</option>
-                        <option value="0.25">25%</option>
-                        <option value="0.50">50%</option>
-                        <option value="1.0">Always</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="source-filters" style="display: none;" id="sourceFilters">
-                <label>Select Sources:</label>
-                <div class="source-dropdown">
-                    <button type="button" class="source-dropdown-button" id="sourceDropdownBtn">
-                        <span id="sourceDropdownText">Select Sources (all)</span>
-                        <span>▼</span>
-                    </button>
-                    <div class="source-dropdown-content" id="sourceDropdownContent"></div>
-                </div>
+                <table>
+                    <tr>
+                        <th><label for="quantity">Names</label></th>
+                        <th><label for="nicknameFreq">Nickname</label></th>
+                        <th><label for="titleFreq">Title</label></th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select id="quantity">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3" selected>3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select id="nicknameFreq">
+                                <option value="0">Never</option>
+                                <option value="0.10">10%</option>
+                                <option value="0.25" selected>25%</option>
+                                <option value="0.50">50%</option>
+                                <option value="1.0">Always</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select id="titleFreq">
+                                <option value="0">Never</option>
+                                <option value="0.10" selected>10%</option>
+                                <option value="0.25">25%</option>
+                                <option value="0.50">50%</option>
+                                <option value="1.0">Always</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
             </div>
 
             <div class="gender-filters" style="display: none;" id="genderFilters">
-                <label>Select Genders:</label>
+                <label>Genders:</label>
                 <div class="gender-checkboxes">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="genderAny" value="any" checked>
+                        <label for="genderAny">Any</label>
+                    </div>
                     <div class="checkbox-group">
                         <input type="checkbox" id="genderMale" value="male" checked>
                         <label for="genderMale">Male</label>
@@ -339,15 +360,24 @@
                         <label for="genderQueer">Queer</label>
                     </div>
                 </div>
-                <div style="margin-top: 8px; font-size: 0.85em; color: var(--text-secondary, #666);">
-                    Note: "Any" gender names are always included
-                </div>
-                <div class="generate-button-container">
-                    <button id="generateBtn">Generate Names</button>
+            </div>
+
+            <div class="source-filters" style="display: none;" id="sourceFilters">
+                <label>Sources:</label>
+                <div class="source-dropdown">
+                    <button type="button" class="source-dropdown-button" id="sourceDropdownBtn">
+                        <span id="sourceDropdownText">Select Sources (all)</span>
+                        <span>▼</span>
+                    </button>
+                    <div class="source-dropdown-content" id="sourceDropdownContent"></div>
                 </div>
             </div>
 
-            <div id="status" class="status loading">
+            <div class="generate-button-container" style="display: none;" id="generateBtnContainer">
+                <button id="generateBtn">Generate Names</button>
+            </div>
+
+            <div id="status" class="status loading" style="margin-top: 10px;">
                 Loading database...
             </div>
 
@@ -390,12 +420,13 @@
 
                 // Update status
                 statusEl.className = 'status success';
-                statusEl.textContent = '✓ Database loaded! Select genders and click "Generate Names" to create random names.';
+                statusEl.textContent = '✓ Database successfully loaded!';
 
                 // Show controls and filters
-                controlsEl.style.display = 'flex';
-                document.getElementById('sourceFilters').style.display = 'block';
-                genderFiltersEl.style.display = 'block';
+                controlsEl.style.display = 'block';
+                genderFiltersEl.style.display = 'flex';
+                document.getElementById('sourceFilters').style.display = 'flex';
+                document.getElementById('generateBtnContainer').style.display = 'block';
 
             } catch (error) {
                 console.error('Error loading database:', error);
@@ -604,8 +635,11 @@
          * @returns {string[]} Array of selected gender names
          */
         function getSelectedGenders() {
-            const genders = ['any']; // Always include 'any'
+            const genders = [];
 
+            if (document.getElementById('genderAny').checked) {
+                genders.push('any');
+            }
             if (document.getElementById('genderMale').checked) {
                 genders.push('male');
             }
