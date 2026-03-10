@@ -10,51 +10,41 @@
     <style>
         .container { max-width: 600px; }
 
-        /* Card display area */
-        .card-area {
-            background: var(--bg-light, #f8f9fa);
-            border-radius: 12px;
-            padding: 30px;
-            margin-bottom: 20px;
-            text-align: center;
-            min-height: 180px;
+        /* Controls bar */
+        .controls-bar {
             display: flex;
-            flex-direction: column;
+            gap: 10px;
             align-items: center;
             justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            padding: 0 10px;
         }
 
-        .dealt-card {
-            font-size: 3em;
-            font-weight: bold;
-            margin-bottom: 8px;
-            line-height: 1.2;
+        .controls-bar .roll-button {
+            min-width: 100px;
         }
 
-        .dealt-card.red { color: #c0392b; }
-        .dealt-card.black { color: var(--text-primary, #333); }
-
-        .dealt-card-name {
-            font-size: 1.2em;
-            color: var(--text-secondary, #666);
+        .controls-bar .roll-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
         }
 
-        .placeholder-text {
-            font-size: 1.2em;
-            color: var(--text-muted, #999);
-            font-style: italic;
+        .controls-bar .checkbox-label {
+            margin: 0;
+            white-space: nowrap;
         }
 
         /* Deck info bar */
         .deck-info {
             display: flex;
-            justify-content: space-between;
+            justify-content: space-around;
             align-items: center;
-            padding: 12px 20px;
+            padding: 10px 16px;
             background: var(--bg-light, #f8f9fa);
             border-radius: 8px;
             margin-bottom: 20px;
-            font-size: 1.05em;
+            font-size: 0.95em;
             color: var(--text-secondary, #666);
         }
 
@@ -63,29 +53,188 @@
             color: var(--text-primary, #333);
         }
 
-        /* Button row */
-        .button-row {
+        /* Visual deck & discard pile row */
+        .table-row {
             display: flex;
-            gap: 10px;
+            gap: 20px;
             justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
+            align-items: flex-start;
+            margin-bottom: 24px;
         }
 
-        .button-row .roll-button {
-            flex: 1;
-            min-width: 120px;
-            max-width: 200px;
+        .pile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            min-width: 80px;
         }
 
-        .button-row .roll-button:disabled {
+        .pile-label {
+            font-size: 0.8em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-secondary, #666);
+        }
+
+        .pile-stack {
+            position: relative;
+            width: 70px;
+            height: 96px;
+        }
+
+        .pile-card {
+            position: absolute;
+            width: 70px;
+            height: 96px;
+            border-radius: 6px;
+            border: 2px solid var(--border-medium, #ccc);
+            background: var(--bg-white, #fff);
+            box-shadow: 1px 1px 3px var(--shadow-secondary, rgba(0,0,0,0.15));
+        }
+
+        .pile-card-back {
+            background: linear-gradient(135deg,
+                var(--button-gradient-start, #4a7c3c),
+                var(--button-gradient-end, #2d5016));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pile-card-back::after {
+            content: '';
+            width: 50px;
+            height: 76px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 3px;
+        }
+
+        .pile-card-face {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4em;
+            font-weight: bold;
+        }
+
+        .pile-card-face.red { color: #c0392b; }
+        .pile-card-face.black { color: var(--text-primary, #333); }
+
+        .pile-empty {
+            width: 70px;
+            height: 96px;
+            border-radius: 6px;
+            border: 2px dashed var(--border-light, #ddd);
             opacity: 0.5;
-            cursor: not-allowed;
         }
 
-        /* Discard pile toggle */
+        .pile-count {
+            font-size: 0.85em;
+            color: var(--text-secondary, #666);
+            font-weight: 600;
+        }
+
+        /* Dealt cards (hand) area */
+        .hand-area {
+            background: var(--bg-light, #f8f9fa);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+            min-height: 60px;
+        }
+
+        .hand-label {
+            font-size: 0.8em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-secondary, #666);
+            margin-bottom: 10px;
+        }
+
+        .hand-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .hand-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 64px;
+            height: 90px;
+            background: var(--bg-white, #fff);
+            border: 2px solid var(--border-medium, #ddd);
+            border-radius: 6px;
+            cursor: default;
+            transition: border-color 0.15s, box-shadow 0.15s;
+            box-shadow: 0 1px 3px var(--shadow-secondary, rgba(0,0,0,0.1));
+        }
+
+        .hand-card:hover {
+            border-color: var(--accent-primary, #4a7c3c);
+            box-shadow: 0 2px 8px var(--shadow-primary, rgba(0,0,0,0.2));
+        }
+
+        .hand-card-symbol {
+            font-size: 1.6em;
+            font-weight: bold;
+            line-height: 1;
+        }
+
+        .hand-card-symbol.red { color: #c0392b; }
+        .hand-card-symbol.black { color: var(--text-primary, #333); }
+
+        .hand-card-name {
+            font-size: 0.55em;
+            color: var(--text-secondary, #666);
+            text-align: center;
+            line-height: 1.2;
+            margin-top: 4px;
+            max-width: 58px;
+            overflow: hidden;
+        }
+
+        .hand-card .discard-x {
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--error-border, #ef5350);
+            color: white;
+            font-size: 11px;
+            font-weight: bold;
+            line-height: 18px;
+            text-align: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.15s;
+            border: none;
+            padding: 0;
+        }
+
+        .hand-card:hover .discard-x {
+            opacity: 1;
+        }
+
+        .hand-empty {
+            text-align: center;
+            color: var(--text-light, #999);
+            font-style: italic;
+            padding: 12px;
+        }
+
+        /* Discard pile list */
         .discard-section {
-            margin-top: 20px;
+            margin-top: 8px;
         }
 
         .discard-toggle {
@@ -95,8 +244,8 @@
             align-items: center;
             gap: 8px;
             color: var(--heading-secondary, #444);
-            font-size: 1.1em;
-            margin-bottom: 10px;
+            font-size: 1em;
+            margin-bottom: 8px;
         }
 
         .discard-toggle:hover {
@@ -106,19 +255,25 @@
         .discard-arrow {
             transition: transform 0.2s;
             display: inline-block;
+            font-size: 0.8em;
         }
 
         .discard-arrow.open {
             transform: rotate(90deg);
         }
 
+        .discard-toggle-label {
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+
         .discard-list {
             display: none;
-            max-height: 400px;
+            max-height: 240px;
             overflow-y: auto;
             background: var(--bg-light, #f8f9fa);
             border-radius: 8px;
-            padding: 10px;
+            padding: 8px;
         }
 
         .discard-list.open {
@@ -129,8 +284,9 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            padding: 8px 12px;
+            padding: 6px 10px;
             border-bottom: 1px solid var(--border-light, #eee);
+            font-size: 0.9em;
         }
 
         .discard-item:last-child {
@@ -138,9 +294,9 @@
         }
 
         .discard-item-symbol {
-            font-size: 1.3em;
+            font-size: 1.2em;
             font-weight: bold;
-            min-width: 50px;
+            min-width: 45px;
         }
 
         .discard-item-symbol.red { color: #c0392b; }
@@ -152,22 +308,38 @@
 
         .discard-item-index {
             margin-left: auto;
-            color: var(--text-muted, #999);
+            color: var(--text-light, #999);
             font-size: 0.85em;
         }
 
         .empty-discard {
             text-align: center;
-            color: var(--text-muted, #999);
+            color: var(--text-light, #999);
             font-style: italic;
-            padding: 20px;
+            padding: 16px;
         }
 
-        /* Checkbox control */
-        .option-row {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 15px;
+        /* Warning toast */
+        .warning-toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--heading-primary, #7a2a1f);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 0.9em;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            z-index: 1000;
+            pointer-events: none;
+        }
+
+        .warning-toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
         }
     </style>
 </head>
@@ -185,33 +357,39 @@
             </div>
         </div>
 
-        <div class="option-row">
+        <div class="controls-bar">
+            <button id="dealBtn" class="roll-button">Deal</button>
+            <button id="shuffleBtn" class="roll-button">Shuffle All</button>
             <label class="checkbox-label">
                 <input type="checkbox" id="includeJokers">
                 Include Jokers
             </label>
         </div>
 
-        <div class="card-area" id="cardArea">
-            <div class="placeholder-text">Deal a card to begin</div>
+        <div class="table-row">
+            <div class="pile">
+                <div class="pile-label">Deck</div>
+                <div class="pile-stack" id="deckPile"></div>
+                <div class="pile-count" id="deckCount">52</div>
+            </div>
+            <div class="pile">
+                <div class="pile-label">Discards</div>
+                <div class="pile-stack" id="discardPile"></div>
+                <div class="pile-count" id="discardCount">0</div>
+            </div>
         </div>
 
-        <div class="deck-info">
-            <div>Deck: <span id="deckCount">52</span></div>
-            <div>Dealt: <span id="dealtCount">0</span></div>
-            <div>Discards: <span id="discardCount">0</span></div>
-        </div>
-
-        <div class="button-row">
-            <button id="dealBtn" class="roll-button">Deal</button>
-            <button id="discardBtn" class="roll-button" disabled>Discard</button>
-            <button id="shuffleBtn" class="roll-button">Shuffle All</button>
+        <div class="hand-area">
+            <div class="hand-label">Dealt Cards</div>
+            <div class="hand-cards" id="handCards">
+                <div class="hand-empty">Deal a card to begin</div>
+            </div>
         </div>
 
         <div class="discard-section">
             <div class="discard-toggle" id="discardToggle">
                 <span class="discard-arrow" id="discardArrow">&#9654;</span>
-                <h2 style="margin: 0; font-size: 1.1em;">Discard Pile</h2>
+                <span class="discard-toggle-label">Discard History</span>
             </div>
             <div class="discard-list" id="discardList">
                 <div class="empty-discard">No discards yet</div>
@@ -226,6 +404,8 @@
         </div>
     </div>
 
+    <div class="warning-toast" id="warningToast"></div>
+
     <script type="module">
         import { drawCard, getDeckSize, isDeckEmpty, shuffleDeck } from '../code/card-library.js';
         import { createPokerDeck, getCardColor, getCardShortName, formatPokerCard } from './poker-cards.js';
@@ -235,30 +415,36 @@
 
         // State
         let deck = [];
-        let currentCard = null;
+        let dealtCards = [];
         let discardPile = [];
 
         // DOM references
-        const cardArea = document.getElementById('cardArea');
+        const deckPileEl = document.getElementById('deckPile');
+        const discardPileEl = document.getElementById('discardPile');
         const deckCountEl = document.getElementById('deckCount');
-        const dealtCountEl = document.getElementById('dealtCount');
         const discardCountEl = document.getElementById('discardCount');
+        const handCardsEl = document.getElementById('handCards');
         const dealBtn = document.getElementById('dealBtn');
-        const discardBtn = document.getElementById('discardBtn');
         const shuffleBtn = document.getElementById('shuffleBtn');
         const includeJokersCheckbox = document.getElementById('includeJokers');
         const discardToggle = document.getElementById('discardToggle');
         const discardArrow = document.getElementById('discardArrow');
         const discardList = document.getElementById('discardList');
+        const warningToast = document.getElementById('warningToast');
 
         // Initialize
         resetDeck();
 
         // Event listeners
         dealBtn.addEventListener('click', dealCard);
-        discardBtn.addEventListener('click', discardCard);
         shuffleBtn.addEventListener('click', resetDeck);
-        includeJokersCheckbox.addEventListener('change', resetDeck);
+
+        includeJokersCheckbox.addEventListener('change', () => {
+            if (dealtCards.length > 0 || discardPile.length > 0) {
+                showWarning('Deck reshuffled — dealt and discarded cards returned');
+            }
+            resetDeck();
+        });
 
         discardToggle.addEventListener('click', () => {
             discardList.classList.toggle('open');
@@ -266,74 +452,129 @@
         });
 
         document.addEventListener('keydown', (e) => {
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
             if (e.key === 'd' || e.key === 'D') dealCard();
-            if (e.key === 'x' || e.key === 'X') discardCard();
             if (e.key === 's' || e.key === 'S') resetDeck();
         });
 
         function resetDeck() {
             const includeJokers = includeJokersCheckbox.checked;
             deck = shuffleDeck(createPokerDeck(includeJokers));
-            currentCard = null;
+            dealtCards = [];
             discardPile = [];
             updateDisplay();
-            renderDiscardPile();
         }
 
         function dealCard() {
             if (isDeckEmpty(deck)) return;
-
-            // If there's a current card showing, auto-discard it first
-            if (currentCard) {
-                discardPile.unshift(currentCard);
-            }
-
-            currentCard = drawCard(deck);
+            const card = drawCard(deck);
+            dealtCards.push(card);
             updateDisplay();
-            renderDiscardPile();
         }
 
-        function discardCard() {
-            if (!currentCard) return;
-
-            discardPile.unshift(currentCard);
-            currentCard = null;
+        function discardCard(index) {
+            const card = dealtCards.splice(index, 1)[0];
+            if (!card) return;
+            discardPile.unshift(card);
             updateDisplay();
-            renderDiscardPile();
         }
 
         function updateDisplay() {
-            // Card area
-            if (currentCard) {
-                const color = getCardColor(currentCard);
-                const shortName = getCardShortName(currentCard);
-                const fullName = formatPokerCard(currentCard);
-                cardArea.innerHTML = `
-                    <div class="dealt-card ${color}">${shortName}</div>
-                    <div class="dealt-card-name">${fullName}</div>
-                `;
-            } else {
-                if (isDeckEmpty(deck) && discardPile.length === 0) {
-                    cardArea.innerHTML = '<div class="placeholder-text">Deck is empty. Shuffle to start over.</div>';
-                } else if (isDeckEmpty(deck)) {
-                    cardArea.innerHTML = '<div class="placeholder-text">Deck is empty. Shuffle to recollect cards.</div>';
-                } else {
-                    cardArea.innerHTML = '<div class="placeholder-text">Deal a card to begin</div>';
-                }
-            }
-
-            // Counts
-            const dealtTotal = (currentCard ? 1 : 0) + discardPile.length;
-            deckCountEl.textContent = getDeckSize(deck);
-            dealtCountEl.textContent = dealtTotal;
-            discardCountEl.textContent = discardPile.length;
-
-            // Button states
+            renderDeckPile();
+            renderDiscardPileMini();
+            renderHand();
+            renderDiscardList();
+            updateCounts();
             dealBtn.disabled = isDeckEmpty(deck);
-            discardBtn.disabled = !currentCard;
         }
 
-        function renderDiscardPile() {
+        function renderDeckPile() {
+            const size = getDeckSize(deck);
+            deckPileEl.innerHTML = '';
+
+            if (size === 0) {
+                deckPileEl.innerHTML = '<div class="pile-empty"></div>';
+                return;
+            }
+
+            // Show stacked card backs (max 4 layers for visual depth)
+            const layers = Math.min(4, Math.ceil(size / 13));
+            for (let i = 0; i < layers; i++) {
+                const card = document.createElement('div');
+                card.className = 'pile-card pile-card-back';
+                card.style.top = `${i * -2}px`;
+                card.style.left = `${i * -1}px`;
+                card.style.zIndex = i;
+                deckPileEl.appendChild(card);
+            }
+        }
+
+        function renderDiscardPileMini() {
+            discardPileEl.innerHTML = '';
+
+            if (discardPile.length === 0) {
+                discardPileEl.innerHTML = '<div class="pile-empty"></div>';
+                return;
+            }
+
+            // Show top discard with stacking effect
+            const layers = Math.min(3, discardPile.length);
+            for (let i = layers - 1; i >= 0; i--) {
+                const card = discardPile[i];
+                const el = document.createElement('div');
+                const color = getCardColor(card);
+
+                if (i === 0) {
+                    el.className = `pile-card pile-card-face ${color}`;
+                    el.textContent = getCardShortName(card);
+                } else {
+                    el.className = 'pile-card pile-card-back';
+                }
+                el.style.top = `${i * -2}px`;
+                el.style.left = `${i * 1}px`;
+                el.style.zIndex = layers - i;
+                discardPileEl.appendChild(el);
+            }
+        }
+
+        function renderHand() {
+            handCardsEl.innerHTML = '';
+
+            if (dealtCards.length === 0) {
+                if (isDeckEmpty(deck) && discardPile.length > 0) {
+                    handCardsEl.innerHTML = '<div class="hand-empty">Deck is empty. Shuffle to recollect cards.</div>';
+                } else if (isDeckEmpty(deck)) {
+                    handCardsEl.innerHTML = '<div class="hand-empty">Deck is empty. Shuffle to start over.</div>';
+                } else {
+                    handCardsEl.innerHTML = '<div class="hand-empty">Deal a card to begin</div>';
+                }
+                return;
+            }
+
+            dealtCards.forEach((card, index) => {
+                const el = document.createElement('div');
+                el.className = 'hand-card';
+
+                const color = getCardColor(card);
+                const shortName = getCardShortName(card);
+                const fullName = formatPokerCard(card);
+
+                el.innerHTML = `
+                    <div class="hand-card-symbol ${color}">${shortName}</div>
+                    <div class="hand-card-name">${fullName}</div>
+                    <button class="discard-x" title="Discard">&times;</button>
+                `;
+
+                el.querySelector('.discard-x').addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    discardCard(index);
+                });
+
+                handCardsEl.appendChild(el);
+            });
+        }
+
+        function renderDiscardList() {
             if (discardPile.length === 0) {
                 discardList.innerHTML = '<div class="empty-discard">No discards yet</div>';
                 return;
@@ -352,6 +593,21 @@
                 `;
                 discardList.appendChild(item);
             });
+        }
+
+        function updateCounts() {
+            deckCountEl.textContent = getDeckSize(deck);
+            discardCountEl.textContent = discardPile.length;
+        }
+
+        let warningTimeout;
+        function showWarning(message) {
+            warningToast.textContent = message;
+            warningToast.classList.add('show');
+            clearTimeout(warningTimeout);
+            warningTimeout = setTimeout(() => {
+                warningToast.classList.remove('show');
+            }, 3000);
         }
     </script>
 </body>

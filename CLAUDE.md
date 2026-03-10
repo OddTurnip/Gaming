@@ -24,10 +24,10 @@ Welcome! This guide helps AI assistants understand and work with the Gaming Tool
 - **Domain modules** (Fate.js, Blades.js, Tarot.js) implement specific game systems
 - **HTML files** use inline `<script type="module">` to import and orchestrate
 - **Theme utilities** in `Themes/` folder handle theming without code duplication
-- **Comprehensive test suite** with 224 tests using Vitest
+- **Comprehensive test suite** with 313 tests using Vitest
 
 ### Theme System
-- **11 themes** available: Autumn (default), Winter, Spring, Summer, Stars, Light, Dark, Gothic, Cthulhu, Beach, Cyberpunk
+- **12 themes** available: Autumn (default), Light, Dark, Winter, Spring, Summer, Stars, Gothic, Cthulhu, Beach, Cyberpunk, Halloween
 - **Shared styles** in `Themes/themes.css` - contains all CSS variables and shared component styles
 - **Theme selector** via `Themes/theme-setup.js` - provides `autoInitThemeSelector()` and `initThemeSelector()`
 - **Theme init** via `Themes/theme-init.js` - prevents flash of unstyled content (FOUC)
@@ -76,18 +76,26 @@ Use `template.html` as a starting point for new pages. Key elements:
 
 ### CSS Organization
 - **Shared styles** live in `Themes/themes.css` (controls, history, modal, card display, etc.)
-- **Page-specific overrides** go in dedicated CSS files (e.g., `Dice/Style.css`, `Tarot/styles.css`)
+- **Page-specific overrides** go in dedicated CSS files (e.g., `Dice/style.css`, `Tarot/styles.css`)
 - Use CSS variables for all colors: `var(--variable-name, fallback)`
 
 ## Intentional Design Exceptions
 
 ### Blades in the Dark Dice Colors
-The `.die-highlight-high` and `.die-highlight-low` classes in `Dice/Style.css` use **hardcoded colors** (#4CAF50 green and #FFA500 orange). This is **intentional** for game mechanics - these colors indicate success/failure outcomes and should NOT adapt to themes. The same applies to theme-specific dice styling (Gothic, Cthulhu, Beach, Cyberpunk themes have custom dice appearances).
+The `.die-highlight-high` and `.die-highlight-low` classes in `Dice/style.css` use **hardcoded colors** (#4CAF50 green and #FFA500 orange). This is **intentional** for game mechanics - these colors indicate success/failure outcomes and should NOT adapt to themes. The same applies to theme-specific dice styling (Gothic, Cthulhu, Beach, Cyberpunk themes have custom dice appearances).
 
 ### Container Widths
 - Default container: 900px max-width
 - Use `.container-tight` for 600px (Dice, Tarot, Names pages)
 - Use `.container-wide` for 1200px (wider layouts if needed)
+
+## Character Modules - Intentional CSS Separation
+
+The `Characters/` module **intentionally** uses its own CSS system, independent of the shared theme system in `Themes/themes.css`. Each RPG system (Fate, Blades in the Dark, Gotham Reunion) has a custom stylesheet designed to match the look and feel of that game system.
+
+**This is by design**, not a bug. See `Characters/CLAUDE.md` for module-specific documentation.
+
+**TODO:** Eventually convert each RPG system's visual identity into a proper theme within the shared theme system. This is a larger effort since each system's custom styling would need to be expressed as theme variables while preserving its unique character. Low priority.
 
 ## When Making Changes
 
