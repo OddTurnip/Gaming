@@ -541,8 +541,9 @@
 
         function pileLayerCount(cardCount, maxCards) {
             if (cardCount === 0) return 0;
-            // Scale 1-7 layers based on proportion of cards remaining
-            return Math.max(1, Math.round((cardCount / maxCards) * 7));
+            if (cardCount === 1) return 1;
+            // 2+ cards: at least 2 layers, scaling up to 7
+            return Math.max(2, Math.round((cardCount / maxCards) * 7));
         }
 
         function renderDeckPile() {
