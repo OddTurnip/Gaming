@@ -491,6 +491,12 @@
             dealBtn.disabled = isDeckEmpty(deck);
         }
 
+        function applyStackOffset(el, layerIndex, zIndex) {
+            el.style.top = `${layerIndex * -2}px`;
+            el.style.left = `${layerIndex * -1}px`;
+            el.style.zIndex = zIndex;
+        }
+
         function renderDeckPile() {
             const size = getDeckSize(deck);
             deckPileEl.innerHTML = '';
@@ -500,14 +506,11 @@
                 return;
             }
 
-            // Show stacked card backs (max 4 layers for visual depth)
             const layers = Math.min(4, Math.ceil(size / 13));
             for (let i = 0; i < layers; i++) {
                 const card = document.createElement('div');
                 card.className = 'pile-card pile-card-back';
-                card.style.top = `${i * -2}px`;
-                card.style.left = `${i * -1}px`;
-                card.style.zIndex = i;
+                applyStackOffset(card, i, i);
                 deckPileEl.appendChild(card);
             }
         }
@@ -520,7 +523,6 @@
                 return;
             }
 
-            // Show top discard with stacking effect
             const layers = Math.min(3, discardPile.length);
             for (let i = layers - 1; i >= 0; i--) {
                 const card = discardPile[i];
@@ -533,9 +535,7 @@
                 } else {
                     el.className = 'pile-card pile-card-back';
                 }
-                el.style.top = `${i * -2}px`;
-                el.style.left = `${i * -1}px`;
-                el.style.zIndex = layers - i;
+                applyStackOffset(el, i, layers - i);
                 discardPileEl.appendChild(el);
             }
         }
