@@ -10,49 +10,51 @@
     <style>
         .container { max-width: 600px; }
 
-        /* Controls bar */
-        .controls-bar {
+        /* Table-row button columns */
+        .table-column {
             display: flex;
-            gap: 12px;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 10px;
-            margin-bottom: 20px;
-            padding: 8px 20px;
+            gap: 10px;
         }
 
-        .controls-bar .roll-button {
+        .table-column .roll-button {
             min-width: 100px;
             background: var(--bg-white, #fff);
-            color: var(--accent-primary, #4a7c3c);
-            border: 2px solid var(--accent-primary, #4a7c3c);
             box-shadow: 0 2px 8px var(--button-shadow, rgba(0,0,0,0.2));
         }
 
-        .controls-bar .roll-button:hover {
-            background: var(--accent-primary, #4a7c3c);
-            color: var(--text-white, #fff);
-        }
-
-        .controls-bar #dealBtn {
-            border-color: var(--accent-tertiary, #7a6952);
-            color: var(--accent-tertiary, #7a6952);
-        }
-
-        .controls-bar #dealBtn:hover {
-            background: var(--accent-tertiary, #7a6952);
-            color: var(--text-white, #fff);
-        }
-
-        .controls-bar .roll-button:disabled {
+        .table-column .roll-button:disabled {
             opacity: 0.5;
             cursor: not-allowed;
         }
 
-        .controls-bar .checkbox-label {
+        .table-column .checkbox-label {
             margin: 0;
             white-space: nowrap;
+        }
+
+        /* Deal buttons use tertiary accent */
+        .table-column .deal-btn {
+            border: 2px solid var(--accent-tertiary, #7a6952);
+            color: var(--accent-tertiary, #7a6952);
+        }
+
+        .table-column .deal-btn:hover:not(:disabled) {
+            background: var(--accent-tertiary, #7a6952);
+            color: var(--text-white, #fff);
+        }
+
+        /* Shuffle/reset button uses primary accent */
+        .table-column .shuffle-btn {
+            border: 2px solid var(--accent-primary, #4a7c3c);
+            color: var(--accent-primary, #4a7c3c);
+        }
+
+        .table-column .shuffle-btn:hover {
+            background: var(--accent-primary, #4a7c3c);
+            color: var(--text-white, #fff);
         }
 
         /* Deck info bar */
@@ -377,16 +379,11 @@
             </div>
         </div>
 
-        <div class="controls-bar">
-            <button id="dealBtn" class="roll-button">Deal</button>
-            <button id="shuffleBtn" class="roll-button">Shuffle All</button>
-            <label class="checkbox-label">
-                <input type="checkbox" id="includeJokers">
-                Include Jokers
-            </label>
-        </div>
-
         <div class="table-row">
+            <div class="table-column">
+                <button id="dealOneBtn" class="roll-button deal-btn">Deal 1</button>
+                <button id="dealFiveBtn" class="roll-button deal-btn">Deal 5</button>
+            </div>
             <div class="pile">
                 <div class="pile-stack" id="deckPile"></div>
                 <div class="pile-label">Deck</div>
@@ -396,6 +393,13 @@
                 <div class="pile-stack" id="discardPile"></div>
                 <div class="pile-label">Discards</div>
                 <div class="pile-count" id="discardCount">0</div>
+            </div>
+            <div class="table-column">
+                <button id="shuffleBtn" class="roll-button shuffle-btn">Reset</button>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="includeJokers">
+                    Include Jokers
+                </label>
             </div>
         </div>
 
@@ -474,7 +478,8 @@
         const deckCountEl = document.getElementById('deckCount');
         const discardCountEl = document.getElementById('discardCount');
         const handCardsEl = document.getElementById('handCards');
-        const dealBtn = document.getElementById('dealBtn');
+        const dealOneBtn = document.getElementById('dealOneBtn');
+        const dealFiveBtn = document.getElementById('dealFiveBtn');
         const shuffleBtn = document.getElementById('shuffleBtn');
         const includeJokersCheckbox = document.getElementById('includeJokers');
         const discardToggle = document.getElementById('discardToggle');
@@ -490,7 +495,8 @@
         }
 
         // Event listeners
-        dealBtn.addEventListener('click', dealCard);
+        dealOneBtn.addEventListener('click', () => dealCards(1));
+        dealFiveBtn.addEventListener('click', () => dealCards(5));
         shuffleBtn.addEventListener('click', resetDeck);
 
         includeJokersCheckbox.addEventListener('change', () => {
@@ -507,7 +513,7 @@
 
         document.addEventListener('keydown', (e) => {
             if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-            if (e.key === 'd' || e.key === 'D') dealCard();
+            if (e.key === 'd' || e.key === 'D') dealCards(1);
             if (e.key === 's' || e.key === 'S') resetDeck();
         });
 
@@ -519,10 +525,12 @@
             updateDisplay();
         }
 
-        function dealCard() {
+        function dealCards(count) {
             if (isDeckEmpty(deck)) return;
-            const card = drawCard(deck);
-            dealtCards.push(card);
+            const toDeal = Math.min(count, getDeckSize(deck));
+            for (let i = 0; i < toDeal; i++) {
+                dealtCards.push(drawCard(deck));
+            }
             updateDisplay();
         }
 
@@ -539,7 +547,9 @@
             renderHand();
             renderDiscardList();
             updateCounts();
-            dealBtn.disabled = isDeckEmpty(deck);
+            const empty = isDeckEmpty(deck);
+            dealOneBtn.disabled = empty;
+            dealFiveBtn.disabled = empty;
             saveState();
         }
 
