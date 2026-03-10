@@ -535,7 +535,7 @@
                 } else {
                     el.className = 'pile-card pile-card-back';
                 }
-                applyStackOffset(el, i, layers - i);
+                applyStackOffset(el, layers - 1 - i, layers - i);
                 discardPileEl.appendChild(el);
             }
         }
