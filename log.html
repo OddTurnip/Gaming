@@ -48,6 +48,14 @@
             color: var(--accent-primary, #4a7c3c);
             font-weight: bold;
         }
+
+        .changelog-entry a {
+            color: var(--accent-primary, #4a7c3c);
+        }
+
+        .changelog-entry a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -71,17 +79,84 @@
 
                 <h3>New</h3>
                 <ul>
-                    <li>Added virtual card deck (Cards section) with deal, discard, and shuffle</li>
+                    <li>Added <a href="Cards/deck.html">virtual card deck</a> with deal, discard, and shuffle</li>
                     <li>Deck state saves to browser storage and restores on reload</li>
                     <li>Keyboard shortcuts for the card deck: D to deal, S to shuffle</li>
+                    <li>Added this change log</li>
                 </ul>
 
                 <h3>Improved</h3>
                 <ul>
                     <li>Richer theme expression across pages using accent colors</li>
-                    <li>Compact name generator controls with inline labels</li>
-                    <li>Streamlined About page</li>
-                    <li>Separated About link on the home page for clearer navigation</li>
+                    <li>Compact <a href="Names/index.html">name generator</a> controls with inline labels</li>
+                    <li>Streamlined <a href="About.html">About page</a></li>
+                </ul>
+            </div>
+
+            <div class="changelog-entry">
+                <div class="changelog-date">February 1, 2026</div>
+
+                <h3>New</h3>
+                <ul>
+                    <li>Added Halloween theme (dark with fiery reds, oranges, and yellows)</li>
+                    <li>Added <a href="About.html">About page</a> with tech stack and project credits</li>
+                </ul>
+
+                <h3>Improved</h3>
+                <ul>
+                    <li>Unified three-column header layout across all pages</li>
+                    <li>Consolidated shared CSS into themes.css for consistent styling</li>
+                    <li>Restyled <a href="Cards/Tarot/index.html">Tarot</a> controls with full theme support</li>
+                    <li>Tarot auto-performs initial reading on page load</li>
+                    <li>Improved result display colors for Dark, Light, and Cyberpunk themes</li>
+                </ul>
+            </div>
+
+            <div class="changelog-entry">
+                <div class="changelog-date">November 1, 2025</div>
+
+                <h3>New</h3>
+                <ul>
+                    <li>Added Stars theme with twinkling animation</li>
+                    <li>Added seasonal animations for all seasonal themes (toggle with Animated checkbox)</li>
+                </ul>
+
+                <h3>Improved</h3>
+                <ul>
+                    <li>Better background gradient contrast for Spring, Summer, and Winter themes</li>
+                </ul>
+            </div>
+
+            <div class="changelog-entry">
+                <div class="changelog-date">October 24, 2025</div>
+
+                <h3>New</h3>
+                <ul>
+                    <li>Added <a href="Dice/blades.html">Blades in the Dark dice roller</a> with outcome indicators</li>
+                    <li>Added collapsible probability statistics to <a href="Dice/blades.html">Blades</a> and <a href="Dice/fate.html">Fate</a> rollers</li>
+                    <li>Added theme system with 6 color schemes (Autumn, Light, Dark, Winter, Spring, Summer)</li>
+                    <li>Added shareable URL support for saving <a href="Dice/custom.html">custom dice</a> configurations</li>
+                </ul>
+
+                <h3>Improved</h3>
+                <ul>
+                    <li><a href="Cards/Tarot/index.html">Tarot</a> card images added to reading interface</li>
+                    <li>Added option to include or exclude reversed Tarot cards</li>
+                </ul>
+            </div>
+
+            <div class="changelog-entry">
+                <div class="changelog-date">October 23, 2025</div>
+
+                <h3>New</h3>
+                <ul>
+                    <li>Initial release</li>
+                    <li><a href="Dice/basic.html">Basic dice roller</a> (d4, d6, d8, d10, d12, d20, d100)</li>
+                    <li><a href="Dice/fate.html">Fate/Fudge dice roller</a> with visual dice display</li>
+                    <li><a href="Dice/custom.html">Custom dice roller</a> with drop, keep, exploding, and advantage/disadvantage</li>
+                    <li><a href="Cards/Tarot/index.html">Tarot reading page</a> with 3-card spread, card descriptions, and reversals</li>
+                    <li>Roll history with hover effects</li>
+                    <li>Home page with navigation to all tools</li>
                 </ul>
             </div>
 
