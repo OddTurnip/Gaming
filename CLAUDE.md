@@ -27,7 +27,7 @@ Welcome! This guide helps AI assistants understand and work with the Gaming Tool
 - **Comprehensive test suite** with 313 tests using Vitest
 
 ### Theme System
-- **12 themes** available: Autumn (default), Light, Dark, Winter, Spring, Summer, Stars, Gothic, Cthulhu, Beach, Cyberpunk, Halloween
+- **15 themes** available: Autumn (default), Light, Grey, Dark, Black, Winter, Spring, Summer, Stars, Gothic, Cthulhu, Beach, Cyberpunk, Halloween, Crayon
 - **Shared styles** in `Themes/themes.css` - contains all CSS variables and shared component styles
 - **Theme selector** via `Themes/theme-setup.js` - provides `autoInitThemeSelector()` and `initThemeSelector()`
 - **Theme init** via `Themes/theme-init.js` - prevents flash of unstyled content (FOUC)

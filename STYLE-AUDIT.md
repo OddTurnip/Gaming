@@ -90,9 +90,9 @@ It can be used as a prompt for an AI assistant or as a manual checklist.
 
 ---
 
-## 12 Themes
+## 15 Themes
 
-Autumn (default), Light, Dark, Winter, Spring, Summer, Stars, Gothic, Cthulhu, Beach, Cyberpunk, Halloween
+Autumn (default), Light, Grey, Dark, Black, Winter, Spring, Summer, Stars, Gothic, Cthulhu, Beach, Cyberpunk, Halloween, Crayon
 
 ---
 
