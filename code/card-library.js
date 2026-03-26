@@ -7,6 +7,18 @@
  * Provides shuffle, draw, and deck management mechanics.
  */
 
+function validateDeck(deck) {
+    if (!Array.isArray(deck)) {
+        throw new Error('Deck must be an array');
+    }
+}
+
+function validateCards(cards) {
+    if (!Array.isArray(cards)) {
+        throw new Error('Cards must be an array');
+    }
+}
+
 /**
  * Create a fresh deck from a card array
  * Returns a copy to avoid mutating the original
@@ -14,9 +26,7 @@
  * @returns {Array} - Copy of the card array
  */
 export function createDeck(cards) {
-    if (!Array.isArray(cards)) {
-        throw new Error('Cards must be an array');
-    }
+    validateCards(cards);
     return [...cards];
 }
 
@@ -27,9 +37,7 @@ export function createDeck(cards) {
  * @returns {Array} - The shuffled deck (same reference, mutated)
  */
 export function shuffleDeck(deck) {
-    if (!Array.isArray(deck)) {
-        throw new Error('Deck must be an array');
-    }
+    validateDeck(deck);
 
     for (let i = deck.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -45,9 +53,7 @@ export function shuffleDeck(deck) {
  * @returns {Object|null} - The drawn card, or null if deck is empty
  */
 export function drawCard(deck) {
-    if (!Array.isArray(deck)) {
-        throw new Error('Deck must be an array');
-    }
+    validateDeck(deck);
 
     if (deck.length === 0) {
         return null;
@@ -63,9 +69,7 @@ export function drawCard(deck) {
  * @returns {Array} - Array of drawn cards (may be less than count if deck runs out)
  */
 export function drawCards(deck, count) {
-    if (!Array.isArray(deck)) {
-        throw new Error('Deck must be an array');
-    }
+    validateDeck(deck);
     if (!Number.isInteger(count) || count < 0) {
         throw new Error(`Invalid count: ${count}. Must be a non-negative integer.`);
     }
@@ -86,9 +90,7 @@ export function drawCards(deck, count) {
  * @returns {Object|null} - The top card, or null if deck is empty
  */
 export function peekCard(deck) {
-    if (!Array.isArray(deck)) {
-        throw new Error('Deck must be an array');
-    }
+    validateDeck(deck);
 
     if (deck.length === 0) {
         return null;
@@ -104,9 +106,7 @@ export function peekCard(deck) {
  * @returns {Array} - Array of top cards (may be less than count if deck is smaller)
  */
 export function peekCards(deck, count) {
-    if (!Array.isArray(deck)) {
-        throw new Error('Deck must be an array');
-    }
+    validateDeck(deck);
     if (!Number.isInteger(count) || count < 0) {
         throw new Error(`Invalid count: ${count}`);
     }
@@ -121,9 +121,7 @@ export function peekCards(deck, count) {
  * @returns {number} - Number of cards in deck
  */
 export function getDeckSize(deck) {
-    if (!Array.isArray(deck)) {
-        throw new Error('Deck must be an array');
-    }
+    validateDeck(deck);
     return deck.length;
 }
 
@@ -133,9 +131,7 @@ export function getDeckSize(deck) {
  * @returns {boolean} - True if deck is empty
  */
 export function isDeckEmpty(deck) {
-    if (!Array.isArray(deck)) {
-        throw new Error('Deck must be an array');
-    }
+    validateDeck(deck);
     return deck.length === 0;
 }
 
@@ -146,9 +142,7 @@ export function isDeckEmpty(deck) {
  * @returns {Array} - The deck (mutated)
  */
 export function addCardToBottom(deck, card) {
-    if (!Array.isArray(deck)) {
-        throw new Error('Deck must be an array');
-    }
+    validateDeck(deck);
     deck.unshift(card);
     return deck;
 }
@@ -160,9 +154,7 @@ export function addCardToBottom(deck, card) {
  * @returns {Array} - The deck (mutated)
  */
 export function addCardToTop(deck, card) {
-    if (!Array.isArray(deck)) {
-        throw new Error('Deck must be an array');
-    }
+    validateDeck(deck);
     deck.push(card);
     return deck;
 }
@@ -175,12 +167,8 @@ export function addCardToTop(deck, card) {
  * @returns {Array} - The deck (mutated)
  */
 export function returnCards(deck, cards, shuffle = true) {
-    if (!Array.isArray(deck)) {
-        throw new Error('Deck must be an array');
-    }
-    if (!Array.isArray(cards)) {
-        throw new Error('Cards must be an array');
-    }
+    validateDeck(deck);
+    validateCards(cards);
 
     deck.push(...cards);
 
@@ -199,9 +187,7 @@ export function returnCards(deck, cards, shuffle = true) {
  * @returns {Array} - The deck (mutated)
  */
 export function cutDeck(deck, position) {
-    if (!Array.isArray(deck)) {
-        throw new Error('Deck must be an array');
-    }
+    validateDeck(deck);
     if (!Number.isInteger(position) || position < 0 || position > deck.length) {
         throw new Error(`Invalid cut position: ${position}`);
     }
@@ -223,9 +209,7 @@ export function cutDeck(deck, position) {
  * @returns {Array[]} - Array of hands (each hand is an array of cards)
  */
 export function dealHands(deck, numHands, cardsPerHand) {
-    if (!Array.isArray(deck)) {
-        throw new Error('Deck must be an array');
-    }
+    validateDeck(deck);
     if (!Number.isInteger(numHands) || numHands < 1) {
         throw new Error(`Invalid number of hands: ${numHands}`);
     }

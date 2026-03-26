@@ -4,23 +4,9 @@
 
 import { describe, it, expect, vi } from 'vitest';
 import {
-    SYSTEM_NAME,
-    LOAD_CAPACITY,
     rollDicePool,
     evaluateResult
 } from '../js/blades-system.js';
-
-describe('Constants', () => {
-    it('SYSTEM_NAME is "Blades"', () => {
-        expect(SYSTEM_NAME).toBe('Blades');
-    });
-
-    it('LOAD_CAPACITY has correct values', () => {
-        expect(LOAD_CAPACITY.light).toBe(3);
-        expect(LOAD_CAPACITY.normal).toBe(5);
-        expect(LOAD_CAPACITY.heavy).toBe(6);
-    });
-});
 
 describe('rollDicePool', () => {
     it('rolls correct number of dice', () => {

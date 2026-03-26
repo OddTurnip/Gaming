@@ -16,6 +16,9 @@
     --border: #cbd5e1;
     --shadow: rgba(0, 0, 0, 0.1);
 
+    --accent-rgb: 37, 99, 235;
+    --success-rgb: 22, 163, 74;
+
     --column-width: 220px;
     --column-gap: 12px;
 }
@@ -100,8 +103,8 @@ header h1 {
 }
 
 @keyframes pulse-green {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.6); }
-    50% { box-shadow: 0 0 8px 2px rgba(22, 163, 74, 0.4); }
+    0%, 100% { box-shadow: 0 0 0 0 rgba(var(--success-rgb), 0.6); }
+    50% { box-shadow: 0 0 8px 2px rgba(var(--success-rgb), 0.4); }
 }
 
 #add-char-btn {
@@ -413,7 +416,7 @@ header h1 {
 
 /* Combat Section */
 .combat-section {
-    background: rgba(37, 99, 235, 0.05);
+    background: rgba(var(--accent-rgb), 0.05);
 }
 
 .combat-header-row {
@@ -559,7 +562,7 @@ header h1 {
 .cons-input:focus {
     outline: none;
     border-color: var(--accent);
-    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+    box-shadow: 0 0 0 2px rgba(var(--accent-rgb), 0.15);
 }
 
 .cons-input:not(:placeholder-shown) {
@@ -586,7 +589,7 @@ header h1 {
 .aspect-input:focus {
     outline: none;
     border-color: var(--accent);
-    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+    box-shadow: 0 0 0 2px rgba(var(--accent-rgb), 0.15);
 }
 
 .aspect-input::placeholder {

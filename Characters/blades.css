@@ -13,6 +13,11 @@
     --dim: #9a9aa0;              /* Improved contrast (5.2:1 vs bg) */
     --border: #3a3a40;
     --shadow: rgba(0, 0, 0, 0.4);
+
+    /* Dice result colors - intentionally fixed for game mechanics */
+    --die-failure: #c44;
+    --die-mixed: #c98a20;
+    --die-success: #3a9a3a;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -185,7 +190,7 @@ input[type="checkbox"]:checked, input[type="radio"]:checked {
     cursor: pointer;
     transition: all 0.15s;
 }
-.xp-track i:hover, .playbook-xp-track i:hover { border-color: #9d7ef0; }
+.xp-track i:hover, .playbook-xp-track i:hover { border-color: var(--xp); }
 .xp-track i.filled, .playbook-xp-track i.filled {
     background: var(--xp);
     border-color: var(--xp);
@@ -461,9 +466,9 @@ input[type="checkbox"]:checked, input[type="radio"]:checked {
     border-width: 3px;
     box-shadow: 0 0 8px currentColor;
 }
-.die.failure { color: #c44; border-color: #c44; }
-.die.mixed { color: #c98a20; border-color: #c98a20; }
-.die.success { color: #3a9a3a; border-color: #3a9a3a; }
+.die.failure { color: var(--die-failure); border-color: var(--die-failure); }
+.die.mixed { color: var(--die-mixed); border-color: var(--die-mixed); }
+.die.success { color: var(--die-success); border-color: var(--die-success); }
 .dice-result {
     font: 700 20px 'IM Fell English', Georgia, serif;
     text-transform: uppercase;
@@ -472,13 +477,13 @@ input[type="checkbox"]:checked, input[type="radio"]:checked {
     border-radius: 4px;
     margin-bottom: 12px;
 }
-.dice-result.failure { color: #c44; background: rgba(204, 68, 68, 0.1); border: 1px solid #c44; }
-.dice-result.mixed { color: #c98a20; background: rgba(201, 138, 32, 0.1); border: 1px solid #c98a20; }
-.dice-result.success { color: #3a9a3a; background: rgba(58, 154, 58, 0.1); border: 1px solid #3a9a3a; }
+.dice-result.failure { color: var(--die-failure); background: rgba(204, 68, 68, 0.1); border: 1px solid var(--die-failure); }
+.dice-result.mixed { color: var(--die-mixed); background: rgba(201, 138, 32, 0.1); border: 1px solid var(--die-mixed); }
+.dice-result.success { color: var(--die-success); background: rgba(58, 154, 58, 0.1); border: 1px solid var(--die-success); }
 .dice-result.critical {
     color: #2a8a2a;
     background: linear-gradient(135deg, rgba(58, 154, 58, 0.15), rgba(201, 162, 39, 0.15));
-    border: 2px solid #3a9a3a;
+    border: 2px solid var(--die-success);
     text-shadow: 1px 1px 0 var(--accent-dim);
 }
 .dice-bonus-section {
@@ -516,9 +521,9 @@ input[type="checkbox"]:checked, input[type="radio"]:checked {
     from { transform: scale(0); opacity: 0; }
     to { transform: scale(1); opacity: 1; }
 }
-.dice-bonus-die.failure { color: #c44; border-color: #c44; }
-.dice-bonus-die.mixed { color: #c98a20; border-color: #c98a20; }
-.dice-bonus-die.success { color: #3a9a3a; border-color: #3a9a3a; }
+.dice-bonus-die.failure { color: var(--die-failure); border-color: var(--die-failure); }
+.dice-bonus-die.mixed { color: var(--die-mixed); border-color: var(--die-mixed); }
+.dice-bonus-die.success { color: var(--die-success); border-color: var(--die-success); }
 .dice-bonus-die.selected {
     transform: scale(1.1);
     border-width: 3px;

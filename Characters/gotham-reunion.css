@@ -12,6 +12,11 @@
     --dim: #5c4f42;              /* Sepia brown */
     --border: #a0917d;           /* Aged paper edge */
     --shadow: rgba(90, 70, 50, 0.15);
+
+    /* Dice result colors - intentionally fixed for game mechanics */
+    --die-failure: #c33;
+    --die-mixed: #b87800;
+    --die-success: var(--die-success);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -519,8 +524,8 @@ input[type="checkbox"]:checked, input[type="radio"]:checked {
 }
 .training-upgrade {
     background: var(--card);
-    border: 1px solid #2a7d2a;
-    color: #2a7d2a;
+    border: 1px solid var(--die-success);
+    color: var(--die-success);
     width: 22px;
     height: 22px;
     cursor: pointer;
@@ -533,7 +538,7 @@ input[type="checkbox"]:checked, input[type="radio"]:checked {
     justify-content: center;
 }
 .training-upgrade:hover {
-    background: #2a7d2a;
+    background: var(--die-success);
     color: var(--card);
 }
 .training-row.ready .training-upgrade {
@@ -635,16 +640,16 @@ input[type="checkbox"]:checked, input[type="radio"]:checked {
     box-shadow: 0 0 8px currentColor;
 }
 .die.failure {
-    color: #c33;
-    border-color: #c33;
+    color: var(--die-failure);
+    border-color: var(--die-failure);
 }
 .die.mixed {
-    color: #b87800;
-    border-color: #b87800;
+    color: var(--die-mixed);
+    border-color: var(--die-mixed);
 }
 .die.success {
-    color: #2a7d2a;
-    border-color: #2a7d2a;
+    color: var(--die-success);
+    border-color: var(--die-success);
 }
 .dice-result {
     font: 700 20px 'Playfair Display', Georgia, serif;
@@ -655,24 +660,24 @@ input[type="checkbox"]:checked, input[type="radio"]:checked {
     margin-bottom: 12px;
 }
 .dice-result.failure {
-    color: #c33;
+    color: var(--die-failure);
     background: rgba(204, 51, 51, 0.1);
-    border: 1px solid #c33;
+    border: 1px solid var(--die-failure);
 }
 .dice-result.mixed {
-    color: #b87800;
+    color: var(--die-mixed);
     background: rgba(184, 120, 0, 0.1);
-    border: 1px solid #b87800;
+    border: 1px solid var(--die-mixed);
 }
 .dice-result.success {
-    color: #2a7d2a;
+    color: var(--die-success);
     background: rgba(42, 125, 42, 0.1);
-    border: 1px solid #2a7d2a;
+    border: 1px solid var(--die-success);
 }
 .dice-result.critical {
     color: #1a6b1a;
     background: linear-gradient(135deg, rgba(42, 125, 42, 0.15), rgba(184, 134, 11, 0.15));
-    border: 2px solid #2a7d2a;
+    border: 2px solid var(--die-success);
     text-shadow: 1px 1px 0 var(--accent-gold);
 }
 .dice-bonus-section {
@@ -712,16 +717,16 @@ input[type="checkbox"]:checked, input[type="radio"]:checked {
     to { transform: scale(1); opacity: 1; }
 }
 .dice-bonus-die.failure {
-    color: #c33;
-    border-color: #c33;
+    color: var(--die-failure);
+    border-color: var(--die-failure);
 }
 .dice-bonus-die.mixed {
-    color: #b87800;
-    border-color: #b87800;
+    color: var(--die-mixed);
+    border-color: var(--die-mixed);
 }
 .dice-bonus-die.success {
-    color: #2a7d2a;
-    border-color: #2a7d2a;
+    color: var(--die-success);
+    border-color: var(--die-success);
 }
 .dice-bonus-die.selected {
     transform: scale(1.1);

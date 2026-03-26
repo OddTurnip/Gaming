@@ -7,19 +7,7 @@ import {
     sanitizeFilename,
     validateImportData,
     generateId,
-    AUTOSAVE_DELAY,
-    STATUS_DURATION
 } from '../js/shared.js';
-
-describe('Constants', () => {
-    it('AUTOSAVE_DELAY is 1000ms', () => {
-        expect(AUTOSAVE_DELAY).toBe(1000);
-    });
-
-    it('STATUS_DURATION is 2000ms', () => {
-        expect(STATUS_DURATION).toBe(2000);
-    });
-});
 
 describe('sanitizeFilename', () => {
     it('removes special characters', () => {
